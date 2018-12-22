@@ -2,13 +2,14 @@ import { ApolloConsumer } from 'react-apollo'
 import gql from 'graphql-tag'
 import { allPostsQuery, allPostsQueryVars } from './PostList'
 
-export default function Submit () {
+export default function Submit() {
   return (
     <ApolloConsumer>
       {client => (
         <form onSubmit={event => handleSubmit(event, client)}>
           <h1>Submit</h1>
-          <input placeholder='title' name='title' type='text'  required />
+          <input placeholder='title' name='title' type='text' required />
+          
           <input placeholder='url' name='url' type='url' required />
           <button type='submit'>Submit</button>
           <style jsx>{`
@@ -31,7 +32,7 @@ export default function Submit () {
   )
 }
 
-function handleSubmit (event, client) {
+function handleSubmit(event, client) {
   event.preventDefault()
 
   // document.cookie = "username3=John Doe";

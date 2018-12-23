@@ -5,7 +5,7 @@ import { Query } from "react-apollo";
 export default class PostList extends Component {
   render() {
     return (
-      <Query query={POSTS} variables={{ count: 2 }}>
+      <Query query={POSTS} variables={{ count: 20 }}>
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
@@ -16,6 +16,7 @@ export default class PostList extends Component {
                 <div key={post.id}>
                   <h3>{post.title}</h3>
                   <p>{post.body}</p>
+                  <p>{post.createdAt}</p>
                 </div>
               ))}
             </div>

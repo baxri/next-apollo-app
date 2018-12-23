@@ -19,3 +19,14 @@ export const PROFILE = gql`
         }
     }
 `;
+
+export const POSTS = gql`
+    query AllPosts($count: Int) {
+        allPosts(count: $count) {
+            id
+            title
+            body
+            createdAt
+        }
+    }
+`;

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Mutation } from "react-apollo";
 import { LOGIN } from "../../gql/Auth";
 import Router from 'next/router'
+import { setToken } from "../../lib/cookie";
 
 class Login extends Component {
 
@@ -17,9 +18,8 @@ class Login extends Component {
 
             //we need to save data.login.token in cookies
             // for now I will make static user id saving
+            setToken(data.login.token);
 
-            // You can use better way to save this cookies
-            document.cookie = "Authorization=cjpzwwo5a00iy3410ilr5cam8";
             Router.push('/profile');
         });
     }

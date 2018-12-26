@@ -1,8 +1,8 @@
 const next = require('next');
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const { ApolloServer, gql } = require('apollo-server-express');
-// const { typeDefs, resolvers } = require('./schema');
+const { ApolloServer } = require('apollo-server-express');
+const schema = require('./graphql/schema');
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
@@ -10,23 +10,8 @@ const port = process.env.PORT || 3000;
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-
-// Provide resolver functions for your schema fields
-const resolvers = {
-    Query: {
-        hello: () => 'Hello world!',
-    },
-};
-
 nextApp.prepare().then(() => {
-    const server = new ApolloServer({ typeDefs, resolvers });
+    const server = new ApolloServer(schema);
     const app = express();
 
     server.applyMiddleware({ app });

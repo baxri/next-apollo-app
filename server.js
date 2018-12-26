@@ -1,46 +1,69 @@
 const next = require('next');
 const express = require('express');
-const axios = require('axios');
 const cookieParser = require('cookie-parser');
+const { ApolloServer, gql } = require('apollo-server-express');
+// const { typeDefs, resolvers } = require('./schema');
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
 
-const app = next({ dev });
-const handle = app.getRequestHandler();
+const nextApp = next({ dev });
+const handle = nextApp.getRequestHandler();
 
-const COOKIE_OPTIONS = {
-    httpOnly: true,
-    secure: !dev,
-    signed: false,
+// Construct a schema, using GraphQL schema language
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+
+
+// Provide resolver functions for your schema fields
+const resolvers = {
+    Query: {
+        hello: () => 'Hello world!',
+    },
 };
 
-const authenticate = async (email, password) => {
-    const { data } = await axios.get('https://jsonplaceholder.typicode.com/users');
+nextApp.prepare().then(() => {
+    const server = new ApolloServer({ typeDefs, resolvers });
+    const app = express();
 
-    return data.find(user => {
-        if (user.email === email && user.website === password) {
-            return user;
-        }
-    });
-}
+    server.applyMiddleware({ app });
 
-app.prepare().then(() => {
+    app.use(cookieParser());
 
-    const server = express();
-
-    server.use(cookieParser());
-
-    server.get('*', (req, res) => {
+    app.get('*', (req, res) => {
         return handle(req, res);
     });
 
-    server.listen(port, err => {
-
-        if (err) {
-            throw err;
-        }
-
-        console.log(`Listening on port ${port}`);
-    })
+    app.listen({ port: port }, () =>
+        console.log(`🚀 Server ready at http://localhost:${port} ${server.graphqlPath}`)
+    );
 });
+
+
+
+// app.prepare().then(() => {
+
+//     const server = express();
+
+//     const apolloServer = new ApolloServer({
+//         // These will be defined for both new or existing servers
+//         typeDefs,
+//         resolvers,
+//     });
+//     apolloServer.applyMiddleware({ server });
+
+
+
+//     server.use(cookieParser());
+
+//     server.get('*', (req, res) => {
+//         return handle(req, res);
+//     });
+
+//     server.listen({ port: port }, () =>
+//         console.log(`🚀 Server ready at http://localhost:${port} ${server.graphqlPath}`)
+//     );
+// });

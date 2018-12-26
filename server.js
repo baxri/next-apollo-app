@@ -23,7 +23,7 @@ nextApp.prepare().then(() => {
     });
 
     app.listen({ port: port }, () =>
-        console.log(`🚀 Server ready at http://localhost:${port} ${server.graphqlPath}`)
+        console.log(`🚀 Server ready at http://localhost:${port}, graphQL path: ${server.graphqlPath}`)
     );
 });
 

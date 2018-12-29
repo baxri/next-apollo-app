@@ -6,17 +6,13 @@ const { Author, AuthorResolvers } = require('./types/author');
 
 const Query = `
   type Query {
-      hello: String
-      book(id: Int!): Book
-      author(id: Int!): Author
+    _empty: String
   }
 `;
 
 
 const resolvers = {
-    Query: {
 
-    }
 };
 
 module.exports = makeExecutableSchema({

@@ -4,6 +4,10 @@ const typeDef = `
     title: String
     author: Author
   }
+
+  extend type Query {
+    book(id: Int!): Book
+  }
 `;
 
 const resolvers = {

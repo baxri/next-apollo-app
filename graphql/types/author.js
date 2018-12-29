@@ -1,10 +1,12 @@
-// author.js
 const typeDef = `
   type Author {
-    id: Int!
     firstName: String
     lastName: String
     books: [Book]
+  }
+
+  extend type Query {
+    author(id: Int!): Author
   }
 `;
 

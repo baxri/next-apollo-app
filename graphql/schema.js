@@ -1,35 +1,26 @@
 const { merge } = require('lodash');
-const { gql } = require('apollo-server-express');
-const resolvers = require('./resolvers')
+const { makeExecutableSchema } = require('apollo-server-express');
 
-const typeDefs = gql`
-  type Book {
-      id: Int
-      title: String
-      author: Author
-  }
+const { Book, BookResolvers } = require('./types/book');
+const { Author, AuthorResolvers } = require('./types/author');
 
-  type Author {
-      name: String
-      books: [Book]
-  }
-
+const Query = `
   type Query {
       hello: String
-      books: [Book]
       book(id: Int!): Book
+      author(id: Int!): Author
   }
 `;
 
-// const helloResolver = require('./resolvers/hello')
-// const booksResolver = require('./resolvers/books')
 
+const resolvers = {
+    Query: {
 
-// Merge all of the resolver objects together
-// const resolvers = merge(
-//   helloResolver,
-//   booksResolver
-// );
+    }
+};
 
-exports.typeDefs = typeDefs;
-exports.resolvers = resolvers;
+module.exports = makeExecutableSchema({
+    typeDefs: [Query, Author, Book],
+    resolvers: merge(resolvers, AuthorResolvers, BookResolvers)
+});
+

@@ -11,7 +11,12 @@ const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 
 nextApp.prepare().then(() => {
-    const server = new ApolloServer({schema});
+    const server = new ApolloServer({
+        schema, context: ({ req }) => ({
+            token: req.headers.authorization
+        })
+    });
+
     const app = express();
 
     server.applyMiddleware({ app });

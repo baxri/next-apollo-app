@@ -1,4 +1,4 @@
-const { get, post } = require('../axios');
+const { get } = require('../axios');
 
 const typeDef = `
 type User {

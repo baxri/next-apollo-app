@@ -22,7 +22,7 @@ module.exports = makeExecutableSchema({
     typeDefs: [Query, Token, User, Author, Book],
     resolvers: merge(resolvers, TokenResolvers, UserResolvers, AuthorResolvers, BookResolvers),
     context: ({ req }) => ({
-        authScope: "gggggggggg"
+        authScope: getScope(req.headers.authorization)
     })
 });
 

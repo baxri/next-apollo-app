@@ -1,5 +1,4 @@
-const axios = require('axios');
-const { service_url } = require('../config');
+const { post } = require('../axios');
 
 const typeDef = `
 type Token {

@@ -1,5 +1,9 @@
 import Link from 'next/link'
 import { withRouter } from 'next/router'
+import { USER } from "../gql/User";
+import { Query } from "react-apollo";
+import Error from "./Auth/Error";
+import Logout from "./Auth/Logout";
 
 import React, { Component } from 'react'
 
@@ -13,41 +17,52 @@ class Header extends Component {
     }
   }
 
+
+
   render() {
 
     const { router: { pathname } } = this.props;
 
     return (
-      <header>
-        <Link prefetch href='/'>
-          <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
-        </Link>
-        <Link prefetch href='/about'>
-          <a className={pathname === '/about' ? 'is-active' : ''}>About</a>
-        </Link>
-        <Link prefetch href='/login'>
-          <a className={pathname === '/login' ? 'is-active' : ''}>Login</a>
-        </Link>
-        {true && <Link prefetch href='/profile'>
-          <a className={pathname === '/profile' ? 'is-active' : ''}>Profile</a>
-        </Link>}
-        {true && <Link prefetch href='/posts'>
-          <a className={pathname === '/posts' ? 'is-active' : ''}>Posts</a>
-        </Link>}
-        <style jsx>{`
-        header {
-          margin-bottom: 25px;
-        }
-        a {
-          font-size: 14px;
-          margin-right: 15px;
-          text-decoration: none;
-        }
-        .is-active {
-          text-decoration: underline;
-        }
-      `}</style>
-      </header>
+      <Query query={USER}>
+        {({ loading, error, data }) => {
+
+          const authorized = data && data.user && data.user.first_name;
+
+          return (<header>
+
+            {authorized && <p>{data.user.first_name} {data.user.last_name}</p>}
+
+            <Link prefetch href='/'>
+              <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
+            </Link>
+            <Link prefetch href='/about'>
+              <a className={pathname === '/about' ? 'is-active' : ''}>About</a>
+            </Link>
+            {!authorized && <Link prefetch href='/login'>
+              <a className={pathname === '/login' ? 'is-active' : ''}>Login</a>
+            </Link>}
+            {authorized && <Link prefetch href='/profile'>
+              <a className={pathname === '/profile' ? 'is-active' : ''}>Profile</a>
+            </Link>}
+            {authorized && <Logout userid={data.user.id} />}
+            <style jsx>{`
+          header {
+            margin-bottom: 25px;
+          }
+          a {
+            font-size: 14px;
+            margin-right: 15px;
+            text-decoration: none;
+          }
+          .is-active {
+            text-decoration: underline;
+          }
+        `}</style>
+          </header>)
+        }}
+
+      </Query>
     )
   }
 }

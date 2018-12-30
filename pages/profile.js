@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import App from '../components/App'
 import Header from '../components/Header'
-import Logout from '../components/Auth/Logout'
 import ProfileData from '../components/Auth/ProfileData';
 import { checkAuth } from "../lib/cookie";
 
@@ -16,7 +15,6 @@ class Profile extends Component {
         return (
             <App>
                 <Header />
-                <Logout />
                 <ProfileData />
             </App>
         )

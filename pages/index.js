@@ -3,7 +3,7 @@ import Header from '../components/Header'
 
 export default () => (
   <App>
-    <Header />
+    <Header/>
     <h3>Wellcome to Next.js and Apollo example</h3>
   </App>
 )

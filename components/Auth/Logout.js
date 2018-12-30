@@ -1,27 +1,40 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
 import { removeToken } from "../../lib/cookie";
+import { Mutation } from "react-apollo";
+import { USER } from "../../gql/User";
+import { LOGOUT } from "../../gql/Logout";
+import Error from "./Error";
+import Link from 'next/link'
 
 class Logout extends Component {
 
-    onLogout = (e) => {
+    onClick = async (e, action, userid) => {
         e.preventDefault();
 
         // You can use better way to delete cookies
-        removeToken();
-        Router.push('/login')
+        action({ variables: { id: userid } }).then(({ data }) => {
+            removeToken();
+            Router.push('/login')
+        }).catch(err => { })
+
+
     }
 
     render() {
+
+        const { userid } = this.props;
+
         return (
-            <form onSubmit={event => this.onLogout(event)}>
-                <button type='submit'>Logout</button>
-                <style jsx>{`
-                    button{
-                        height: 30px;
-                    }
-                `}</style>
-            </form>
+            <Mutation mutation={LOGOUT}>
+                {(action, { loading, error }) => {
+                    return (
+                        <Link prefetch href='#'>
+                            <a onClick={event => this.onClick(event, action, userid)}>{loading ? "Loading..." : "Logout"}</a>
+                        </Link>
+                    )
+                }}
+            </Mutation>
         )
     }
 }

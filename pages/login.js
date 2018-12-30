@@ -4,7 +4,7 @@ import LoginForm from '../components/Auth/LoginForm'
 
 export default () => (
   <App>
-    <Header />
+    <Header/>
     <LoginForm />
   </App>
 )

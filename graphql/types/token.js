@@ -8,7 +8,7 @@ const typeDef = `
         refresh_token: String
     }
 
-    type Mutation {
+    extend type Mutation {
         token(client_id: Int!, grant_type: String!, username: String!, password: String!, client_secret: String!): Token
     }
 `;

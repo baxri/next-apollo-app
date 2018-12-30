@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Mutation } from "react-apollo";
 import Router from 'next/router'
 import { setToken } from "../../lib/cookie";
-import { TOKEN } from "../../gql/Token";
+import { TOKEN } from "../../gql/User";
 import Error from "./Error";
 
 class Login extends Component {

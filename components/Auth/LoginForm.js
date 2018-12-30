@@ -20,8 +20,8 @@ class Login extends Component {
         const client_secret = "SL478kXxgXzFbJwME4oiFLskjKM3zLkfcokxeN3p";
 
         TokenGql({ variables: { client_id, grant_type, username, password, client_secret } }).then(({ data }) => {
-            setToken(data.token.access_token);
-            Router.push('/');
+            setToken(`Bearer ${data.token.access_token}`);
+            Router.push('/profile');
         }).catch(err => { })
     }
 

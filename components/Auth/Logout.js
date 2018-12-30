@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Mutation } from "react-apollo";
-import { LOGIN } from "../../gql/Auth";
 import Router from 'next/router'
+import { removeToken } from "../../lib/cookie";
 
 class Logout extends Component {
 
@@ -9,7 +8,7 @@ class Logout extends Component {
         e.preventDefault();
 
         // You can use better way to delete cookies
-        document.cookie = "Authorization=";
+        removeToken();
         Router.push('/login')
     }
 

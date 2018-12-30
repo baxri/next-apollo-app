@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
-import { PROFILE } from "../../gql/Auth";
+import { USER } from "../../gql/User";
 import { Query } from "react-apollo";
 
 export default class ProfileData extends Component {
     render() {
         return (
-            <Query query={PROFILE} variables={{ id: "cjpzwwo5a00iy3410ilr5cam8" }}>
+            <Query query={USER}>
                 {({ loading, error, data }) => {
-                    if (loading) return "Loading...";
-                    if (error) return `Error! ${error.message}`;
+                    if (loading) return (<p>Loading...</p>);
                     return (
                         <div>
-                            <h3>{data.User.id}</h3>
-                            <h3>{data.User.firstName}</h3>
-                            <h3>{data.User.lastName}</h3>
-                            <h3>{data.User.email}</h3>
-                            <img src={data.User.avatar} />
+                            <h3>{data.user.first_name}</h3>
+                            <h3>{data.user.last_name}</h3>
+                            <h3>{data.user.email}</h3>
+                            <h3>{data.user.status}</h3>
                         </div>
                     );
-
                 }}
             </Query>
         )

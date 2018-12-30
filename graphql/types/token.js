@@ -1,20 +1,20 @@
 const { post } = require('../axios');
 
 const typeDef = `
-type Token {
-    token_type: String
-    expires_in: String
-    access_token: String
-    refresh_token: String
-}
+    type Token {
+        token_type: String
+        expires_in: String
+        access_token: String
+        refresh_token: String
+    }
 
-extend type Query {
-    token(client_id: Int!, grant_type: String!, username: String!, password: String!, client_secret: String!): Token
-}
+    type Mutation {
+        token(client_id: Int!, grant_type: String!, username: String!, password: String!, client_secret: String!): Token
+    }
 `;
 
 const resolvers = {
-    Query: {
+    Mutation: {
         token: async (parent, args, { token }) => {
             return await post('oauth/token', args);
         },

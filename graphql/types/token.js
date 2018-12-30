@@ -16,8 +16,7 @@ extend type Query {
 const resolvers = {
     Query: {
         token: async (parent, args, { token }) => {
-            const { data } = await axios.post(`${service_url}oauth/token`, args);
-            return data;
+            return await post('oauth/token', args);
         },
     }
 };

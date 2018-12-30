@@ -12,7 +12,9 @@ const handle = nextApp.getRequestHandler();
 
 nextApp.prepare().then(() => {
     const server = new ApolloServer({
-        schema, context: ({ req }) => ({
+        debug: false,
+        schema,
+        context: ({ req }) => ({
             token: req.headers.authorization
         })
     });

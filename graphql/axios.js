@@ -12,9 +12,9 @@ module.exports = {
                 }
             });
 
-            return data;
+            return CheckForErrors(data, httpError = false);
         } catch (error) {
-            ThrowError(error);
+            CheckForErrors(error);
         }
     },
 
@@ -27,23 +27,33 @@ module.exports = {
                 }
             });
 
-            return data;
+            return CheckForErrors(data, httpError = false);
         } catch (error) {
-            ThrowError(error);
+            CheckForErrors(error);
         }
     }
 }
 
-function ThrowError(error) {
 
-    let httpCode = error.response.status ? error.response.status : null;
-    let httpMessage = error.response.statusText ? error.response.statusText : null;
+// This is custom error handle just to check API errors and translate them to graphql
+function CheckForErrors(data, httpError = true) {
 
-    let bodyError = error.response.data.error ? error.response.data.error : null;
-    let bodyMessage = error.response.data.message ? error.response.data.message : null;
+    if (!httpError) {
+        var httpCode = 200;
+        var httpMessage = "OK";
 
-    let type = 'general_error';
-    let message = 'internal_server_error';
+        var bodyError = data.error;
+        var bodyMessage = data.message;
+    } else {
+        var httpCode = data.response.status ? data.response.status : null;
+        var httpMessage = data.response.statusText ? data.response.statusText : null;
+
+        var bodyError = data.response.data.error ? data.response.data.error : null;
+        var bodyMessage = data.response.data.message ? data.response.data.message : null;
+    }
+
+    let type = null;
+    let message = null;
 
     if (httpMessage) {
         message = httpMessage;
@@ -65,5 +75,5 @@ function ThrowError(error) {
         throw new AuthenticationError(message);
     }
 
-    throw new ApolloError(message, type);
+    return data;
 }

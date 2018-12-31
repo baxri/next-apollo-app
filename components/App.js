@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Router from "next/router";
 import NProgress from "nprogress";
-import Sidebar from "react-sidebar";
 import Header from "./Header";
+import Sidebar from "react-sidebar";
 
 Router.onRouteChangeStart = url => {
   NProgress.start();
@@ -32,7 +32,7 @@ export default class App extends Component {
     const { children } = this.props;
 
     return (
-      <div className="root container-fluid">
+      <div id="root" className="root container-fluid">
 
         <Sidebar
           defaultSidebarWidth={10}

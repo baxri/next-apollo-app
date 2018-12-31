@@ -32,8 +32,8 @@ class Header extends Component {
           return (<header>
 
             <button onClick={sidebarOnClick}>
-              Toggle
-           </button>
+              <i class="fas fa-lock"></i>
+            </button>
 
             <Link prefetch href='/'>
               <a className={pathname === '/' ? 'is-active' : ''}>Home</a>

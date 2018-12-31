@@ -24,9 +24,9 @@ export default class App extends Component {
     const { children } = this.props;
 
     return (
-      <main>
+      <div className="root">
         {children}
-      </main>
+      </div>
     )
   }
 }

@@ -21,7 +21,7 @@ class Header extends Component {
 
   render() {
 
-    const { router: { pathname } } = this.props;
+    const { router: { pathname }, sidebarOnClick } = this.props;
 
     return (
       <Query query={USER}>
@@ -31,7 +31,9 @@ class Header extends Component {
 
           return (<header>
 
-            {authorized && <p>{data.user.first_name} {data.user.last_name}</p>}
+            <button onClick={sidebarOnClick}>
+              Toggle
+           </button>
 
             <Link prefetch href='/'>
               <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
@@ -46,9 +48,17 @@ class Header extends Component {
               <a className={pathname === '/profile' ? 'is-active' : ''}>Profile</a>
             </Link>}
             {authorized && <Logout userid={data.user.id} />}
+
+
+            <style jsx>{`
+              header{
+                background-color: #2280bd;
+                height: 50px;
+                // position: fixed;
+              }
+            `}</style>
           </header>)
         }}
-
       </Query>
     )
   }

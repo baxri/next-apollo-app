@@ -5,7 +5,6 @@ const { makeExecutableSchema } = require('apollo-server-express');
 const { Book, BookResolvers } = require('./types/book');
 const { Author, AuthorResolvers } = require('./types/author');
 
-const { Token, TokenResolvers } = require('./types/token');
 const { User, UserResolvers } = require('./types//user');
 
 const Query = `

@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
-import { removeToken } from "../../lib/cookie";
+import { removeToken } from "../lib/cookie";
 import { Mutation } from "react-apollo";
-import { USER } from "../../gql/User";
-import { LOGOUT } from "../../gql/Logout";
-import Error from "./Error";
+import { LOGOUT } from "../gql/User";
 import Link from 'next/link'
 
 class Logout extends Component {
@@ -12,13 +10,10 @@ class Logout extends Component {
     onClick = async (e, action, userid) => {
         e.preventDefault();
 
-        // You can use better way to delete cookies
         action({ variables: { id: userid } }).then(({ data }) => {
             removeToken();
             Router.push('/login')
         }).catch(err => { })
-
-
     }
 
     render() {

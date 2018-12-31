@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { USER } from "../../gql/User";
+import { USER } from "../gql/User";
 import { Query } from "react-apollo";
 
 export default class ProfileData extends Component {

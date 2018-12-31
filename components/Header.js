@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { withRouter } from 'next/router'
 import { USER } from "../gql/User";
 import { Query } from "react-apollo";
-import Error from "./Auth/Error";
-import Logout from "./Auth/Logout";
+import Error from "./Error";
+import Logout from "./Logout";
 
 import React, { Component } from 'react'
 

@@ -36,31 +36,7 @@ class Login extends Component {
                             <input placeholder='Email' name='email' type='email' value="hersh.sandhoo@webmation.com" required />
                             <br />
                             <input placeholder='Password' name='password' type='password' value="Hunter20!" required />
-
                             <button type='submit'>{loading ? "Loading..." : "Login"}</button>
-                            <style jsx>{`
-                                form {
-                                    border-bottom: 1px solid #ececec;
-                                    padding-bottom: 20px;
-                                    margin-bottom: 20px;
-                                }
-                                h1 {
-                                    font-size: 20px;
-                                }
-    
-                                button{
-                                    height: 30px;
-                                }
-    
-                                input {
-                                    display: block;
-                                    margin-bottom: 10px;
-                                    width: 200px;
-                                    height: 30px;
-                                    border: 1px solid gray;
-                                    padding-left: 10px;
-                                }
-                            `}</style>
                         </form>
                     )
                 }}

@@ -46,19 +46,6 @@ class Header extends Component {
               <a className={pathname === '/profile' ? 'is-active' : ''}>Profile</a>
             </Link>}
             {authorized && <Logout userid={data.user.id} />}
-            <style jsx>{`
-          header {
-            margin-bottom: 25px;
-          }
-          a {
-            font-size: 14px;
-            margin-right: 15px;
-            text-decoration: none;
-          }
-          .is-active {
-            text-decoration: underline;
-          }
-        `}</style>
           </header>)
         }}
 

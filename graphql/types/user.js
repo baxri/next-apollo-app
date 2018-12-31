@@ -23,16 +23,33 @@ const typeDef = `
 const resolvers = {
     Query: {
         user: async (parent, args, { token }) => {
-            return await get('api/user', token);
+            // return await get('api/user', token);
+
+            return {
+                id: 1,
+                first_name: "George",
+                last_name: 'Bibilashvili',
+                email: 'giorgi.bibilashvili89@gmail.com',
+                status: 'active',
+            }
         },
     },
     Mutation: {
         token: async (parent, args, { token }) => {
-            const tokenObj = await post('oauth/token', args);
-            let t = "Bearer " + tokenObj.access_token;
-            let user = await get('api/user', t);
-            user.access_token = tokenObj.access_token;
-            return user;
+            // const tokenObj = await post('oauth/token', args);
+            // let t = "Bearer " + tokenObj.access_token;
+            // let user = await get('api/user', t);
+            // user.access_token = tokenObj.access_token;
+            // return user;
+
+            return {
+                id: 1,
+                first_name: "George",
+                last_name: 'Bibilashvili',
+                email: 'giorgi.bibilashvili89@gmail.com',
+                status: 'active',
+                access_token: '93845739750934750939533i45hi35h3i4u5h3o45iu3h45i32h45iu3h45u',
+            }
         },
         logout: async (parent, { id }, { token }) => {
             return {

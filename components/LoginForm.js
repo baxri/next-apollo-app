@@ -7,7 +7,7 @@ import Error from "./Error";
 
 class Login extends Component {
 
-    onSubmit = (e, TokenGql) => {
+    onSubmit = (e, action) => {
         e.preventDefault();
 
         const form = event.target
@@ -19,7 +19,7 @@ class Login extends Component {
         const password = formData.get('password');
         const client_secret = "SL478kXxgXzFbJwME4oiFLskjKM3zLkfcokxeN3p";
 
-        TokenGql({ variables: { client_id, grant_type, username, password, client_secret } }).then(({ data }) => {
+        action({ variables: { client_id, grant_type, username, password, client_secret } }).then(({ data }) => {
             setToken(`Bearer ${data.token.access_token}`);
             Router.push('/profile');
         }).catch(err => { })
@@ -28,14 +28,14 @@ class Login extends Component {
     render() {
         return (
             <Mutation mutation={TOKEN}>
-                {(TokenGql, { loading, error }) => {
+                {(action, { loading, error }) => {
                     return (
-                        <form onSubmit={event => this.onSubmit(event, TokenGql)}>
+                        <form onSubmit={event => this.onSubmit(event, action)}>
                             {error && <Error error={error} />}
                             <h1>Login</h1>
-                            <input placeholder='Email' name='email' type='email' value="hersh.sandhoo@webmation.com" required />
+                            <input placeholder='Email' name='email' type='email' required />
                             <br />
-                            <input placeholder='Password' name='password' type='password' value="Hunter20!" required />
+                            <input placeholder='Password' name='password' type='password' required />
                             <button type='submit'>{loading ? "Loading..." : "Login"}</button>
                         </form>
                     )

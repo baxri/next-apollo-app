@@ -31,8 +31,20 @@ class Header extends Component {
 
           return (<header>
 
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="javascript:void(0)" onClick={sidebarOnClick}>
+                <i class="fas fa-bars"></i>
+              </a>
+              <a class="navbar-brand" href="#">WEBMATION</a>
+
+
+
+            </nav>
+
+
+
             <button onClick={sidebarOnClick}>
-              <i class="fas fa-lock"></i>
+              <i class="fas fa-bars"></i>
             </button>
 
             <Link prefetch href='/'>

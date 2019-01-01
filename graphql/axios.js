@@ -31,6 +31,12 @@ module.exports = {
         } catch (error) {
             CheckForErrors(error);
         }
+    },
+
+    protected: (token) => {
+        if (!token || token.length < 10) {
+            throw new AuthenticationError('Not Autorized');
+        }
     }
 }
 
@@ -77,3 +83,5 @@ function CheckForErrors(data, httpError = true) {
 
     return data;
 }
+
+

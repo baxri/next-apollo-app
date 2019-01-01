@@ -29,47 +29,47 @@ class Header extends Component {
 
           const authorized = data && data.user && data.user.first_name;
 
-          return (<header>
+          return (<nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-              <a class="navbar-brand" href="javascript:void(0)" onClick={sidebarOnClick}>
-                <i class="fas fa-bars"></i>
-              </a>
-              <a class="navbar-brand" href="#">WEBMATION</a>
-
-
-
-            </nav>
-
-
-
-            <button onClick={sidebarOnClick}>
-              <i class="fas fa-bars"></i>
-            </button>
-
+            <a className="navbar-brand" href="javascript:void(0)" onClick={sidebarOnClick}>
+              <i className="fas fa-bars"></i>
+            </a>
             <Link prefetch href='/'>
-              <a className={pathname === '/' ? 'is-active' : ''}>Home</a>
+              <a className="navbar-brand" href="#">WEBAPP</a>
             </Link>
-            <Link prefetch href='/about'>
-              <a className={pathname === '/about' ? 'is-active' : ''}>About</a>
-            </Link>
-            {!authorized && <Link prefetch href='/login'>
-              <a className={pathname === '/login' ? 'is-active' : ''}>Login</a>
-            </Link>}
-            {authorized && <Link prefetch href='/profile'>
-              <a className={pathname === '/profile' ? 'is-active' : ''}>Profile</a>
-            </Link>}
-            {authorized && <Logout userid={data.user.id} />}
 
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav mr-auto">
 
-            <style jsx>{`
-              header{
-                background-color: #2280bd;
-                height: 50px;
-                // position: fixed;
-              }
-            `}</style>
-          </header>)
+                <li className={pathname === '/' ? 'nav-item active' : 'nav-item'}>
+                  <Link prefetch href='/'>
+                    <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                  </Link>
+                </li>
+
+                <li className={pathname === '/about' ? 'nav-item active' : 'nav-item'}>
+                  <Link prefetch href='/about'>
+                    <a className="nav-link" href="#">About <span className="sr-only">(current)</span></a>
+                  </Link>
+                </li>
+
+                {!authorized && <li className={pathname === '/login' ? 'nav-item active' : 'nav-item'}>
+                  <Link prefetch href='/login'>
+                    <a className="nav-link" href="#">Login <span className="sr-only">(current)</span></a>
+                  </Link>
+                </li>}
+
+                {authorized && <li className={pathname === '/profile' ? 'nav-item active' : 'nav-item'}>
+                  <Link prefetch href='/profile'>
+                    <a className="nav-link" href="#">Profile <span className="sr-only">(current)</span></a>
+                  </Link>
+                </li>}
+
+              </ul>
+
+              {authorized && <Logout userid={data.user.id} />}
+            </div>
+          </nav>)
         }}
       </Query>
     )

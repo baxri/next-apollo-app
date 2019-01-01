@@ -1,4 +1,5 @@
-const { get, post } = require('../axios');
+const { get, post, protected } = require('../axios');
+const { AuthenticationError } = require('apollo-server-express');
 
 const typeDef = `
     type User {
@@ -25,6 +26,8 @@ const resolvers = {
         user: async (parent, args, { token }) => {
             // return await get('api/user', token);
 
+            protected(token);
+
             return {
                 id: 1,
                 first_name: "George",
@@ -36,6 +39,7 @@ const resolvers = {
     },
     Mutation: {
         token: async (parent, args, { token }) => {
+
             // const tokenObj = await post('oauth/token', args);
             // let t = "Bearer " + tokenObj.access_token;
             // let user = await get('api/user', t);
@@ -54,11 +58,11 @@ const resolvers = {
         logout: async (parent, { id }, { token }) => {
             return {
                 id: id,
-                first_name: null,
-                last_name: null,
-                email: null,
-                status: null,
-                access_token: null,
+                first_name: '',
+                last_name: '',
+                email: '',
+                status: '',
+                access_token: '',
             }
         },
     }

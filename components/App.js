@@ -3,6 +3,7 @@ import Router from "next/router";
 import NProgress from "nprogress";
 import Header from "./Header";
 import Sidebar from "react-sidebar";
+import SideBarContent from "./SideBarContent";
 
 Router.onRouteChangeStart = url => {
   NProgress.start();
@@ -36,20 +37,30 @@ export default class App extends Component {
 
         <Sidebar
           defaultSidebarWidth={10}
-          sidebar={<b>Sidebar content</b>}
-          styles={{ sidebar: { background: "white" } }}
+          sidebar={<SideBarContent onClose={this.onSetSidebarOpen} />}
+          styles={{ sidebar: { background: "darkgray" } }}
           docked={this.state.sidebarOpen}
         >
 
           <Header sidebarOnClick={this.onSetSidebarOpen} />
-          {children}
+          <div className="page-content">
+            {children}
+          </div>
         </Sidebar>
+
+        <style jsx>{`
+
+          .page-content{
+              padding: 20px;
+            }
+
+        `}</style>
 
         <style global jsx>{`
 
             body{
               margin: 0;
-              background-color: #f0f0f0;
+              padding: 0px;
             }
 
         `}</style>

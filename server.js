@@ -21,6 +21,8 @@ nextApp.prepare().then(() => {
 
     const app = express();
 
+    console.log("================== OK =========================")
+
     server.applyMiddleware({ app });
 
     app.use(cookieParser());

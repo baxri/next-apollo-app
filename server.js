@@ -14,14 +14,14 @@ nextApp.prepare().then(() => {
     const server = new ApolloServer({
         debug: false,
         schema,
+        introspection: true,
+        playground: true,
         context: ({ req }) => ({
             token: req.headers.authorization
         })
     });
 
     const app = express();
-
-    console.log("================== OK =========================")
 
     server.applyMiddleware({ app });
 
@@ -35,29 +35,3 @@ nextApp.prepare().then(() => {
         console.log(`🚀 Server ready at http://localhost:${port}, graphQL path: ${server.graphqlPath}`)
     );
 });
-
-
-
-// app.prepare().then(() => {
-
-//     const server = express();
-
-//     const apolloServer = new ApolloServer({
-//         // These will be defined for both new or existing servers
-//         typeDefs,
-//         resolvers,
-//     });
-//     apolloServer.applyMiddleware({ server });
-
-
-
-//     server.use(cookieParser());
-
-//     server.get('*', (req, res) => {
-//         return handle(req, res);
-//     });
-
-//     server.listen({ port: port }, () =>
-//         console.log(`🚀 Server ready at http://localhost:${port} ${server.graphqlPath}`)
-//     );
-// });

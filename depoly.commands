@@ -1,0 +1,5 @@
+#navigate to project directory:
+
+git pull origin master
+npm run build
+pm2 restrat 0

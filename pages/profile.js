@@ -14,6 +14,14 @@ class Profile extends Component {
         return (
             <App>
                 <ProfileData />
+                <ProfileData />
+                <ProfileData />
+                <ProfileData />
+                <ProfileData />
+                <ProfileData />
+                <ProfileData />
+                <ProfileData />
+                <ProfileData />
             </App>
         )
     }

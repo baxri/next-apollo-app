@@ -1,11 +1,6 @@
+import React, { Component } from 'react'
 import Link from 'next/link'
 import { withRouter } from 'next/router'
-import { USER } from "../gql/User";
-import { Query } from "react-apollo";
-import Error from "./Error";
-import Logout from "./Logout";
-
-import React, { Component } from 'react'
 
 class Header extends Component {
 
@@ -17,61 +12,67 @@ class Header extends Component {
     }
   }
 
-
-
   render() {
 
-    const { router: { pathname }, sidebarOnClick } = this.props;
+    const { router: { pathname }, sidebarOnClick, authorized, data } = this.props;
 
     return (
-      <Query query={USER}>
-        {({ loading, error, data }) => {
+      <nav className="navbar navbar-expand-lg ">
 
-          const authorized = data && data.user && data.user.first_name;
+        <a className="navbar-brand" href="javascript:void(0)" onClick={sidebarOnClick}>
+          <i className="fas fa-bars"></i>
+        </a>
+        <Link prefetch href='/'>
+          <a className="navbar-brand" href="#">WEBMATION</a>
+        </Link>
 
-          return (<nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav mr-auto">
 
-            <a className="navbar-brand" href="javascript:void(0)" onClick={sidebarOnClick}>
-              <i className="fas fa-bars"></i>
-            </a>
-            <Link prefetch href='/'>
-              <a className="navbar-brand" href="#">WEBAPP</a>
-            </Link>
-
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto">
-
-                <li className={pathname === '/' ? 'nav-item active' : 'nav-item'}>
+            {/* <li className={pathname === '/' ? 'nav-item active' : 'nav-item'}>
                   <Link prefetch href='/'>
                     <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
                   </Link>
-                </li>
+                </li> */}
 
-                <li className={pathname === '/about' ? 'nav-item active' : 'nav-item'}>
+            {/* <li className={pathname === '/about' ? 'nav-item active' : 'nav-item'}>
                   <Link prefetch href='/about'>
                     <a className="nav-link" href="#">About <span className="sr-only">(current)</span></a>
                   </Link>
-                </li>
+                </li> */}
 
-                {!authorized && <li className={pathname === '/login' ? 'nav-item active' : 'nav-item'}>
-                  <Link prefetch href='/login'>
-                    <a className="nav-link" href="#">Login <span className="sr-only">(current)</span></a>
-                  </Link>
-                </li>}
-
-                {authorized && <li className={pathname === '/profile' ? 'nav-item active' : 'nav-item'}>
+            {/* {authorized && <li className={pathname === '/profile' ? 'nav-item active' : 'nav-item'}>
                   <Link prefetch href='/profile'>
                     <a className="nav-link" href="#">Profile <span className="sr-only">(current)</span></a>
                   </Link>
-                </li>}
+                </li>} */}
 
-              </ul>
+            {!authorized && <li className={pathname === '/login' ? 'nav-item active' : 'nav-item'}>
+              <Link prefetch href='/login'>
+                <a className="nav-link" href="#">Login <span className="sr-only">(current)</span></a>
+              </Link>
+            </li>}
 
-              {authorized && <Logout userid={data.user.id} />}
-            </div>
-          </nav>)
-        }}
-      </Query>
+          </ul>
+        </div>
+
+        <style jsx>{`
+
+                nav{
+                  width: 100%;
+                  position: fixed;
+                  top: 0;
+                  height: 50px;
+                  background-color: #2280bd;
+                }
+
+                a{
+                  color: white;
+                }
+
+            `}</style>
+
+      </nav>
     )
   }
 }

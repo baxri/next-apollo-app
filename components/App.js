@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import Router from "next/router";
 import NProgress from "nprogress";
+import { Query } from "react-apollo";
 import Header from "./Header";
+import Footer from "./Footer";
 import Sidebar from "react-sidebar";
 import SideBarContent from "./SideBarContent";
+import { USER } from "../gql/User";
 
 Router.onRouteChangeStart = url => {
   NProgress.start();
@@ -12,14 +15,13 @@ Router.onRouteChangeStart = url => {
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-
 export default class App extends Component {
 
   constructor(props) {
     super(props)
 
     this.state = {
-      sidebarOpen: false
+      sidebarOpen: true
     };
   }
 
@@ -33,38 +35,53 @@ export default class App extends Component {
     const { children } = this.props;
 
     return (
-      <div id="root" className="root container-fluid">
 
-        <Sidebar
-          defaultSidebarWidth={10}
-          sidebar={<SideBarContent onClose={this.onSetSidebarOpen} />}
-          styles={{ sidebar: { background: "darkgray" } }}
-          docked={this.state.sidebarOpen}
-        >
+      <Query query={USER}>
+        {({ loading, error, data }) => {
 
-          <Header sidebarOnClick={this.onSetSidebarOpen} />
-          <div className="page-content">
-            {children}
-          </div>
-        </Sidebar>
+          const authorized = data && data.user && data.user.email;
 
-        <style jsx>{`
+          return (<div id="root" className="root container-fluid">
 
-          .page-content{
-              padding: 20px;
-            }
+            <Sidebar
+              defaultSidebarWidth={10}
+              sidebar={<SideBarContent authorized={authorized} data={data} onClose={this.onSetSidebarOpen} />}
+              styles={{ sidebar: { background: "darkgray" } }}
+              docked={this.state.sidebarOpen}
+            >
 
-        `}</style>
+              <Header authorized={authorized} data={data} sidebarOnClick={this.onSetSidebarOpen} />
+              <div className="page-content">
+                {children}
+              </div>
+            </Sidebar>
 
-        <style global jsx>{`
 
-            body{
-              margin: 0;
-              padding: 0px;
-            }
+            <Footer />
 
-        `}</style>
-      </div>
+
+
+            <style jsx>{`
+  
+            .page-content{
+                padding: 20px;
+              }
+  
+          `}</style>
+
+            <style global jsx>{`
+  
+              body{
+                margin: 0;
+                padding: 0px;
+              }
+  
+          `}</style>
+          </div>);
+        }}
+      </Query>
+
+
     )
   }
 }

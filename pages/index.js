@@ -1,7 +1,9 @@
 import App from '../components/App'
+import AppPublic from '../components/AppPublic'
+import LoginForm from '../components/LoginForm'
 
 export default () => (
-  <App>
-    <h3>Wellcome to Next.js and Apollo example</h3>
-  </App>
+  <AppPublic title="Login page">
+    <LoginForm />
+  </AppPublic>
 )

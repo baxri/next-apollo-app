@@ -4,6 +4,8 @@ import Router from 'next/router'
 import { setToken } from "../lib/cookie";
 import { TOKEN } from "../gql/User";
 import Error from "./Error";
+import Input from "./Input";
+import Button from "./Button";
 
 class Login extends Component {
 
@@ -32,11 +34,17 @@ class Login extends Component {
                     return (
                         <form onSubmit={event => this.onSubmit(event, action)}>
                             {error && <Error error={error} />}
-                            <h1>Login</h1>
-                            <input placeholder='Email' name='email' type='email' required />
+                            <Input placeholder='Email' name='email' type='email' required />
                             <br />
-                            <input placeholder='Password' name='password' type='password' required />
-                            <button type='submit'>{loading ? "Loading..." : "Login"}</button>
+                            <br />
+                            <Input placeholder='Password' name='password' type='password' required />
+                            <br />
+                            <br />
+                            <Button type='submit' className="btn btn-primary">{loading ? "Loading..." : "Login"}</Button>
+
+                            <style jsx>{`
+                            
+                            `}</style>
                         </form>
                     )
                 }}

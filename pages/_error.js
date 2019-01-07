@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import App from "../components/App";
+import AppPublic from "../components/AppPublic";
 
 export default class Error extends Component {
     render() {
         return (
-            <App>
+            <AppPublic>
                 <p>Could't get this page, sorry!</p>
-            </App>
+            </AppPublic>
         )
     }
 }

@@ -21,7 +21,7 @@ class Login extends Component {
 
         action({ variables: { client_id, grant_type, username, password, client_secret } }).then(({ data }) => {
             setToken(`Bearer ${data.token.access_token}`);
-            Router.push('/profile');
+            Router.push('/dashboard');
         }).catch(err => { })
     }
 

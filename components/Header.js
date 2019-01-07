@@ -41,11 +41,11 @@ class Header extends Component {
                   </Link>
                 </li> */}
 
-            {/* {authorized && <li className={pathname === '/profile' ? 'nav-item active' : 'nav-item'}>
-                  <Link prefetch href='/profile'>
-                    <a className="nav-link" href="#">Profile <span className="sr-only">(current)</span></a>
-                  </Link>
-                </li>} */}
+            {authorized && <li className={pathname === '/profile' ? 'nav-item active' : 'nav-item'}>
+              <Link prefetch href='/profile'>
+                <a className="nav-link" href="#">Profile <span className="sr-only">(current)</span></a>
+              </Link>
+            </li>}
 
             {!authorized && <li className={pathname === '/login' ? 'nav-item active' : 'nav-item'}>
               <Link prefetch href='/login'>

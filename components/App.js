@@ -82,10 +82,19 @@ export default class App extends Component {
 
               .page-title{
                 padding-top: 70px;
+                margin-bottom: -12px;
               }
 
               .page-content{
                 padding-bottom: 82px;
+              }
+
+              .left, .right{
+                /* border: 1px solid red; */
+              }
+
+              .left{
+                padding-right: 0px !important;
               }
 
           `}</style>

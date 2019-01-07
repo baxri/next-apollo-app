@@ -7,7 +7,7 @@ export default class componentName extends Component {
             <div>
 
                 <Card title="Tenant Administration">
-                    <ul>
+                    <ul className="administration">
                         <li><a href="#">Admin Accounts</a></li>
                         <li><a href="#">Admin users</a></li>
                         <li><a href="#">Link Tenant</a></li>
@@ -17,31 +17,33 @@ export default class componentName extends Component {
                 </Card>
 
                 <Card title="Let's Connect">
-                    <a href="https://www.linkedin.com/company/webmation" target="_blank" className="d-inline-flex">
-                        <i className="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://facebook.com/webmation" target="_blank" className="d-inline-flex">
-                        <i className="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://www.instagram.com/webmation/" target="_blank" className="d-inline-flex">
-                        <i className="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.youtube.com/user/webmationllc" target="_blank" className="d-inline-flex">
-                        <i className="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://twitter.com/webmation" target="_blank" className="d-inline-flex">
-                        <i className="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" target="_blank" className="d-inline-flex">
-                        <i className="fa fa-podcast"></i>
-                    </a>
+                    <div className="lets-connect">
+                        <a href="https://www.linkedin.com/company/webmation" target="_blank" className="d-inline-flex">
+                            <i className="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://facebook.com/webmation" target="_blank" className="d-inline-flex">
+                            <i className="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/webmation/" target="_blank" className="d-inline-flex">
+                            <i className="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.youtube.com/user/webmationllc" target="_blank" className="d-inline-flex">
+                            <i className="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://twitter.com/webmation" target="_blank" className="d-inline-flex">
+                            <i className="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" target="_blank" className="d-inline-flex">
+                            <i className="fa fa-podcast"></i>
+                        </a>
+                    </div>
                 </Card>
 
 
 
                 <style jsx>{`
 
-                   .tenant-administration a{
+                   .administration a{
                        font-size: 10pt;
                    }
 

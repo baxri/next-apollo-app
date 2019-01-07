@@ -1,7 +1,7 @@
 import App from '../components/App'
 
 export default () => (
-  <App>
+  <App title="About Us">
     <article>
       <h1>The Idea Behind This Example</h1>
       <p>

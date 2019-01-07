@@ -12,16 +12,9 @@ class Profile extends Component {
 
     render() {
         return (
-            <App>
+            <App title="Profile Information">
                 <ProfileData />
-                <ProfileData />
-                <ProfileData />
-                <ProfileData />
-                <ProfileData />
-                <ProfileData />
-                <ProfileData />
-                <ProfileData />
-                <ProfileData />
+
             </App>
         )
     }

@@ -20,7 +20,7 @@ export default class componentName extends Component {
                     width: 100%;
                     color: white;
                     text-align: center;
-                    z-index: 1000000;
+                    z-index: 3000000;
                     height: 50px;
                     background-color: #2280bd;
                     padding-left: 32px;

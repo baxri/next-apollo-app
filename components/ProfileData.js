@@ -10,11 +10,11 @@ export default class ProfileData extends Component {
                     if (loading) return (<p>Loading...</p>);
                     return (
                         <div>
-                            <h3>{data.user.id}</h3>
-                            <h3>{data.user.first_name}</h3>
-                            <h3>{data.user.last_name}</h3>
-                            <h3>{data.user.email}</h3>
-                            <h3>{data.user.status}</h3>
+                            <p>{data.user.id}</p>
+                            <p>{data.user.first_name}</p>
+                            <p>{data.user.last_name}</p>
+                            <p>{data.user.email}</p>
+                            <p>{data.user.status}</p>
                         </div>
                     );
                 }}

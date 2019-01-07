@@ -32,6 +32,7 @@ export default class SideBarContent extends Component {
                         left: 0;
                         background-color: #111; 
                         padding-top: 60px; 
+                        z-index: 2000000;
                     }
 
                     .sidenav a {

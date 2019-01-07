@@ -64,6 +64,7 @@ class Header extends Component {
                   top: 0;
                   height: 50px;
                   background-color: #2280bd;
+                  z-index: 1;
                 }
 
                 a{

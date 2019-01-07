@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
+import Card from "./Card";
 
 export default class componentName extends Component {
     render() {
         return (
             <div>
 
-                <div className="right-block tenant-administration">
-                    <p>Tenant Administration</p>
-
+                <Card title="Tenant Administration">
                     <ul>
                         <li><a href="#">Admin Accounts</a></li>
                         <li><a href="#">Admin users</a></li>
@@ -15,11 +14,9 @@ export default class componentName extends Component {
                         <li><a href="#">Create New User</a></li>
                         <li><a href="#">Admin Announcement</a></li>
                     </ul>
-                </div>
+                </Card>
 
-                <div className="right-block lets-connect">
-                    <p>Let's Connect</p>
-
+                <Card title="Let's Connect">
                     <a href="https://www.linkedin.com/company/webmation" target="_blank" className="d-inline-flex">
                         <i className="fab fa-linkedin"></i>
                     </a>
@@ -38,18 +35,11 @@ export default class componentName extends Component {
                     <a href="#" target="_blank" className="d-inline-flex">
                         <i className="fa fa-podcast"></i>
                     </a>
-                </div>
+                </Card>
+
+
 
                 <style jsx>{`
-
-                   .right-block{
-                    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-                    background-color: #ffffff;
-                    padding: 15px;
-                    padding-right: 100px;
-                    margin-top: 15px;
-                   }
 
                    .tenant-administration a{
                        font-size: 10pt;

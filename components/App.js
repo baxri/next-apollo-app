@@ -82,26 +82,10 @@ export default class App extends Component {
 
               .page-title{
                 padding-top: 70px;
-                margin-bottom: -20px;
-                color: #525252;
-                font-size: 15pt;
               }
 
               .page-content{
                 padding-bottom: 82px;
-              }
-
-              .content{
-                -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-                background-color: #ffffff;
-                padding: 15px;
-                margin-top: 15px;
-              }
-
-              .left{
-                /* border: 1px solid red; */
-                padding-right: 0px !important;
               }
 
           `}</style>

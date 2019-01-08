@@ -46,6 +46,8 @@ const resolvers = {
             // user.access_token = tokenObj.access_token;
             // return user;
 
+            throw new AuthenticationError('Cannot autorize');
+
             return {
                 id: 1,
                 first_name: "George",

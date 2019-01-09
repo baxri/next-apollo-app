@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import App from '../../components/App'
+import App from '../../components/layouts/App'
 import Card from "../../components/Card";
 import { checkAuth } from "../../lib/cookie";
 

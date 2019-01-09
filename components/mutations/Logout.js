@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
-import { removeToken } from "../lib/cookie";
+import { removeToken } from "../../lib/cookie";
 import { Mutation } from "react-apollo";
-import { LOGOUT } from "../gql/User";
-import Link from 'next/link'
+import { LOGOUT } from "../../gql/User";
 
 class Logout extends Component {
 

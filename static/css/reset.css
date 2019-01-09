@@ -51,3 +51,7 @@ table {
 a:hover{
 	text-decoration: none !important;
 }
+
+.btn, input{
+	border-radius: 0px !important;
+}

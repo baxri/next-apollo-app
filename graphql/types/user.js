@@ -9,6 +9,7 @@ const typeDef = `
         email: String
         status: String
         access_token: String
+        avatar: String
     }
 
     extend type Query {
@@ -34,6 +35,7 @@ const resolvers = {
                 last_name: 'Bibilashvili',
                 email: 'giorgi.bibilashvili89@gmail.com',
                 status: 'active',
+                avatar: 'http://bibi.ge/me.jpg',
             }
         },
     },
@@ -46,7 +48,7 @@ const resolvers = {
             // user.access_token = tokenObj.access_token;
             // return user;
 
-            throw new AuthenticationError('Cannot autorize');
+            // throw new AuthenticationError('Cannot autorize');
 
             return {
                 id: 1,
@@ -54,6 +56,7 @@ const resolvers = {
                 last_name: 'Bibilashvili',
                 email: 'giorgi.bibilashvili89@gmail.com',
                 status: 'active',
+                avatar: 'http://bibi.ge/me.jpg',
                 access_token: '93845739750934750939533i45hi35h3i4u5h3o45iu3h45i32h45iu3h45u',
             }
         },
@@ -65,6 +68,7 @@ const resolvers = {
                 email: '',
                 status: '',
                 access_token: '',
+                avatar: '',
             }
         },
     }

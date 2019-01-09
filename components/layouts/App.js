@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import Router from "next/router";
 import NProgress from "nprogress";
 import { Query } from "react-apollo";
-import Header from "./Header";
-import Footer from "./Footer";
-import RightContent from "./RightContent";
+import Header from "../Header";
+import Footer from "../Footer";
+import RightContent from "../RightContent";
 import Sidebar from "react-sidebar";
-import SideBarContent from "./SideBarContent";
-import { USER } from "../gql/User";
+import SideBarContent from "../SideBarContent";
+import { USER } from "../../gql/User";
+
+NProgress.configure({ showSpinner: false });
 
 Router.onRouteChangeStart = url => {
   NProgress.start();
@@ -22,7 +24,7 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      sidebarOpen: false
+      sidebarOpen: true
     };
   }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
-import Logout from "./Logout";
+import Logout from "./mutations/Logout";
+import Avatar from "./Avatar";
 import { withRouter } from 'next/router'
 
 class SideBarContent extends Component {
@@ -11,6 +12,10 @@ class SideBarContent extends Component {
         return (
             <div id="mySidenav" className="sidenav">
                 <a href="javascript:void(0)" className="closebtn" onClick={onClose}>&times;</a>
+
+                <div className="avatar">
+                    <Avatar user={data.user} />
+                </div>
 
                 <Link prefetch href='/dashboard'>
                     <a href="#" className={pathname === '/dashboard' ? 'active' : ''}><i className="fas fa-tachometer-alt fa-fw"></i> Dashboard</a>
@@ -55,6 +60,12 @@ class SideBarContent extends Component {
                 {authorized && <div className="sidebar-logout-wraper"><Logout userid={data.user.id} /></div>}
 
                 <style jsx >{`
+
+                    .avatar{
+                        margin-left: 50px;
+                        margin-bottom: 20px;
+                        margin-top: 5px;
+                    }
 
                     .sidenav {
                         padding-right: 60px;

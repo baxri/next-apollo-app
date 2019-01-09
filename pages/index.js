@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import AppPublic from '../components/AppPublic'
-import LoginForm from '../components/LoginForm'
+import AppPublic from '../components/layouts/AppPublic'
+import LoginForm from '../components/mutations/LoginForm'
 import { checkAuthForPublic } from "../lib/cookie";
 import Card from "../components/Card";
 import SocialIcons from "../components/SocialIcons";

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AppPublic from "../components/AppPublic";
+import AppPublic from "../components/layouts/AppPublic";
 
 export default class Error extends Component {
     render() {

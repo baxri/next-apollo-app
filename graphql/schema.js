@@ -6,6 +6,7 @@ const { Book, BookResolvers } = require('./types/book');
 const { Author, AuthorResolvers } = require('./types/author');
 
 const { User, UserResolvers } = require('./types//user');
+const { Search, SearchResolvers } = require('./types/search');
 
 const Query = `
   type Query {
@@ -21,8 +22,8 @@ const resolvers = {
 };
 
 module.exports = makeExecutableSchema({
-  typeDefs: [Query, User, Author, Book],
-  resolvers: merge(resolvers, UserResolvers, AuthorResolvers, BookResolvers),
+  typeDefs: [Query, User, Search, Author, Book],
+  resolvers: merge(resolvers, UserResolvers, SearchResolvers, AuthorResolvers, BookResolvers),
   context: ({ req }) => ({
     authScope: getScope(req.headers.authorization)
   })

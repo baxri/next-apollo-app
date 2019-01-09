@@ -21,6 +21,7 @@ export const TOKEN = gql`
             email
             status
             access_token
+            avatar
         }
     }
 `;
@@ -33,6 +34,7 @@ export const USER = gql`
             last_name
             email
             status
+            avatar
         }
     }
 `;
@@ -45,6 +47,7 @@ export const LOGOUT = gql`
             last_name
             email
             status
+            avatar
         }
     }
 `;

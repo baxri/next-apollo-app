@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import App from '../components/App'
-import ProfileData from '../components/ProfileData';
-import { checkAuth } from "../lib/cookie";
+import App from '../../components/layouts/App'
+import ProfileData from '../../components/query/ProfileData';
+import { checkAuth } from "../../lib/cookie";
+import Card from "../../components/Card";
 
 class Profile extends Component {
 
@@ -13,8 +14,9 @@ class Profile extends Component {
     render() {
         return (
             <App title="Profile Information">
-                <ProfileData />
-
+                <Card title="User" >
+                    <ProfileData />
+                </Card>
             </App>
         )
     }

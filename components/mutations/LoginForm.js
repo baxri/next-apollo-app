@@ -41,7 +41,26 @@ class Login extends Component {
                             <button type='submit' className="btn btn-primary">{loading ? "Loading..." : "Login"}</button>
 
                             <style jsx>{`
-                            
+                                input{
+                                    width: 100%;
+                                    height: 40px;
+                                    padding-left: 10px; 
+                                    outline: none;
+                                    border: 1px solid lightgray;
+                                }
+                                button{
+                                    border: 1px solid lightgray;
+                                    height: 50px;
+                                    padding-left: 10px; 
+                                    outline: none;
+                                    width : 100%;
+                                    border-radius: 0px;
+                                    background-color: #2280bd;
+                                }
+
+                                button:hover{
+                                    background-color: #206694;
+                                }
                             `}</style>
                         </form>
                     )
@@ -50,6 +69,5 @@ class Login extends Component {
         )
     }
 }
-
 
 export default Login;

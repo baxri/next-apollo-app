@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import App from '../../components/layouts/App'
-import ImportantAlerts from "../../components/ImportantAlerts";
+import ImportantAlerts from "./components/ImportantAlerts";
 import Card from "../../components/Card";
 import { checkAuth } from "../../lib/cookie";
 

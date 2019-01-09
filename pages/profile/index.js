@@ -5,7 +5,6 @@ import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
 
 class Profile extends Component {
-
     static async getInitialProps({ req, res }) {
         checkAuth(req, res);
         return {};

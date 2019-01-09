@@ -54,4 +54,5 @@ a:hover{
 
 .btn, input{
 	border-radius: 0px !important;
+	text-decoration: none !important;
 }

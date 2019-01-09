@@ -3,9 +3,7 @@ import React, { Component } from 'react'
 export default class componentName extends Component {
     constructor(props) {
         super(props)
-        const { user } = props;
-
-        this.state = user;
+        this.state = this.props.user;
     }
 
     handleCahange = (e) => {

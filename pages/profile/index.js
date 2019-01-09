@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import App from '../../components/layouts/App'
-import ProfileData from '../../components/query/ProfileData';
+import ProfileData from './components/ProfileData';
 import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
 

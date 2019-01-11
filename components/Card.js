@@ -7,12 +7,18 @@ export default class Card extends Component {
 
         return (
             <div className="my-card">
-                <p>{title}</p>
+                <strong>{title}</strong>
+                <br />
+                <br />
                 <div>
                     {children}
                 </div>
 
                 <style jsx>{`
+
+                    p{
+                        text-decoration: bold;
+                    }
 
                     .my-card{
                         -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);

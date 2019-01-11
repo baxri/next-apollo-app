@@ -23,6 +23,7 @@
     "react": "16.6.3",
     "react-apollo": "^2.1.11",
     "react-dom": "16.6.3",
+    "react-jsonschema-form": "^1.1.0",
     "react-sidebar": "^3.0.2"
   },
   "author": "",

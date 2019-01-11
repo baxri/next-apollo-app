@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Query } from "react-apollo";
-import { USER as QUERY } from "../../../gql/User";
 import ProfileDataForm from "./ProfileDataForm";
+
+import { USER as QUERY } from "../../../gql/User";
 
 export default class ProfileData extends Component {
     render() {

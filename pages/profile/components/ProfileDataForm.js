@@ -1,39 +1,85 @@
 import React, { Component } from 'react'
+import { Mutation } from "react-apollo";
+import Form from "react-jsonschema-form";
+
+import { UPDATE_USER as MUTATION } from "../../../gql/User";
 
 export default class componentName extends Component {
     constructor(props) {
         super(props)
-        this.state = this.props.user;
+
+        this.state = {
+            formData: this.props.user,
+        };
+
+        this.schema = {
+            type: "object",
+            required: ["email"],
+            properties: {
+                regitered_at: { type: "string", title: "Registered at" },
+                email: { type: "string", title: "Email" },
+                first_name: { type: "string", title: "Firstname" },
+                last_name: { type: "string", title: "Lastname" },
+                status: {
+                    type: "string",
+                    enum: ["active", "inactive"],
+                    enumNames: ["Active", "inactive"]
+                },
+                published: { type: "boolean", title: "Published", default: true },
+            }
+        }
+
+        this.uiSchema = {
+            published: {
+                // "ui:widget": "radio", 
+                // "ui:options": {
+                //     inline: true
+                // }
+            },
+            regitered_at: {
+                "ui:widget": "alt-date",
+                "ui:options": {
+                    yearsRange: [1980, 2030],
+                    hideNowButton: true,
+                    hideClearButton: true,
+                    inline: true
+                },
+            }
+        };
+
     }
 
-    handleCahange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+    handleChange = ({ formData }) => {
+        console.log(formData);
+    }
+
+    handleSubmit = (formData, action) => {
+        console.log(formData);
+    }
+
+    handleError = (errors) => {
+        console.log(errors);
     }
 
     render() {
+
+        const { formData } = this.state;
+
         return (
-            <div>
-                <div className="row">
-                    <div className="col-4">
-                        <div className="form-group">
-                            <label htmlFor="first_name">First Name</label>
-                            <input type="text" className="form-control" name="first_name" id="first_name" onChange={this.handleCahange} value={this.state.first_name} />
+            <Mutation mutation={MUTATION}>
+                {(action, { loading, error }) => {
+                    return (<div>
+                        <div className="row">
+                            <div className="col-12">
+                                <Form schema={this.schema} uiSchema={this.uiSchema} formData={formData}
+                                    onChange={this.handleChange}
+                                    onSubmit={({ formData }) => this.handleSubmit(formData, action)}
+                                    onError={this.handleError} />
+                            </div>
                         </div>
-                    </div>
-                    <div className="col-4">
-                        <div className="form-group">
-                            <label htmlFor="last_name">Last Name</label>
-                            <input type="text" className="form-control" name="last_name" id="last_name" onChange={this.handleCahange} value={this.state.last_name} />
-                        </div>
-                    </div>
-                    <div className="col-4">
-                        <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input type="email" className="form-control" name="email" id="email" onChange={this.handleCahange} value={this.state.email} />
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    </div>)
+                }}
+            </Mutation>
         )
     }
 }

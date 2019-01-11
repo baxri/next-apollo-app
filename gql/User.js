@@ -26,6 +26,19 @@ export const TOKEN = gql`
     }
 `;
 
+export const LOGOUT = gql`
+    mutation Logout($id: Int!){
+         logout(id: $id) {
+            id
+            first_name
+            last_name
+            email
+            status
+            avatar
+        }
+    }
+`;
+
 export const USER = gql`
    query{
         user {
@@ -39,9 +52,9 @@ export const USER = gql`
     }
 `;
 
-export const LOGOUT = gql`
-    mutation Logout($id: Int!){
-         logout(id: $id) {
+export const UPDATE_USER = gql`
+    mutation UpdateUser($id: Int!){
+            updateUser(id: $id) {
             id
             first_name
             last_name

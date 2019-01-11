@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Mutation } from "react-apollo";
 import Form from "react-jsonschema-form";
+import { FieldTemplate } from "../../../components/FieldTemplate";
 
 import { UPDATE_USER as MUTATION } from "../../../gql/User";
+
 
 export default class componentName extends Component {
     constructor(props) {
@@ -16,7 +18,7 @@ export default class componentName extends Component {
             type: "object",
             required: ["email"],
             properties: {
-                regitered_at: { type: "string", title: "Registered at" },
+                // regitered_at: { type: "string", title: "Registered at" },
                 email: { type: "string", title: "Email" },
                 first_name: { type: "string", title: "Firstname" },
                 last_name: { type: "string", title: "Lastname" },
@@ -25,7 +27,7 @@ export default class componentName extends Component {
                     enum: ["active", "inactive"],
                     enumNames: ["Active", "inactive"]
                 },
-                published: { type: "boolean", title: "Published", default: true },
+                // published: { type: "boolean", title: "Published", default: true },
             }
         }
 
@@ -72,6 +74,7 @@ export default class componentName extends Component {
                         <div className="row">
                             <div className="col-12">
                                 <Form schema={this.schema} uiSchema={this.uiSchema} formData={formData}
+                                    FieldTemplate={FieldTemplate}
                                     onChange={this.handleChange}
                                     onSubmit={({ formData }) => this.handleSubmit(formData, action)}
                                     onError={this.handleError} />

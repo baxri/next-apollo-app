@@ -7,7 +7,7 @@ export default class Avatar extends Component {
 
         return (
             <div>
-                <img src={user.avatar} className="rounded-circle" width="120" height="120" />
+                <img src={user.profile_url} className="rounded-circle" width="120" height="120" />
 
                 <style jsx>{`
 

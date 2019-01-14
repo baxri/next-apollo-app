@@ -18,10 +18,35 @@ export const TOKEN = gql`
             id
             first_name
             last_name
+            middle_name
+
+            prefix
+            suffix
+            initials
+            birthday
+
+            title
+            signature
+
+            home_phone
+            work_phone
+            ext
+            direct_phone
+            mobile
+            fax
+
+            twitter
+            facebook
+            youtube
+            google
+            instagram
+            snapchat
+            linkedin
+
             email
             status
             access_token
-            avatar
+            profile_url
         }
     }
 `;
@@ -32,9 +57,35 @@ export const LOGOUT = gql`
             id
             first_name
             last_name
+            middle_name
+
+            prefix
+            suffix
+            initials
+            birthday
+
+            title
+            signature
+
+            home_phone
+            work_phone
+            ext
+            direct_phone
+            mobile
+            fax
+
+            twitter
+            facebook
+            youtube
+            google
+            instagram
+            snapchat
+            linkedin
+
             email
             status
-            avatar
+            access_token
+            profile_url
         }
     }
 `;
@@ -45,9 +96,35 @@ export const USER = gql`
             id
             first_name
             last_name
+            middle_name
+
+            prefix
+            suffix
+            initials
+            birthday
+
+            title
+            signature
+
+            home_phone
+            work_phone
+            ext
+            direct_phone
+            mobile
+            fax
+
+            twitter
+            facebook
+            youtube
+            google
+            instagram
+            snapchat
+            linkedin
+
             email
             status
-            avatar
+            access_token
+            profile_url
         }
     }
 `;
@@ -55,12 +132,38 @@ export const USER = gql`
 export const UPDATE_USER = gql`
     mutation UpdateUser($id: Int!){
             updateUser(id: $id) {
-            id
+                id
             first_name
             last_name
+            middle_name
+
+            prefix
+            suffix
+            initials
+            birthday
+
+            title
+            signature
+
+            home_phone
+            work_phone
+            ext
+            direct_phone
+            mobile
+            fax
+
+            twitter
+            facebook
+            youtube
+            google
+            instagram
+            snapchat
+            linkedin
+
             email
             status
-            avatar
+            access_token
+            profile_url
         }
     }
 `;

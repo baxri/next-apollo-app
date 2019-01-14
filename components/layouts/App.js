@@ -8,6 +8,7 @@ import RightContent from "../RightContent";
 import Sidebar from "react-sidebar";
 import SideBarContent from "../SideBarContent";
 import { USER } from "../../gql/User";
+import { load } from 'protobufjs';
 
 NProgress.configure({ showSpinner: false });
 
@@ -41,6 +42,8 @@ export default class App extends Component {
 
       <Query query={USER}>
         {({ loading, error, data }) => {
+
+          if (loading) return (<div>Loading...</div>);
 
           const authorized = data && data.user && data.user.email;
 

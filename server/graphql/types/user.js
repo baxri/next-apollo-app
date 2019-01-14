@@ -6,10 +6,35 @@ const typeDef = `
         id: Int
         first_name: String
         last_name: String
+        middle_name: String
+
+        prefix: String
+        suffix: String
+        initials: String
+        birthday: String
+
+        title: String
+        signature: String
+
+        home_phone: String
+        work_phone: String
+        ext: String
+        direct_phone: String
+        mobile: String
+        fax: String
+
+        twitter: String
+        facebook: String
+        youtube: String
+        google: String
+        instagram: String
+        snapchat: String
+        linkedin: String
+
         email: String
         status: String
         access_token: String
-        avatar: String
+        profile_url: String
     }
 
     extend type Query {
@@ -68,7 +93,7 @@ const resolvers = {
                 email: '',
                 status: '',
                 access_token: '',
-                avatar: '',
+                profile_url: '',
             }
         },
     }

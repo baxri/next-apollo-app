@@ -1,57 +1,85 @@
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/with-apollo)
-# Apollo Example
 
-## Demo
+# Documentation
 
-https://next-with-apollo.now.sh
+## Instalation
 
-## How to use
+Download and install nodejs on your local computer
 
-### Using `create-next-app`
+click [click](https://nodejs.org/en/download/) to download
 
-Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
+ After installing nodejs you can clone this project in your local enviroment navigate to projects directry `cd project_name` and run following command to install all application `package.json` dependecies
 
-```bash
-npx create-next-app --example with-apollo with-apollo-app
-# or
-yarn create next-app --example with-apollo with-apollo-app
 ```
-
-### Download manually
-
-Download the example:
-
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-apollo
-cd with-apollo
-```
-
-Install it and run:
-
-```bash
 npm install
+```
+
+if you check `package.json` file you can find following scripts are available
+
+```javascript
+"scripts": {
+    "dev": "nodemon server/index.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server/index.js"
+},
+```
+
+To run this application localy in development mode you should run `dev` script like this:
+
+```
 npm run dev
-# or
-yarn
-yarn dev
 ```
 
-Deploy it to the cloud with [now](https://zeit.co/now) ([download](https://zeit.co/download)):
+After this script application will start and it will be accesable on the followfing URL:
 
-```bash
-now
+```
+http://localhost:3000/
 ```
 
-## The idea behind the example
+Another scripts `build ` and `start` we will use on the production enviroment.
 
-[Apollo](https://www.apollographql.com/client/) is a GraphQL client that allows you to easily query the exact data you need from a GraphQL server. In addition to fetching and mutating data, Apollo analyzes your queries and their results to construct a client-side cache of your data, which is kept up to date as further queries and mutations are run, fetching more results from the server.
+## File structure
 
-In this simple example, we integrate Apollo seamlessly with Next by wrapping our *pages/_app.js* inside a [higher-order component (HOC)](https://facebook.github.io/react/docs/higher-order-components.html). Using the HOC pattern we're able to pass down a central store of query result data created by Apollo into our React component hierarchy defined inside each page of our Next application.
+```
+- components
+- gql
+- lib
+- pages
+- server
+- static
+```
 
-On initial page load, while on the server and inside `getInitialProps`, we invoke the Apollo method,  [`getDataFromTree`](https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree). This method returns a promise; at the point in which the promise resolves, our Apollo Client store is completely initialized.
+### components 
+This is place where global usage react components are located, like header, footer, layouts, inner header componenets like search and header dropdown menus located here. In this folder you find two folders:
+```
+- mutations
+- queries
+```
 
-This example relies on [graph.cool](https://www.graph.cool) for its GraphQL backend.
+We need to mention that beacause of we are using graphql to retrive and change data on the server we always have two kind of components, the component that retrives data from the server and another one components that changes or adds data to ther server. So we are categorising such kind of components in `mutation` and `query` folders.
+
+### pages
+This is next js default folder where you can add pages to you application, each page has its own components folder, where you can locate page specific components. for more information how next.js pages works you can check [here](hhttps://nextjs.org/learn/basics/navigate-between-pages)
+
+### static
+This is next.js folder you can read about this folder [here](https://nextjs.org/docs#static-file-serving-eg-images)
+
+### server 
+This is a location where nodejs and graphql server stuff is located. here we are going to add new types and resolvers.
+
+### gql
+In this folder we are storing actual quesries and mutations. Which are used by components.
+
+## Documentation you need to check
+
+[Next.js](https://nextjs.org/docs)
+
+[Apllo Server (graphql server)](https://www.apollographql.com/docs/apollo-server/)
+
+[Apollo Client (graphql client)](https://www.apollographql.com/docs/react/)
+
+[Json Forms](https://github.com/mozilla-services/react-jsonschema-form)
 
 
-Note: Do not be alarmed that you see two renders being executed.  Apollo recursively traverses the React render tree looking for Apollo query components. When it has done that, it fetches all these queries and then passes the result to a cache. This cache is then used to render the data on the server side (another React render).
-https://www.apollographql.com/docs/react/features/server-side-rendering.html#getDataFromTree
+
+
+

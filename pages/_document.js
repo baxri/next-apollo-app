@@ -15,8 +15,8 @@ export default class MyDocument extends Document {
                     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous"></link>
                     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossOrigin="anonymous"></link>
 
-                    {/* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" /> */}
                     <link rel="stylesheet" href="/static/css/nprogress.css" />
+                    <link rel="stylesheet" href="/static/css/ReactToastify.css" />
 
                     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"></link>
                 </Head>

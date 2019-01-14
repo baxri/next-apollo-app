@@ -4,6 +4,7 @@ import Router from 'next/router'
 import { setToken } from "../../lib/cookie";
 import { TOKEN } from "../../gql/User";
 import Error from "../Error";
+import { toast } from 'react-toastify';
 
 class Login extends Component {
 
@@ -30,13 +31,14 @@ class Login extends Component {
         const grant_type = "password";
         const username = formData.get('email');
         const password = formData.get('password');
-        // const client_secret = "SL478kXxgXzFbJwME4oiFLskjKM3zLkfcokxeN3p";
         const client_secret = "Vr3g0ejeLLRuFcGuC88l7zHHfoqMWzpWWL1ygLKZ";
 
         action({ variables: { client_id, grant_type, username, password, client_secret } }).then(({ data }) => {
             setToken(`Bearer ${data.token.access_token}`);
             Router.push('/dashboard');
-        }).catch(err => { })
+        }).catch(err => {
+            toast.error(err.graphQLErrors[0]['message']);
+        })
     }
 
     render() {
@@ -45,7 +47,7 @@ class Login extends Component {
                 {(action, { loading, error }) => {
                     return (
                         <form onSubmit={event => this.onSubmit(event, action)}>
-                            {error && <Error error={error} />}
+                            {/* {error && <Error error={error} />} */}
                             <input placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} type='email' required />
                             <br />
                             <br />

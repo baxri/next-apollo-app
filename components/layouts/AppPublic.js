@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Router from "next/router";
 import NProgress from "nprogress";
 import Header from "../Header";
+import { ToastContainer, toast } from 'react-toastify';
 
 NProgress.configure({ showSpinner: false });
 
@@ -30,6 +31,8 @@ export default class AppPublic extends Component {
                     margin-top: 82px;
                 }
             `}</style>
+
+            <ToastContainer />
         </div>)
     }
 }

@@ -7,14 +7,6 @@ export default class componentName extends Component {
         return (
             <div>
 
-                <Card title="10 Reasons to dump your CRM">
-                    <p>Too Confusing
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
-                    <p>Too Expensive
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </Card>
-
                 <Card title="Tenant Administration">
                     <ul className="administration">
                         <li><a href="#">Admin Accounts</a></li>
@@ -23,6 +15,14 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
                         <li><a href="#">Create New User</a></li>
                         <li><a href="#">Admin Announcement</a></li>
                     </ul>
+                </Card>
+
+                <Card title="10 Reasons to dump your CRM">
+                    <p>Too Confusing
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                    <p>Too Expensive
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </Card>
 
                 <SocialIcons />

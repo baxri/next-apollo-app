@@ -8,7 +8,7 @@ import RightContent from "../RightContent";
 import Sidebar from "react-sidebar";
 import SideBarContent from "../SideBarContent";
 import { USER } from "../../gql/User";
-import { load } from 'protobufjs';
+import { ToastContainer, toast } from 'react-toastify';
 
 NProgress.configure({ showSpinner: false });
 
@@ -103,6 +103,7 @@ export default class App extends Component {
               }
 
           `}</style>
+            <ToastContainer />
           </div>);
         }}
       </Query>

@@ -12,7 +12,7 @@ class Login extends Component {
         super(props)
 
         this.state = {
-            email: 'hersh.sandhoo@webmation.com',
+            email: 'hersh.sandhoo@webmation.co',
             password: 'Hunter20!',
         }
     }

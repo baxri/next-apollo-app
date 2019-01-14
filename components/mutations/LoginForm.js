@@ -7,6 +7,19 @@ import Error from "../Error";
 
 class Login extends Component {
 
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            email: 'hersh.sandhoo@webmation.com',
+            password: 'Hunter20!',
+        }
+    }
+
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
     onSubmit = (e, action) => {
         e.preventDefault();
 
@@ -17,7 +30,8 @@ class Login extends Component {
         const grant_type = "password";
         const username = formData.get('email');
         const password = formData.get('password');
-        const client_secret = "SL478kXxgXzFbJwME4oiFLskjKM3zLkfcokxeN3p";
+        // const client_secret = "SL478kXxgXzFbJwME4oiFLskjKM3zLkfcokxeN3p";
+        const client_secret = "Vr3g0ejeLLRuFcGuC88l7zHHfoqMWzpWWL1ygLKZ";
 
         action({ variables: { client_id, grant_type, username, password, client_secret } }).then(({ data }) => {
             setToken(`Bearer ${data.token.access_token}`);
@@ -32,10 +46,10 @@ class Login extends Component {
                     return (
                         <form onSubmit={event => this.onSubmit(event, action)}>
                             {error && <Error error={error} />}
-                            <input placeholder='Email' name='email' type='email' required />
+                            <input placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} type='email' required />
                             <br />
                             <br />
-                            <input placeholder='Password' name='password' type='password' required />
+                            <input placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange} type='password' required />
                             <br />
                             <br />
                             <button type='submit' className="btn btn-primary">{loading ? "Loading..." : "Login"}</button>

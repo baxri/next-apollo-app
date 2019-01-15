@@ -35,6 +35,8 @@ const typeDef = `
         status: String
         access_token: String
         profile_url: String
+
+        company: Company
     }
 
     extend type Query {
@@ -48,6 +50,11 @@ const typeDef = `
 `;
 
 const resolvers = {
+    User: {
+        company: async (parent, args, { token }) => {
+            return await get('api/company', token);
+        },
+    },
     Query: {
         user: async (parent, args, { token }) => {
             return await get('api/user', token);

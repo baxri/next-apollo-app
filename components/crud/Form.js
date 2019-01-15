@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { Mutation } from "react-apollo";
 import JsonForm from "react-jsonschema-form";
-import { ObjectFieldTemplate } from "../../../components/JsonFormTemplates";
+import { ObjectFieldTemplate } from "../JsonFormTemplates";
 import { toast } from 'react-toastify';
-const schema = require('./schema/schema.json');
-const uiSchema = require('./schema/uischema.json');
 
 export default class Form extends Component {
     constructor(props) {
@@ -17,8 +15,10 @@ export default class Form extends Component {
 
     componentWillMount() {
 
-        const { data } = this.props;
+        const { data, schema } = this.props;
         let formData = {};
+
+        console.log(data)
 
         // Break down full data into form segments
         Object.keys(schema.properties).map(key => {
@@ -53,7 +53,7 @@ export default class Form extends Component {
     render() {
 
         const { formData } = this.state;
-        const { mutation } = this.props;
+        const { mutation, schema, uischema } = this.props;
 
         return (
             <Mutation mutation={mutation}>
@@ -61,7 +61,7 @@ export default class Form extends Component {
                     return (<div>
                         <div className="row">
                             <div className="col-12">
-                                <JsonForm schema={schema} uiSchema={uiSchema} formData={formData}
+                                <JsonForm schema={schema} uiSchema={uischema} formData={formData}
                                     ObjectFieldTemplate={ObjectFieldTemplate}
                                     onSubmit={({ formData }) => this.handleSubmit(formData, action)}
                                     onError={this.handleError} >

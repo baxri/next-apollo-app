@@ -2,17 +2,17 @@ import React, { Component } from 'react'
 import { Query } from "react-apollo";
 import Form from "./Form";
 
-import { COMPANY as QUERY } from "../../../gql/Company";
-import { UPDATE_USER as MUTATION } from "../../../gql/User";
-
-export default class CompanyData extends Component {
+export default class LoadForm extends Component {
     render() {
+
+        const { query, mutation, field, schema, uischema } = this.props;
+
         return (
-            <Query query={QUERY}>
+            <Query query={query}>
                 {({ loading, error, data }) => {
                     if (loading) return (<p>Loading...</p>);
                     return (<div>
-                        <Form data={data.company} mutation={MUTATION} />
+                        <Form data={data[field]} mutation={mutation} schema={schema} uischema={uischema} />
                     </div>);
                 }}
             </Query>

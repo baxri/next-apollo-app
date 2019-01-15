@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import App from '../../components/layouts/App'
-import Data from './components/Data';
+import LoadForm from '../../components/crud/LoadForm';
 import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
+
+import { USER as QUERY } from "../../gql/User";
+import { UPDATE_USER as MUTATION } from "../../gql/User";
+
+const schema = require('./schema/schema.json');
+const uischema = require('./schema/uischema.json');
 
 class Profile extends Component {
     static async getInitialProps({ req, res }) {
@@ -12,9 +18,9 @@ class Profile extends Component {
 
     render() {
         return (
-            <App title="Profile Information">
+            <App title="User Information">
                 <Card title="User" >
-                    <Data />
+                    <LoadForm query={QUERY} mutation={MUTATION} field="user" schema={schema} uischema={uischema} />
                 </Card>
             </App>
         )

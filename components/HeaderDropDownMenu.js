@@ -52,6 +52,9 @@ export default class HeaderDropDownMenu extends Component {
                         <Link prefetch href='/profile'>
                             <a className="dropdown-item" href="#">Profile Settings</a>
                         </Link>
+                        <Link prefetch href='/company'>
+                            <a className="dropdown-item" href="#">Company Settings</a>
+                        </Link>
                         <Link prefetch href='#'>
                             <a className="dropdown-item" href="#">Company Settings</a>
                         </Link>

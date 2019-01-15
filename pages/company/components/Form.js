@@ -1,41 +1,44 @@
 import React, { Component } from 'react'
 import { Mutation } from "react-apollo";
-import Form from "react-jsonschema-form";
+import JsonForm from "react-jsonschema-form";
 import { FieldTemplate, ObjectFieldTemplate } from "../../../components/JsonFormTemplates";
 import { toast } from 'react-toastify';
 
 import { UPDATE_USER as MUTATION } from "../../../gql/User";
 
-export default class componentName extends Component {
+export default class Form extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             formData: {
                 row_1: {
-                    first_name: this.props.user.first_name,
-                    middle_name: this.props.user.middle_name,
-                    last_name: this.props.user.last_name,
+                    account_number_prefix: this.props.user.account_number_prefix,
+                    account_number_start: this.props.user.account_number_start,
+                    account_number_last: this.props.user.account_number_last,
+                    max_users: this.props.user.max_users,
                 },
                 row_2: {
-                    prefix: this.props.user.first_name,
-                    suffix: this.props.user.middle_name,
-                    initials: this.props.user.last_name,
+                    name: this.props.user.name,
+                    address1: this.props.user.address1,
+                    address2: this.props.user.address2,
                 },
                 row_3: {
-                    birthday: this.props.user.birthday,
-                    title: this.props.user.title,
-                    signature: this.props.user.signature,
+                    city: this.props.user.city,
+                    state: this.props.user.state,
+                    postal: this.props.user.postal,
+                    postal4: this.props.user.postal4,
+                    country: this.props.user.country,
                 },
                 row_4: {
-                    home_phone: this.props.user.home_phone,
-                    work_phone: this.props.user.work_phone,
-                    ext: this.props.user.ext,
-                },
-                row_5: {
-                    direct_phone: this.props.user.home_phone,
-                    mobile: this.props.user.mobile,
+                    phone: this.props.user.phone,
                     fax: this.props.user.fax,
+                    website: this.props.user.website,
+                },
+
+                row_5: {
+                    domain: this.props.user.domain,
+                    domain_tld: this.props.user.domain_tld,
                 },
 
                 contact_information_1: {
@@ -59,45 +62,48 @@ export default class componentName extends Component {
                     title: "none",
                     type: "object",
                     properties: {
-                        first_name: { type: "string", title: "Firstname" },
-                        middle_name: { type: "string", title: "Middle Name" },
-                        last_name: { type: "string", title: "Lastname" },
+                        account_number_prefix: { type: "string", title: "Account Number Prefix" },
+                        account_number_start: { type: "integer", title: "Starting Account Number" },
+                        account_number_last: { type: "integer", title: "Last Account Number" },
+                        max_users: { type: "integer", title: "Number of Users" },
                     }
                 },
                 row_2: {
                     type: "object",
                     title: "none",
                     properties: {
-                        prefix: { type: "string", title: "Prefix" },
-                        suffix: { type: "string", title: "Suffix" },
-                        initials: { type: "string", title: "Initials" },
+                        name: { type: "string", title: "Name" },
+                        address1: { type: "string", title: "Address" },
+                        address2: { type: "string", title: "Apt/Suite/Unit" },
                     }
                 },
                 row_3: {
                     type: "object",
                     title: "none",
                     properties: {
-                        birthday: { type: "string", title: "Birthday" },
-                        title: { type: "string", title: "Title" },
-                        signature: { type: "string", title: "Signature" },
+                        city: { type: "string", title: "City" },
+                        state: { type: "string", title: "State" },
+                        postal: { type: "string", title: "Postal" },
+                        postal4: { type: "string", title: "Postal4" },
+                        country: { type: "string", title: "Country" },
                     }
                 },
                 row_4: {
                     type: "object",
                     title: "none",
                     properties: {
-                        home_phone: { type: "string", title: "Home Phone" },
-                        work_phone: { type: "string", title: "Work Phone" },
-                        ext: { type: "string", title: "Ext" },
+                        phone: { type: "string", title: "Phone" },
+                        fax: { type: "string", title: "Fax" },
+                        website: { type: "string", title: "Website" },
                     }
                 },
+
                 row_5: {
                     type: "object",
                     title: "none",
                     properties: {
-                        direct_phone: { type: "string", title: "Direct Phone" },
-                        mobile: { type: "string", title: "Mobile" },
-                        fax: { type: "string", title: "Fax" },
+                        domain: { type: "string", title: "Domain" },
+                        domain_tld: { type: "string", title: "Domain Ext" },
                     }
                 },
                 contact_information_1: {
@@ -127,6 +133,7 @@ export default class componentName extends Component {
             row_3: { classNames: "one-line", "ui:options": { label: false }, },
             row_4: { classNames: "one-line", "ui:options": { label: false }, },
             row_5: { classNames: "one-line", "ui:options": { label: false }, },
+
             contact_information_1: { classNames: "one-line", "ui:options": { label: false }, },
             contact_information_2: { classNames: "one-line", "ui:options": { label: false }, },
         };
@@ -141,9 +148,10 @@ export default class componentName extends Component {
         const { user } = this.props;
         const data = { ...user, ...row_1, ...row_2, ...row_3, ...row_4, ...row_5, ...contact_information_1, ...contact_information_2 };
 
-        console.log(data)
 
         toast.success("Successfully saved!");
+
+        console.log(data);
     }
 
     handleError = (errors) => {
@@ -160,12 +168,16 @@ export default class componentName extends Component {
                     return (<div>
                         <div className="row">
                             <div className="col-12">
-                                <Form schema={this.schema} uiSchema={this.uiSchema} formData={formData}
+                                <JsonForm schema={this.schema} uiSchema={this.uiSchema} formData={formData}
                                     // FieldTemplate={FieldTemplate}
                                     ObjectFieldTemplate={ObjectFieldTemplate}
                                     onChange={this.handleChange}
                                     onSubmit={({ formData }) => this.handleSubmit(formData, action)}
-                                    onError={this.handleError} />
+                                    onError={this.handleError} >
+                                    <div>
+                                        <button type="submit" className="btn btn-primary" disabled={loading}>{loading ? "Loading..." : "Submit"}</button>
+                                    </div>
+                                </JsonForm>
                             </div>
                         </div>
                     </div>)

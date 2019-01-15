@@ -4,7 +4,7 @@ import Data from './components/Data';
 import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
 
-class Profile extends Component {
+class Company extends Component {
     static async getInitialProps({ req, res }) {
         checkAuth(req, res);
         return {};
@@ -13,7 +13,7 @@ class Profile extends Component {
     render() {
         return (
             <App title="Profile Information">
-                <Card title="User" >
+                <Card title="Company" >
                     <Data />
                 </Card>
             </App>
@@ -21,5 +21,5 @@ class Profile extends Component {
     }
 }
 
-export default Profile;
+export default Company;
 

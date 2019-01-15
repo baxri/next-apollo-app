@@ -1,0 +1,139 @@
+{
+    "type": "object",
+    "properties": {
+        "row_1": {
+            "title": "none",
+            "type": "object",
+            "properties": {
+                "account_number_prefix": {
+                    "type": "string",
+                    "title": "Account Number Prefix"
+                },
+                "account_number_start": {
+                    "type": "integer",
+                    "title": "Starting Account Number"
+                },
+                "account_number_last": {
+                    "type": "integer",
+                    "title": "Last Account Number"
+                },
+                "max_users": {
+                    "type": "integer",
+                    "title": "Number of Users"
+                }
+            }
+        },
+        "row_2": {
+            "type": "object",
+            "title": "none",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "title": "Name"
+                },
+                "address1": {
+                    "type": "string",
+                    "title": "Address"
+                },
+                "address2": {
+                    "type": "string",
+                    "title": "Apt/Suite/Unit"
+                }
+            }
+        },
+        "row_3": {
+            "type": "object",
+            "title": "none",
+            "properties": {
+                "city": {
+                    "type": "string",
+                    "title": "City"
+                },
+                "state": {
+                    "type": "string",
+                    "title": "State"
+                },
+                "postal": {
+                    "type": "string",
+                    "title": "Postal"
+                },
+                "postal4": {
+                    "type": "string",
+                    "title": "Postal4"
+                },
+                "country": {
+                    "type": "string",
+                    "title": "Country"
+                }
+            }
+        },
+        "row_4": {
+            "type": "object",
+            "title": "none",
+            "properties": {
+                "phone": {
+                    "type": "string",
+                    "title": "Phone"
+                },
+                "fax": {
+                    "type": "string",
+                    "title": "Fax"
+                },
+                "website": {
+                    "type": "string",
+                    "title": "Website"
+                }
+            }
+        },
+        "row_5": {
+            "type": "object",
+            "title": "none",
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "title": "Domain"
+                },
+                "domain_tld": {
+                    "type": "string",
+                    "title": "Domain Ext"
+                }
+            }
+        },
+        "contact_information_1": {
+            "title": "Contact Information",
+            "type": "object",
+            "properties": {
+                "twitter": {
+                    "type": "string",
+                    "title": "Twitter"
+                },
+                "facebook": {
+                    "type": "string",
+                    "title": "Facebook"
+                },
+                "youtube": {
+                    "type": "string",
+                    "title": "Youtube"
+                }
+            }
+        },
+        "contact_information_2": {
+            "title": "none",
+            "type": "object",
+            "properties": {
+                "instagram": {
+                    "type": "string",
+                    "title": "instagram"
+                },
+                "snapchat": {
+                    "type": "string",
+                    "title": "snapchat"
+                },
+                "linkedin": {
+                    "type": "string",
+                    "title": "linkedin"
+                }
+            }
+        }
+    }
+}

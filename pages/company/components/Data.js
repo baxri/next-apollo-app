@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import Form from "./Form";
 
 import { COMPANY as QUERY } from "../../../gql/Company";
+import { UPDATE_USER as MUTATION } from "../../../gql/User";
 
 export default class CompanyData extends Component {
     render() {
@@ -11,7 +12,7 @@ export default class CompanyData extends Component {
                 {({ loading, error, data }) => {
                     if (loading) return (<p>Loading...</p>);
                     return (<div>
-                        <Form user={data.company} />
+                        <Form data={data.company} mutation={MUTATION} />
                     </div>);
                 }}
             </Query>

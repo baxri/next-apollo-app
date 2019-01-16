@@ -7,8 +7,6 @@ class Footer extends Component {
 
         const { router: { pathname } } = this.props;
 
-        console.log(pathname)
-
         return (
             <div className="footer d-flex flex-row justify-content-between">
 

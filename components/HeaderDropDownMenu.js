@@ -11,7 +11,7 @@ export default class HeaderDropDownMenu extends Component {
             <div>
                 <div className="btn-group">
                     <button className="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @ Enhacements
+                        @ <span className="d-none d-md-inline">Enhacements</span>
                     </button>
 
                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -44,7 +44,7 @@ export default class HeaderDropDownMenu extends Component {
                 </div>
                 <div className="btn-group">
                     <button className="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Account
+                        @ Account
                     </button>
 
                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">

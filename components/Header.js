@@ -19,53 +19,65 @@ class Header extends Component {
     const { router: { pathname }, sidebarOnClick, authorized, data } = this.props;
 
     return (
-      <nav className="navbar navbar-expand-lg">
+      <div>
+        <nav className="navbar navbar-expand-md">
 
-        {authorized && <a className="navbar-brand" href="javascript:void(0)" onClick={sidebarOnClick}>
-          <i className="fas fa-bars"></i>
-        </a>}
+          {authorized && <a className="navbar-brand" href="javascript:void(0)" onClick={sidebarOnClick}>
+            <i className="fas fa-bars"></i>
+          </a>}
 
-        <Link prefetch href='/'>
-          <a className="navbar-brand" href="#">WEBMATION</a>
-        </Link>
+          {/* DisAppears on small devices  */}
+          <Link prefetch href='/' >
+            <a className="d-none d-md-block navbar-brand" href="#">WEBMATION</a>
+          </Link>
 
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-          </ul>
+          {/* Appears only on small devices  */}
+          {!authorized && <Link prefetch href='/' >
+            <a className="navbar-brand d-block d-md-none" href="#">WEBMATION</a>
+          </Link>}
+          {authorized && <span className="d-block d-md-none"><HeaderDropDownMenu userid={data.user.id} /></span>}
 
-          {/* {authorized && <form className="form-inline my-2 my-lg-0">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-light my-2 my-sm-0" type="submit">Search</button>
-          </form>} */}
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+            </ul>
 
-          {authorized && <HeaderSearch />}
+            {authorized && <HeaderSearch />}
+            {authorized && <HeaderDropDownMenu userid={data.user.id} />}
+          </div>
 
-          {authorized && <HeaderDropDownMenu userid={data.user.id} />}
-        </div>
+
+
+        </nav>
+
+        {authorized && <div className="d-block d-md-none mobile-search"><HeaderSearch /></div>}
+
 
         <style jsx>{`
 
-                nav{
-                  width: 100%;
-                  position: fixed;
-                  top: 0;
-                  height: 50px;
-                  background-color: #2280bd;
-                  z-index: 1;
-                  margin: 0px !importtant;
-                }
+          .mobile-search{
+            margin-top: 55px;
+          }
 
-                a{
-                  color: white;
-                }
+          nav{
+            width: 100%;
+            position: fixed;
+            top: 0;
+            height: 50px;
+            background-color: #2280bd;
+            z-index: 3;
+            margin: 0px !importtant;
+          }
 
-                .navbar-brand:hover{
-                  color: white;
-                }
+          a{
+            color: white;
+          }
 
-            `}</style>
+          .navbar-brand:hover{
+            color: white;
+          }
 
-      </nav>
+      `}</style>
+      </div>
     )
   }
 }

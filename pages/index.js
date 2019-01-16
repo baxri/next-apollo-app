@@ -16,12 +16,12 @@ export default class componentName extends Component {
     return (
       <AppPublic title="Login page">
         <div className="row justify-content-center">
-          <div className="col-6">
+          <div className="col-lg-6">
             <Card title="Login">
               <LoginForm />
             </Card>
           </div>
-          <div className="col-6">
+          <div className="col-lg-6">
             <Card title="Not a member?">
               <p>
                 Create your account today:

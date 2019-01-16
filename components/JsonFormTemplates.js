@@ -14,18 +14,20 @@ export function ObjectFieldTemplate(props) {
                 })}
 
                 <style global jsx>{`
+                
+                {/*  works only more then 768 px on md screens */}
+                @media only screen and (min-width: 768px){
+                    .one-line .custom-object{
+                        display: flex;
+                        justify-content: space-between;
+                    }
 
-                .one-line .custom-object{
-                    display: flex;
-                    justify-content: space-between;
+                    .one-line .custom-object-item{
+                        display: inline;
+                        width: 100%;
+                        margin: 2px;
+                    }
                 }
-
-                .one-line .custom-object-item{
-                    display: inline;
-                    width: 100%;
-                    margin: 2px;
-                }
-
             `}</style>
             </div>
         </div>

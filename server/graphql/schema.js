@@ -8,6 +8,7 @@ const { Author, AuthorResolvers } = require('./types/author');
 const { User, UserResolvers } = require('./types/user');
 const { Search, SearchResolvers } = require('./types/search');
 const { Company, CompanyResolvers } = require('./types/company');
+const { Feed, FeedResolvers } = require('./types/feed');
 
 const Query = `
   type Query {
@@ -23,8 +24,24 @@ const resolvers = {
 };
 
 module.exports = makeExecutableSchema({
-  typeDefs: [Query, User, Company, Search, Author, Book],
-  resolvers: merge(resolvers, UserResolvers, CompanyResolvers, SearchResolvers, AuthorResolvers, BookResolvers),
+  typeDefs: [
+    Query,
+    User,
+    Company,
+    Search,
+    Author,
+    Book,
+    Feed
+  ],
+  resolvers: merge(
+    resolvers,
+    UserResolvers,
+    CompanyResolvers,
+    SearchResolvers,
+    AuthorResolvers,
+    BookResolvers,
+    FeedResolvers
+  ),
   context: ({ req }) => ({
     authScope: getScope(req.headers.authorization)
   })

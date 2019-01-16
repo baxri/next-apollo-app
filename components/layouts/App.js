@@ -67,13 +67,13 @@ export default class App extends Component {
                 </div>
 
                 <div className="page-content row">
-                  <div className="left col-8">
+                  <div className="left col-lg-9">
                     <div className="content">
                       {children}
                     </div>
                   </div>
 
-                  <div className="right col-4">
+                  <div className="right col-lg-3">
                     <RightContent />
                   </div>
                 </div>
@@ -99,7 +99,7 @@ export default class App extends Component {
               }
 
               .left{
-                padding-right: 0px !important;
+                /* padding-right: 0px !important; */
               }
 
           `}</style>

@@ -57,40 +57,43 @@ const resolvers = {
     },
     Query: {
         user: async (parent, args, { token }) => {
-            return await get('api/user', token);
+            // return await get('api/user', token);
 
-            // protected(token);
+            protected(token);
 
-            // return {
-            //     id: 1,
-            //     first_name: "George",
-            //     last_name: 'Bibilashvili',
-            //     email: 'giorgi.bibilashvili89@gmail.com',
-            //     status: 'active',
-            //     avatar: 'http://bibi.ge/me.jpg',
-            // }
+            return {
+                id: 1,
+                first_name: "George",
+                last_name: 'Bibilashvili',
+                email: 'giorgi.bibilashvili89@gmail.com',
+                status: 'active',
+                avatar: 'http://bibi.ge/me.jpg',
+                company: {
+                    name: "Google",
+                }
+            }
         },
     },
     Mutation: {
         token: async (parent, args, { token }) => {
 
-            const tokenObj = await post('oauth/token', args);
-            let t = "Bearer " + tokenObj.access_token;
-            let user = await get('api/user', t);
-            user.access_token = tokenObj.access_token;
-            return user;
+            // const tokenObj = await post('oauth/token', args);
+            // let t = "Bearer " + tokenObj.access_token;
+            // let user = await get('api/user', t);
+            // user.access_token = tokenObj.access_token;
+            // return user;
 
             // throw new AuthenticationError('Cannot autorize');
 
-            // return {
-            //     id: 1,
-            //     first_name: "George",
-            //     last_name: 'Bibilashvili',
-            //     email: 'giorgi.bibilashvili89@gmail.com',
-            //     status: 'active',
-            //     avatar: 'http://bibi.ge/me.jpg',
-            //     access_token: '93845739750934750939533i45hi35h3i4u5h3o45iu3h45i32h45iu3h45u',
-            // }
+            return {
+                id: 1,
+                first_name: "George",
+                last_name: 'Bibilashvili',
+                email: 'giorgi.bibilashvili89@gmail.com',
+                status: 'active',
+                avatar: 'http://bibi.ge/me.jpg',
+                access_token: '93845739750934750939533i45hi35h3i4u5h3o45iu3h45i32h45iu3h45u',
+            }
         },
         logout: async (parent, { id }, { token }) => {
             return {

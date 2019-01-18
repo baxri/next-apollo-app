@@ -92,7 +92,7 @@
             }
         },
         "contact_information_1": {
-            "title": "Contact Information",
+            "title": "object-Contact Information",
             "type": "object",
             "properties": {
                 "twitter": {

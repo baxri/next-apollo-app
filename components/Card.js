@@ -7,9 +7,7 @@ export default class Card extends Component {
 
         return (
             <div className="my-card">
-                <strong>{title}</strong>
-                <br />
-                <br />
+                {title && title.length > 0 && <strong>{title}</strong>}
                 <div>
                     {children}
                 </div>

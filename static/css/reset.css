@@ -56,3 +56,11 @@ a:hover{
 	border-radius: 0px !important;
 	text-decoration: none !important;
 }
+
+label{
+	font-size: 9pt !important;
+}
+
+input{
+	border-left: 2px solid #6ca9d0 !important;
+}

@@ -19,7 +19,7 @@ class Profile extends Component {
     render() {
         return (
             <App title="User Information">
-                <Card title="User" >
+                <Card>
                     <LoadForm query={QUERY} mutation={MUTATION} field="user" schema={schema} uischema={uischema} />
                 </Card>
             </App>

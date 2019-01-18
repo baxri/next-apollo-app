@@ -1,6 +1,10 @@
 
 # Documentation
 
+A simple little schema how data flow and application should workd
+
+![schema](http://next.webmation.net/static/images/schema.PNG)
+
 ## Instalation
 
 Download and install nodejs on your local computer
@@ -68,6 +72,28 @@ This is a location where nodejs and graphql server stuff is located. here we are
 
 ### gql
 In this folder we are storing actual quesries and mutations. Which are used by components.
+
+### Build on production
+
+to build on production you need pull new code on ther server
+
+```
+git pull origin master
+```
+
+then run build command on the server
+
+```
+npm run build
+```
+
+After build is successfully finished you need to restart PM2 server manager
+
+```
+pm2 reload 0
+```
+
+Thats it, Application is on production :)
 
 ## Documentation you need to check
 

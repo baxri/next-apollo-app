@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Mutation } from "react-apollo";
 import JsonForm from "react-jsonschema-form";
-import { ObjectFieldTemplate } from "../JsonFormTemplates";
+import { ObjectFieldTemplate, FieldTemplate } from "../JsonFormTemplates";
 import { toast } from 'react-toastify';
 
 export default class Form extends Component {
@@ -63,6 +63,7 @@ export default class Form extends Component {
                             <div className="col-12">
                                 <JsonForm schema={schema} uiSchema={uischema} formData={formData}
                                     ObjectFieldTemplate={ObjectFieldTemplate}
+                                    // FieldTemplate={FieldTemplate}
                                     onSubmit={({ formData }) => this.handleSubmit(formData, action)}
                                     onError={this.handleError} >
                                     <div>

@@ -50,7 +50,7 @@ export default class HeaderSearch extends Component {
               .mobile-search input{
                 width: 100%;
                 outline: none;
-                border: 0px solid white;
+                border: 0px solid white !important;
               }
 
               .mobile-search button{

@@ -17,6 +17,7 @@ export default class MyDocument extends Document {
 
                     <link rel="stylesheet" href="/static/css/nprogress.css" />
                     <link rel="stylesheet" href="/static/css/ReactToastify.css" />
+                    <link rel="stylesheet" href="/static/css/react-bootstrap-table2.min.css" />
 
                     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"></link>
                 </Head>

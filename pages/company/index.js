@@ -18,7 +18,7 @@ class Company extends Component {
     render() {
         return (
             <App title="Company Information">
-                <Card title="Company" >
+                <Card title="Company settings" >
                     <LoadForm query={QUERY} mutation={MUTATION} field="company" schema={schema} uischema={uischema} />
                 </Card>
             </App>

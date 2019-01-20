@@ -28,9 +28,26 @@ export function ObjectFieldTemplate(props) {
                 })}
 
                 <style global jsx>{`
-                
+
+                .custom-object label{
+                        margin-bottom: 0px;
+                        color: gray;
+                   }
+
+                /* only for mobile */
+                @media only screen and (max-width: 768px){
+                   .custom-object input{
+                        margin-bottom: -10px;
+                   }
+                }
+
                 {/*  works only more then 768 px on md screens */}
                 @media only screen and (min-width: 768px){
+
+                    .one-line{
+                        margin-top: -15px;
+                    }
+
                     .one-line .custom-object{
                         display: flex;
                         justify-content: space-between;

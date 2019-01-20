@@ -18,7 +18,7 @@ export default class HeaderSearch extends Component {
       <div>
         <form className="d-none d-md-block form-inline my-2 my-lg-0" onSubmit={event => this.onSubmit(event)}>
           <input className="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" />
-          <button className="btn btn-info my-2 my-sm-0" type="submit">Search</button>
+          <button className="btn btn-info " type="submit">Search</button>
         </form>
 
         <form className="d-block d-md-none form-inline my-2 my-lg-0" onSubmit={event => this.onSubmit(event)}>
@@ -32,7 +32,19 @@ export default class HeaderSearch extends Component {
               </button>
             </div>
           </div>
-          <style jsx>{`
+          
+        </form>
+
+        <style jsx>{`
+
+              input{
+                font-size: 10pt;
+              }
+
+              button{
+                font-size: 10pt;
+                height: 38px;
+              }
 
               .mobile-search{
                 position: fixed;
@@ -63,7 +75,6 @@ export default class HeaderSearch extends Component {
              
           
           `}</style>
-        </form>
       </div>
     )
   }

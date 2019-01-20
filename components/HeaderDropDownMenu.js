@@ -36,6 +36,15 @@ export default class HeaderDropDownMenu extends Component {
                     </div>
 
                     <style jsx>{`
+
+                    a{
+                        font-size: 10pt;
+                    }
+
+                    span{
+                        font-size: 10pt;
+                    }
+
                     .btn-group{
                         margin-left: 7px;
                     }
@@ -44,7 +53,7 @@ export default class HeaderDropDownMenu extends Component {
                 </div>
                 <div className="btn-group">
                     <button className="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        @ Account
+                        @ <span>Account</span>
                     </button>
 
                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -78,6 +87,14 @@ export default class HeaderDropDownMenu extends Component {
 
                     <style jsx>{`
 
+                    a{
+                        font-size: 10pt;
+                    }
+
+                    span{
+                        font-size: 10pt;
+                    }
+
                     .logout-component{
                         padding-left: 25px;
                         padding-top: 5px;
@@ -91,6 +108,9 @@ export default class HeaderDropDownMenu extends Component {
                 
                 `}</style>
                 </div>
+
+
+                
             </div>
         )
     }

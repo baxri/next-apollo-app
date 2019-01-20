@@ -22,7 +22,12 @@ class Header extends Component {
       <div>
         <nav className="navbar navbar-expand-md">
 
-          {authorized && <a className="navbar-brand" href="javascript:void(0)" onClick={sidebarOnClick}>
+          {authorized && <a
+            className="navbar-brand navbar-btn"
+            id="sidebarCollapse"
+            href="javascript:void(0)"
+            onClick={sidebarOnClick}
+          >
             <i className="fas fa-bars"></i>
           </a>}
 

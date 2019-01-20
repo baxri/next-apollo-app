@@ -5,7 +5,8 @@ import { Query } from "react-apollo";
 import Header from "../Header";
 import Footer from "../Footer";
 import RightContent from "../RightContent";
-import Sidebar from "react-sidebar";
+// import Sidebar from "react-sidebar";
+import Sidebar from "../Sidebar";
 import SideBarContent from "../SideBarContent";
 import { USER } from "../../gql/User";
 import { ToastContainer, toast } from 'react-toastify';
@@ -25,12 +26,12 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      sidebarOpen: false
+      sidebarOpen: true,
     };
   }
 
   onSetSidebarOpen = () => {
-    console.log(!this.state.sidebarOpen)
+    console.log(this.state.sidebarOpen)
     this.setState({ sidebarOpen: (!this.state.sidebarOpen) });
   }
 
@@ -47,59 +48,58 @@ export default class App extends Component {
 
           const authorized = data && data.user && data.user.email;
 
-          return (<div id="root" className="root container-fluid">
+          return (<div id="root" className="wrapper">
 
-            <Sidebar
+            <Header authorized={authorized} data={data} sidebarOnClick={this.onSetSidebarOpen} />
+
+            <div className="sidebar-wrapper">
+              <Sidebar open={this.state.sidebarOpen} />
+            </div>
+
+            {/* <Sidebar
               defaultSidebarWidth={10}
               sidebar={<SideBarContent authorized={authorized} data={data} onClose={this.onSetSidebarOpen} />}
               styles={{ sidebar: { background: "darkgray" } }}
               docked={this.state.sidebarOpen}
-            >
+            /> */}
 
-              <Header authorized={authorized} data={data} sidebarOnClick={this.onSetSidebarOpen} />
-
-              <div className="container-fluid">
-
-                <div className="page-title row">
-                  <div className="col">
-                    <p>{title}</p>
+            <div id="main" className="container-fluid">
+              <div className="page-content row">
+                <div className="left col-lg-9">
+                  <div className="content">
+                    {children}
                   </div>
                 </div>
-
-                <div className="page-content row">
-                  <div className="left col-lg-9">
-                    <div className="content">
-                      {children}
-                    </div>
-                  </div>
-
-                  <div className="right col-lg-3">
-                    <RightContent />
-                  </div>
+                <div className="right col-lg-3">
+                  <RightContent />
                 </div>
               </div>
-
-            </Sidebar>
-
+            </div>
             <Footer />
 
             <style jsx>{`
 
-              .page-title{
-                padding-top: 70px;
-                margin-bottom: -12px;
+              .sidebar-wrapper{
+                margin-top: 50px;
               }
 
               .page-content{
+                padding-top: 35px;
                 padding-bottom: 82px;
               }
 
-              .left, .right{
-                /* border: 1px solid red; */
+              #main {
+                  padding: 15px;
               }
 
-              .left{
-                /* padding-right: 0px !important; */
+              @media only screen and (max-width: 768px){
+                .sidebar-wrapper{
+                  margin-top: 100px;
+                }
+
+              .page-content{
+                  padding-top: 85px;
+                }
               }
 
           `}</style>

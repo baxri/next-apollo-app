@@ -12,13 +12,11 @@ export default class Form extends Component {
             formData: {}
         }
     }
-
+    
     componentWillMount() {
 
         const { data, schema } = this.props;
         let formData = {};
-
-        console.log(data)
 
         // Break down full data into form segments
         Object.keys(schema.properties).map(key => {
@@ -28,6 +26,8 @@ export default class Form extends Component {
             })
             formData[key] = object;
         })
+
+        console.log(formData)
 
         this.setState({ formData });
     }
@@ -43,7 +43,7 @@ export default class Form extends Component {
 
         console.log(data)
 
-        toast.success("Successfully saved!");
+        // toast.success("Successfully saved!");
     }
 
     handleError = (errors) => {

@@ -2,6 +2,8 @@ const next = require('next');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const { ApolloServer } = require('apollo-server-express');
+const bodyParser = require('body-parser')
+
 const schema = require('./graphql/schema');
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -23,9 +25,13 @@ nextApp.prepare().then(() => {
 
     const app = express();
 
-    server.applyMiddleware({ app });
-
+    app.use(bodyParser.json({limit: '50mb'}));
+    app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
+    
     app.use(cookieParser());
+
+    server.applyMiddleware({ app });
+    
 
     app.get('*', (req, res) => {
         return handle(req, res);

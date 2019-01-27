@@ -1,6 +1,9 @@
-{
+
+
+export default {
     "type": "object",
     "properties": {
+
         "row_1": {
             "title": "none",
             "type": "object",
@@ -126,6 +129,20 @@
                     "title": "linkedin"
                 }
             }
-        }
+        },
+        "images": {
+            "title": "none",
+            "type": "object",
+            "properties": {
+                "profile_url": {
+                    "type": "string",
+                    "title": "Profile Image"
+                },
+                "avatar": {
+                    "type": "string",
+                    "title": "Avatar"
+                }
+            }
+        },
     }
-}
+};

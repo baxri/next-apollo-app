@@ -1,6 +1,6 @@
 const { get, post, protected } = require('../axios');
 const { AuthenticationError } = require('apollo-server-express');
-
+// scalar Upload
 const typeDef = `
     type User {
         id: Int
@@ -45,8 +45,11 @@ const typeDef = `
 
     extend type Mutation {
         token(client_id: Int!, grant_type: String!, username: String!, password: String!, client_secret: String!): User
+        edit(id: Int!, profile_url: String): User
         logout(id: Int!): User
+        
     }
+    
 `;
 
 const resolvers = {
@@ -75,6 +78,14 @@ const resolvers = {
         },
     },
     Mutation: {
+        edit: async (parent, { id, profile_url }, { token }) => {
+
+            // console.log(profile_url)
+
+            return {
+                id: id,
+            }
+        },
         token: async (parent, args, { token }) => {
 
             const tokenObj = await post('oauth/token', args);

@@ -7,8 +7,8 @@ import Card from "../../components/Card";
 import { USER as QUERY } from "../../gql/User";
 import { UPDATE_USER as MUTATION } from "../../gql/User";
 
-const schema = require('./schema/schema.json');
-const uischema = require('./schema/uischema.json');
+import schema from './schema/schema';
+import uischema from './schema/uischema';
 
 class Profile extends Component {
     static async getInitialProps({ req, res }) {

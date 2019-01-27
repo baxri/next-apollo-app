@@ -1,4 +1,6 @@
-{
+import { File } from '../../../components/crud/fields/fields';
+
+export default {
     "row_1": {
         "classNames": "one-line",
         "ui:options": {
@@ -40,5 +42,13 @@
         "ui:options": {
             "label": false
         }
+    },
+    "images": {
+        "profile_url": {
+            "ui:widget": File
+        },
+        "avatar": {
+            "ui:widget": File
+        }
     }
-}
+};

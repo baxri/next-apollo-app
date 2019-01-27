@@ -10,11 +10,11 @@ export default class componentName extends Component {
 
                 <Card title="Tenant Administration">
                     <ul className="administration">
-                        <li>
+                        {/* <li>
                             <Link href="/testlist">
                                 <a href="#">Test List</a>
                             </Link>
-                        </li>
+                        </li> */}
                         <li><a href="#">Admin Accounts</a></li>
                         <li><a href="#">Admin users</a></li>
                         <li><a href="#">Link Tenant</a></li>

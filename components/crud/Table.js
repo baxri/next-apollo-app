@@ -2,8 +2,29 @@ import React, { Component } from 'react'
 import { Query } from "react-apollo";
 import BootstrapTable from 'react-bootstrap-table-next';
 import Link from 'next/link'
+import ContentLoaderTable from './ContentLoaderTable'
 
 export default class Table extends Component {
+
+    loadMore = (fetchMore) => {
+
+        const { field } = this.props;
+
+        fetchMore({
+            variables: {
+                offset: 15
+            },
+            updateQuery: (prev, { fetchMoreResult }) => {
+
+                if (!fetchMoreResult) return prev;
+
+                return {
+                    [field]: [...prev[field], ...fetchMoreResult[field]]
+                };
+            }
+        })
+    }
+
     render() {
 
         const { query, columns, route, field } = this.props;
@@ -19,15 +40,19 @@ export default class Table extends Component {
         });
 
         return (
-            <Query query={query} variables={{ offset: 0, limit: 10 }} fetchPolicy="cache-and-network">
+            <Query query={query} ssr={false} variables={{ offset: 0, limit: 10 }}
+            // fetchPolicy="cache-and-network"
+            >
                 {({ loading, error, data, fetchMore }) => {
-                    if (loading) return (<div>Loading...</div>);
+                    if (loading && !data[field]) return (<ContentLoaderTable />);
 
                     return (<div>
 
                         {/* Desktop mode */}
                         <div className="d-none d-md-block">
-                            <BootstrapTable keyField='id' data={data[field]} columns={columns} bootstrap4={true} />
+                            <BootstrapTable striped hover dark
+                                // condensed 
+                                keyField='id' data={data[field]} columns={columns} bootstrap4={true} />
                         </div>
                         {/* End Desktop mode */}
 
@@ -62,23 +87,9 @@ export default class Table extends Component {
                         </div>
                         {/* End Mobile mode */}
 
-                        <button onClick={() => fetchMore({
-                            variables: {
-                                offset: 15
-                            },
-                            updateQuery: (prev, { fetchMoreResult }) => {
-
-                                if (!fetchMoreResult) return prev;
-
-                                return {
-                                    [field]: [...prev[field], ...fetchMoreResult[field]]
-                                };
-
-                                // return Object.assign({}, prev, {
-                                //     [field]: [...prev[field], ...fetchMoreResult[field]]
-                                // });
-                            }
-                        })}>{loading ? "Loading!..." : "Load more"}</button>
+                        <button onClick={() => this.loadMore(fetchMore)} className="btn btn-secondary btn-block">
+                            {loading ? "Loading!..." : "Load more"}
+                        </button>
 
 
                         <style jsx>{`

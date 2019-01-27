@@ -14,7 +14,8 @@ const typeDef = `
 
 const resolvers = {
     Query: {
-        feeds: (parent, args, { token }) => {
+        feeds: async (parent, args, { token }) => {
+
             return [
                 {
                     id: 1,

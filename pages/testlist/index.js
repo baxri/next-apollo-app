@@ -14,10 +14,24 @@ export default class Testlist extends Component {
     }
 
     render() {
+
+        const columns = [
+            {
+                dataField: 'id',
+                text: 'Product ID'
+            }, {
+                dataField: 'title',
+                text: 'Product title'
+            }, {
+                dataField: 'description',
+                text: 'Description'
+            },
+        ];
+
         return (
             <App title="Test list">
                 <Card title="Test List">
-                    <Table query={QUERY} />
+                    <Table query={QUERY} columns={columns} route="users" field="feeds" />
                 </Card>
             </App>
         )

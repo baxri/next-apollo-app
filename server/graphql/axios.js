@@ -4,10 +4,12 @@ const { service_url } = require('./config');
 
 module.exports = {
     post: async (path, args, token) => {
+
         try {
             const { data } = await axios.post(`${service_url}${path}`, args, {
                 headers: {
                     'Accept': 'application/json',
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': (token ? token : 'none')
                 }
             });

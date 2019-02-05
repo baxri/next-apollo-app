@@ -20,6 +20,7 @@ module.exports = {
         }
     },
 
+    
     get: async (path, token) => {
         try {
             const { data } = await axios.get(`${service_url}${path}`, {

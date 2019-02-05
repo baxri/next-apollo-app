@@ -3,6 +3,7 @@ const { get, post, protected } = require('../axios');
 const typeDef = `
     type Folder {
         id: Int  
+        admin_id: Int
         name: String
         status: Int
         created_at: String
@@ -15,8 +16,8 @@ const typeDef = `
     }
 
     extend type Mutation {
-        folderCreate(name: String!): Folder
-        folderUpdate(id: Int!, name: String!, status: Int): Folder
+        folderCreate(admin_id: Int!, name: String!): Folder
+        folderUpdate(id: Int!, name: String, status: Int): Folder
         folderDelete(id: Int!): Folder
     }
 `;
@@ -33,11 +34,7 @@ const resolvers = {
 
     Mutation: {
         folderCreate: async (parent, args, { token }) => {
-            let res =  await post('api/filemanager/folders/create', args, token);
-
-            console.log(res)
-
-            return res;
+            return await post('api/filemanager/folders/create', args, token);
         },
         folderUpdate: async (parent, args, { token }) => {
             return await post('api/filemanager/folders/' + args.id + '/update', args, token);

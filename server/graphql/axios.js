@@ -42,8 +42,6 @@ module.exports = {
     }
 }
 
-
-// This is custom error handle just to check API errors and translate them to graphql
 function CheckForErrors(data, httpError = true) {
 
     if (!httpError) {

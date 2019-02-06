@@ -4,11 +4,7 @@ import ContentLoaderTable from './ContentLoaderTable'
 
 export default class View extends Component {
     render() {
-
         const { query, field, id } = this.props;
-
-        console.log("Variable: " + id)
-
         return (
             <Query query={query} variables={{ id: parseInt(id) }} ssr={false}
             // fetchPolicy="cache-and-network"

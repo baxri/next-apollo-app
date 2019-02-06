@@ -3,6 +3,7 @@ import { Mutation } from "react-apollo";
 import JsonForm from "react-jsonschema-form";
 import { ObjectFieldTemplate, FieldTemplate } from "../JsonFormTemplates";
 import { toast } from 'react-toastify';
+import Router from 'next/router'
 
 export default class Form extends Component {
     constructor(props) {
@@ -12,7 +13,7 @@ export default class Form extends Component {
             formData: {}
         }
     }
-    
+
     componentWillMount() {
 
         const { data, schema } = this.props;
@@ -43,7 +44,19 @@ export default class Form extends Component {
 
         console.log(data)
 
-        // toast.success("Successfully saved!");
+        action({ variables: data }).then(({ data }) => {
+            // toast.success("Successfully saved!");
+
+
+            Router.push('/folders');
+        }).catch(err => {
+            
+            console.log(err.message)
+            
+            // toast.error(err.graphQLErrors['message']);
+            toast.error(err.message);
+
+        })
     }
 
     handleError = (errors) => {

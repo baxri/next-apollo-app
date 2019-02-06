@@ -115,20 +115,17 @@ export default class Table extends Component {
 
 
 function actionBar(col, row, t, data) {
-
-    console.log(row)
-
     return (
         <div className="d-flex controle-buttons">
-            <Link prefetch href={data.route}>
+            <Link prefetch href={data.route + '/' + row['id'] + '/edit'}>
                 <a href="#"><i className="far fa-edit fa-fw"></i></a>
             </Link>
             &nbsp;
-        <Link prefetch href={data.route + '/' + row['id']}>
+            <Link prefetch href={data.route + '/' + row['id']}>
                 <a href="#"><i className="fas fa-eye fa-fw"></i> </a>
             </Link>
             &nbsp;
-        <Link prefetch href='#'>
+            <Link prefetch href='#'>
                 <a href="#"><i className="fas fa-id-card fa-fw"></i></a>
             </Link>
         </div>

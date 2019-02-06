@@ -4,28 +4,40 @@ import LoadForm from '../../components/crud/LoadForm';
 import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
 
-import { USER as QUERY } from "../../gql/User";
-import { UPDATE_USER as MUTATION } from "../../gql/User";
+import { SHOW as QUERY } from "../../gql/Folder";
+import { UPDATE } from "../../gql/Folder";
+import { CREATE } from "../../gql/Folder";
 
 import schema from './schema/schema';
-import uischema from './schema/uischema';
+import uischema from './schema/ui-schema';
 
 class Form extends Component {
-    static async getInitialProps({ req, res }) {
+    static async getInitialProps({ req, res, query }) {
         checkAuth(req, res);
-        return {};
+        return { id: query.id };
     }
 
     render() {
+
+        const { id } = this.props;
+
+        let MUTATION = null;
+
+        if (id) {
+            MUTATION = UPDATE;
+        } else {
+            MUTATION = CREATE;;
+        }
+
         return (
-            <App title="User Information">
+            <App title="Folder Information">
                 <Card title="Profile settings">
-                    <LoadForm query={QUERY} mutation={MUTATION} field="user" schema={schema} uischema={uischema} />
+                    <LoadForm query={QUERY} id={id} mutation={MUTATION} field="folder" schema={schema} uischema={uischema} />
                 </Card>
             </App>
         )
     }
 }
 
-export default Profile;
+export default Form;
 

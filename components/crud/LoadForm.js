@@ -6,20 +6,30 @@ import ContentLoaderTable from './ContentLoaderTable'
 export default class LoadForm extends Component {
     render() {
 
-        const { query, mutation, field, schema, uischema } = this.props;
+        const { query, mutation, field, schema, uischema, id } = this.props;
 
-        return (
-            <Query query={query} ssr={false}
-            // fetchPolicy="cache-and-network"
-            >
-                {({ loading, error, data }) => {
-                    if (loading) return (<ContentLoaderTable />);
+        console.log(id)
 
-                    return (<div>
-                        <Form data={data[field]} mutation={mutation} schema={schema} uischema={uischema} />
-                    </div>);
-                }}
-            </Query>
-        )
+        if (id) {
+            return (
+                <Query query={query} variables={{ id: parseInt(id) }} ssr={false}
+                // fetchPolicy="cache-and-network"
+                >
+                    {({ loading, error, data }) => {
+                        if (loading) return (<ContentLoaderTable />);
+
+                        return (<div>
+                            <Form data={data[field]} mutation={mutation} schema={schema} uischema={uischema} />
+                        </div>);
+                    }}
+                </Query>
+            )
+        } else {
+            return (<div>
+                <Form data={{}} mutation={mutation} schema={schema} uischema={uischema} />
+            </div>);
+        }
+
+
     }
 }

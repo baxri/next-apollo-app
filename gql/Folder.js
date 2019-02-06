@@ -39,7 +39,7 @@ export const CREATE = gql`
 `;
 
 export const UPDATE = gql`
-    mutation FolderUpdate($id:Int!, $name:String, $status:Int) {
+    mutation FolderUpdate($id:Int!, $name:String, $status:Boolean) {
         folderUpdate(id: $id, name: $name, status: $status) {
             ...FolderFields
         }

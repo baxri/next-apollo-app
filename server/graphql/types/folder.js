@@ -5,7 +5,7 @@ const typeDef = `
         id: Int  
         admin_id: Int
         name: String
-        status: Int
+        status: Boolean
         created_at: String
         updated_at: String
     }
@@ -17,7 +17,7 @@ const typeDef = `
 
     extend type Mutation {
         folderCreate(admin_id: Int!, name: String!): Folder
-        folderUpdate(id: Int!, name: String, status: Int): Folder
+        folderUpdate(id: Int!, name: String, status: Boolean): Folder
         folderDelete(id: Int!): Folder
     }
 `;

@@ -11,7 +11,7 @@ export const FolderFields = gql`
     }
 `;
 
-export const FOLDERS = gql`
+export const LIST = gql`
   query Folders($offset: Int, $limit: Int) {
     folders(offset: $offset, limit: $limit) {
            ...FolderFields
@@ -20,7 +20,7 @@ export const FOLDERS = gql`
     ${FolderFields}
 `;
 
-export const FOLDER = gql`
+export const SHOW = gql`
   query Folder($id: Int!) {
     folder(id: $id) {
            ...FolderFields

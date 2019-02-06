@@ -115,6 +115,9 @@ export default class Table extends Component {
 
 
 function actionBar(col, row, t, data) {
+
+    console.log(row)
+
     return (
         <div className="d-flex controle-buttons">
             <Link prefetch href={data.route}>

@@ -1,8 +1,11 @@
 const nextRoutes = require('next-routes')
 const routes = module.exports = nextRoutes()
 
-// routes.add('index', '/')
-routes.add('folders', '/folders/:id')
+routes.add({pattern: '/folders/:id', page: 'folders/show'}) 
+
+
+
+
 
 // about  about     /about
 // .add('blog', '/blog/:slug')                         // blog   blog      /blog/:slug

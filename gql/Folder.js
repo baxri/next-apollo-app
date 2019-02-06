@@ -46,3 +46,12 @@ export const UPDATE = gql`
     }
     ${FolderFields}
 `;
+
+export const DELETE = gql`
+    mutation FolderDelete($id:Int!) {
+        folderDelete(id: $id) {
+            ...FolderFields
+        }
+    }
+    ${FolderFields}
+`;

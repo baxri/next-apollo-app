@@ -5,7 +5,7 @@ import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
 import Table from '../../components/crud/Table';
 
-import { FOLDERS as QUERY } from "../../gql/Folder";
+import { LIST as QUERY } from "../../gql/Folder";
 
 export default class Index extends Component {
     static async getInitialProps({ req, res }) {

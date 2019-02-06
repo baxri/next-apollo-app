@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import BootstrapTable from 'react-bootstrap-table-next';
 import Link from 'next/link'
 import ContentLoaderTable from './ContentLoaderTable'
+import { Mutation } from "react-apollo";
 
 export default class Table extends Component {
 
@@ -25,17 +26,53 @@ export default class Table extends Component {
         })
     }
 
+    actionBar(col, row, t, data) {
+        return (
+            <Mutation mutation={data.remove}>
+                {(action, { loading, error }) => {
+                    return (<div className="d-flex controle-buttons">
+                        <Link prefetch href={data.route + '/' + row['id'] + '/edit'}>
+                            <a href="#"><i className="far fa-edit fa-fw"></i></a>
+                        </Link>
+                        &nbsp;
+                <Link prefetch href={data.route + '/' + row['id']}>
+                            <a href="#"><i className="fas fa-eye fa-fw"></i> </a>
+                        </Link>
+                        &nbsp;
+                        <Link prefetch href='#'>
+                            <a onClick={() => this.delete(row['id'], action)} href="#"><i className="fas fa-id-card fa-fw"></i></a>
+                        </Link>
+                    </div>);
+                }}
+            </Mutation>
+
+
+        );
+    }
+
+    delete(id, action) {
+
+        action({ variables: { id: id } }).then(({ data }) => {
+
+            console.log(data)
+
+        }).catch(err => {
+            toast.error(err.graphQLErrors[0]['message']);
+        })
+    }
+
     render() {
 
-        const { query, columns, route, field } = this.props;
+        const { query, remove, columns, route, field } = this.props;
 
         columns.push({
             dataField: 'actions',
             text: '',
-            formatter: actionBar,
+            formatter: this.actionBar,
             route: route,
             formatExtraData: {
-                route: route
+                route: route,
+                remove: remove,
             }
         });
 
@@ -67,11 +104,11 @@ export default class Table extends Component {
 
                                             if (col['formatExtraData']) {
                                                 return (<div key={ckey}>
-                                                    {actionBar(col, item, null, col['formatExtraData'])}
+                                                    {this.actionBar(col, item, null, col['formatExtraData'])}
                                                 </div>);
                                             } else {
                                                 return (<div key={ckey}>
-                                                    {actionBar(col, item)}
+                                                    {this.actionBar(col, item)}
                                                 </div>);
                                             }
                                         }
@@ -114,20 +151,4 @@ export default class Table extends Component {
 }
 
 
-function actionBar(col, row, t, data) {
-    return (
-        <div className="d-flex controle-buttons">
-            <Link prefetch href={data.route + '/' + row['id'] + '/edit'}>
-                <a href="#"><i className="far fa-edit fa-fw"></i></a>
-            </Link>
-            &nbsp;
-            <Link prefetch href={data.route + '/' + row['id']}>
-                <a href="#"><i className="fas fa-eye fa-fw"></i> </a>
-            </Link>
-            &nbsp;
-            <Link prefetch href='#'>
-                <a href="#"><i className="fas fa-id-card fa-fw"></i></a>
-            </Link>
-        </div>
-    );
-}
+

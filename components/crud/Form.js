@@ -28,8 +28,6 @@ export default class Form extends Component {
             formData[key] = object;
         })
 
-        console.log(formData)
-
         this.setState({ formData });
     }
 
@@ -42,12 +40,12 @@ export default class Form extends Component {
             data = { ...data, ...formData[key] };
         });
 
-        console.log(data)
+         toast.success("Successfully saved!");
+         Router.push('/folders?saved=true');
+         return;
 
         action({ variables: data }).then(({ data }) => {
             // toast.success("Successfully saved!");
-
-
             Router.push('/folders');
         }).catch(err => {
             

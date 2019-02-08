@@ -45,8 +45,6 @@ export default class Table extends Component {
                     </div>);
                 }}
             </Mutation>
-
-
         );
     }
 
@@ -54,8 +52,8 @@ export default class Table extends Component {
 
         action({ variables: { id: id } }).then(({ data }) => {
 
+            // Need to update list after item deletion
             console.log(data)
-
         }).catch(err => {
             toast.error(err.graphQLErrors[0]['message']);
         })
@@ -75,9 +73,9 @@ export default class Table extends Component {
                 remove: remove,
             }
         });
-
         return (
-            <Query query={query} ssr={false} variables={{ offset: 0, limit: 10 }}
+            <Query query={query} ssr={false} va
+riables={{ offset: 0, limit: 10 }}
             // fetchPolicy="cache-and-network"
             >
                 {({ loading, error, data, fetchMore }) => {

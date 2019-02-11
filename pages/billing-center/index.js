@@ -4,7 +4,6 @@ import Card from "../../components/Card";
 import { checkAuth } from "../../lib/cookie";
 
 export default class BillingCenter extends Component {
-
     static async getInitialProps({ req, res }) {
         checkAuth(req, res);
         return {};

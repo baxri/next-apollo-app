@@ -30,7 +30,7 @@ nextApp.prepare().then(() => {
     app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
     
     app.use(cookieParser());
-
+    
     server.applyMiddleware({ app });
     app.use(RouterHandler);
 

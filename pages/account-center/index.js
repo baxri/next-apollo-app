@@ -14,7 +14,7 @@ export default class AccountCenter extends Component {
         return (
             <App title="Account Center">
                 <Card title="Account Center">
-                    <p>Account Center</p>
+                    <p>Account Centerr</p>
                 </Card>
             </App>
         )

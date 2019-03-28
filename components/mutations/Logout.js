@@ -1,55 +1,50 @@
 import React, { Component } from 'react'
 import Router from 'next/router'
 import { removeToken } from "../../lib/cookie";
-import { Mutation } from "react-apollo";
-import { LOGOUT } from "../../gql/User";
 
 class Logout extends Component {
 
-    onClick = async (e, action, userid) => {
+    onClick = async (e) => {
         e.preventDefault();
 
-        action({ variables: { id: userid } }).then(({ data }) => {
-            removeToken();
-            Router.push('/')
-        }).catch(err => { })
+        // action({ variables: { id: userid } }).then(({ data }) => {
+        //     removeToken();
+        //     Router.push('/')
+        // }).catch(err => { })
+
+        removeToken();
+        Router.push('/')
     }
 
     render() {
 
-        const { userid } = this.props;
+        const loading = false;
 
         return (
-            <Mutation mutation={LOGOUT}>
-                {(action, { loading, error }) => {
-                    return (
-                        <span>
-                            <a href="#" onClick={event => this.onClick(event, action, userid)}>
-                                <i className="fas fa-sign-out-alt"></i> {loading ? "Loading..." : "Logout"}
-                            </a>
+            <span>
+                <a href="#" onClick={this.onClick}>
+                    <i className="fas fa-sign-out-alt"></i> {loading ? "Loading..." : "Logout"}
+                </a>
 
-                            <style jsx>{`
-                                a{
-                                    text-decoration: none;
-                                    font-size: 15px;
-                                    color: #818181;
-                                    display: block;
-                                    transition: 0.3s;
-                                }
+                <style jsx>{`
+                a{
+                    text-decoration: none;
+                    font-size: 15px;
+                    color: #818181;
+                    display: block;
+                    transition: 0.3s;
+                }
 
-                                a:hover {
-                                    color: #f1f1f1;
-                                }
+                a:hover {
+                    color: #f1f1f1;
+                }
 
-                                i{
-                                    margin-right: 5px;
-                                }
+                i{
+                    margin-right: 5px;
+                }
 
-                            `}</style>
-                        </span>
-                    )
-                }}
-            </Mutation>
+            `}</style>
+            </span>
         )
     }
 }

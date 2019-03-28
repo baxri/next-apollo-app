@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default class HeaderDropDownMenu extends Component {
     render() {
 
-        const { userid } = this.props
+        const userid = 1;
 
         return (
             <div>
@@ -37,17 +37,17 @@ export default class HeaderDropDownMenu extends Component {
 
                     <style jsx>{`
 
-                    a{
-                        font-size: 10pt;
-                    }
+                        a{
+                            font-size: 10pt;
+                        }
 
-                    span{
-                        font-size: 10pt;
-                    }
+                        span{
+                            font-size: 10pt;
+                        }
 
-                    .btn-group{
-                        margin-left: 7px;
-                    }
+                        .btn-group{
+                            margin-left: 7px;
+                        }
                 
                 `}</style>
                 </div>
@@ -55,9 +55,7 @@ export default class HeaderDropDownMenu extends Component {
                     <button className="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @ <span>Account</span>
                     </button>
-
                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-
                         <Link prefetch href='/profile'>
                             <a className="dropdown-item" href="#">Profile Settings</a>
                         </Link>
@@ -84,33 +82,29 @@ export default class HeaderDropDownMenu extends Component {
                             <Logout userid={userid} />
                         </div>
                     </div>
-
                     <style jsx>{`
 
-                    a{
-                        font-size: 10pt;
-                    }
+                        a{
+                            font-size: 10pt;
+                        }
 
-                    span{
-                        font-size: 10pt;
-                    }
+                        span{
+                            font-size: 10pt;
+                        }
 
-                    .logout-component{
-                        padding-left: 25px;
-                        padding-top: 5px;
-                        margin-top: 5px;
-                        border-top: 1px solid lightgray;
-                    }
+                        .logout-component{
+                            padding-left: 25px;
+                            padding-top: 5px;
+                            margin-top: 5px;
+                            border-top: 1px solid lightgray;
+                        }
 
-                    .btn-group{
-                        margin-left: 7px;
-                    }
+                        .btn-group{
+                            margin-left: 7px;
+                        }
                 
                 `}</style>
                 </div>
-
-
-                
             </div>
         )
     }

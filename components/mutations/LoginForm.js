@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import { Mutation } from "react-apollo";
 import Router from 'next/router'
 import { setToken } from "../../lib/cookie";
-import { TOKEN } from "../../gql/User";
-import Error from "../Error";
-import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
+import { setAccessToken } from '../../actions/index';
 
 class Login extends Component {
 
@@ -14,6 +12,7 @@ class Login extends Component {
         this.state = {
             email: 'hersh.sandhoo@webmation.co',
             password: 'Hunter20!',
+            loading: false,
         }
     }
 
@@ -33,57 +32,73 @@ class Login extends Component {
         const password = formData.get('password');
         const client_secret = "Vr3g0ejeLLRuFcGuC88l7zHHfoqMWzpWWL1ygLKZ";
 
-        action({ variables: { client_id, grant_type, username, password, client_secret } }).then(({ data }) => {
-            setToken(`Bearer ${data.token.access_token}`);
+        this.setState({ loading: true });
+
+        // Make fake authorisation
+        setTimeout(() => {
+            this.setState({ loading: false });
+
+            setToken(`Bearer ${client_secret}`);
+
             Router.push('/dashboard');
-        }).catch(err => {
-            toast.error(err.graphQLErrors[0]['message']);
-        })
+        }, 1000);
+
+        // setToken(`Bearer ${data.token.access_token}`);
+        // Router.push('/dashboard');
+
+        // action({ variables: { client_id, grant_type, username, password, client_secret } }).then(({ data }) => {
+        //     setToken(`Bearer ${data.token.access_token}`);
+        //     Router.push('/dashboard');
+        // }).catch(err => {
+        //     toast.error(err.graphQLErrors[0]['message']);
+        // })
     }
 
     render() {
+
+        const { loading } = this.state;
+
         return (
-            <Mutation mutation={TOKEN}>
-                {(action, { loading, error }) => {
-                    return (
-                        <form onSubmit={event => this.onSubmit(event, action)}>
-                            {/* {error && <Error error={error} />} */}
-                            <input placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} type='email' required />
-                            <br />
-                            <br />
-                            <input placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange} type='password' required />
-                            <br />
-                            <br />
-                            <button type='submit' className="btn btn-primary">{loading ? "Loading..." : "Login"}</button>
+            <form onSubmit={this.onSubmit}>
+                <input placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} type='email' required />
+                <br />
+                <br />
+                <input placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange} type='password' required />
+                <br />
+                <br />
+                <button type='submit' className="btn btn-primary">{loading ? "Loading..." : "Login"}</button>
 
-                            <style jsx>{`
-                                input{
-                                    width: 100%;
-                                    height: 40px;
-                                    padding-left: 10px; 
-                                    outline: none;
-                                    border: 1px solid lightgray;
-                                }
-                                button{
-                                    border: 1px solid lightgray;
-                                    height: 50px;
-                                    padding-left: 10px; 
-                                    outline: none;
-                                    width : 100%;
-                                    border-radius: 0px;
-                                    background-color: #2280bd;
-                                }
+                <style jsx>{`
 
-                                button:hover{
-                                    background-color: #206694;
-                                }
-                            `}</style>
-                        </form>
-                    )
-                }}
-            </Mutation>
+                    input{
+                        width: 100%;
+                        height: 40px;
+                        padding-left: 10px; 
+                        outline: none;
+                        border: 1px solid lightgray;
+                    }
+                    button{
+                        border: 1px solid lightgray;
+                        height: 50px;
+                        padding-left: 10px; 
+                        outline: none;
+                        width : 100%;
+                        border-radius: 0px;
+                        background-color: #2280bd;
+                    }
+
+                    button:hover{
+                        background-color: #206694;
+                    }
+
+                `}</style>
+            </form>
         )
     }
 }
 
-export default Login;
+const mapStateToProps = ({ auth }) => ({
+    token: auth.token
+})
+
+export default connect(mapStateToProps, { setAccessToken })(Login);

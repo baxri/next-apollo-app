@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import Router from "next/router";
 import NProgress from "nprogress";
-import { Query } from "react-apollo";
 import Header from "../Header";
 import Footer from "../Footer";
 import RightContent from "../RightContent";
-// import Sidebar from "react-sidebar";
 import Sidebar from "../Sidebar";
-import SideBarContent from "../SideBarContent";
-import { USER } from "../../gql/User";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 NProgress.configure({ showSpinner: false });
 
@@ -27,58 +23,50 @@ export default class App extends Component {
 
     this.state = {
       sidebarOpen: true,
+      loading: false,
     };
   }
 
   onSetSidebarOpen = () => {
-    console.log(this.state.sidebarOpen)
     this.setState({ sidebarOpen: (!this.state.sidebarOpen) });
   }
 
   render() {
 
     const { children, title } = this.props;
+    const { loading } = this.state;
+    const authorized = true;
 
     return (
+      <React.Fragment>
+        <div id="root" className="wrapper">
+          <Header authorized={authorized} sidebarOnClick={this.onSetSidebarOpen} />
 
-      <Query query={USER}>
-        {({ loading, error, data }) => {
+          <div className="sidebar-wrapper">
+            <Sidebar open={this.state.sidebarOpen} />
+          </div>
 
-          if (loading) return (<div>Loading...</div>);
+          {/* <Sidebar
+            defaultSidebarWidth={10}
+            sidebar={<SideBarContent authorized={authorized} data={data} onClose={this.onSetSidebarOpen} />}
+            styles={{ sidebar: { background: "darkgray" } }}
+            docked={this.state.sidebarOpen}
+          /> */}
 
-          const authorized = data && data.user && data.user.email;
-
-          return (<div id="root" className="wrapper">
-
-            <Header authorized={authorized} data={data} sidebarOnClick={this.onSetSidebarOpen} />
-
-            <div className="sidebar-wrapper">
-              <Sidebar open={this.state.sidebarOpen} />
-            </div>
-
-            {/* <Sidebar
-              defaultSidebarWidth={10}
-              sidebar={<SideBarContent authorized={authorized} data={data} onClose={this.onSetSidebarOpen} />}
-              styles={{ sidebar: { background: "darkgray" } }}
-              docked={this.state.sidebarOpen}
-            /> */}
-
-            <div id="main" className="container-fluid">
-              <div className="page-content row">
-                <div className="left col-lg-9">
-                  <div className="content">
-                    {children}
-                  </div>
-                </div>
-                <div className="right col-lg-3">
-                  <RightContent />
+          <div id="main" className="container-fluid">
+            <div className="page-content row">
+              <div className="left col-lg-9">
+                <div className="content">
+                  {children}
                 </div>
               </div>
+              <div className="right col-lg-3">
+                <RightContent />
+              </div>
             </div>
-            <Footer />
-
-            <style jsx>{`
-
+          </div>
+          <Footer />
+          <style jsx>{`
               .sidebar-wrapper{
                 margin-top: 50px;
               }
@@ -102,13 +90,10 @@ export default class App extends Component {
                 }
               }
 
-          `}</style>
-            <ToastContainer />
-          </div>);
-        }}
-      </Query>
-
-
+            `}</style>
+          <ToastContainer />
+        </div>
+      </React.Fragment>
     )
   }
 }

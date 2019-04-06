@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import App from '../../components/layouts/App'
-import LoadForm from '../../components/crud/LoadForm';
 import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
 
-import { COMPANY as QUERY } from "../../gql/Company";
-import { UPDATE_USER as MUTATION } from "../../gql/User";
-const schema = require('./schema/schema.json');
-const uischema = require('./schema/uischema.json');
+// import { COMPANY as QUERY } from "../../gql/Company";
+// import { UPDATE_USER as MUTATION } from "../../gql/User";
+// const schema = require('./schema/schema.json');
+// const uischema = require('./schema/uischema.json');
+// import LoadForm from '../../components/crud/LoadForm';
 
 class Company extends Component {
     static async getInitialProps({ req, res }) {
@@ -19,7 +19,7 @@ class Company extends Component {
         return (
             <App title="Company Information">
                 <Card title="Company settings" >
-                    <LoadForm query={QUERY} mutation={MUTATION} field="company" schema={schema} uischema={uischema} />
+                    {/* <LoadForm query={QUERY} mutation={MUTATION} field="company" schema={schema} uischema={uischema} /> */}
                 </Card>
             </App>
         )

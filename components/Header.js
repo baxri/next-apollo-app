@@ -16,7 +16,7 @@ class Header extends Component {
 
   render() {
 
-    const { router: { pathname }, sidebarOnClick, authorized, data } = this.props;
+    const { router: { pathname }, sidebarOnClick, authorized } = this.props;
 
     return (
       <div>
@@ -40,14 +40,14 @@ class Header extends Component {
           {!authorized && <Link prefetch href='/' >
             <a className="navbar-brand d-block d-md-none" href="#">WEBMATION</a>
           </Link>}
-          {authorized && <span className="d-block d-md-none"><HeaderDropDownMenu userid={data.user.id} /></span>}
+          {authorized && <span className="d-block d-md-none"><HeaderDropDownMenu /></span>}
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
             </ul>
 
             {authorized && <HeaderSearch />}
-            {authorized && <HeaderDropDownMenu userid={data.user.id} />}
+            {authorized && <HeaderDropDownMenu />}
           </div>
 
 

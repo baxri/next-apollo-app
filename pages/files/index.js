@@ -17,7 +17,6 @@ export default class Files extends Component {
         const schema = {
             name: {
                 label: 'Name',
-
             },
             status: {
                 label: 'Status',
@@ -33,7 +32,11 @@ export default class Files extends Component {
         return (
             <App title="Files" >
                 <Card title="Files block">
-                    <Table uri="/filemanager/folders/index" schema={schema} />
+                    <Table
+                        uri="/filemanager/folders/index"
+                        schema={schema}
+                        route="files"
+                    />
                 </Card>
             </App>
         )

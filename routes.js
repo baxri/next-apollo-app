@@ -1,9 +1,9 @@
 const nextRoutes = require('next-routes')
 const routes = module.exports = nextRoutes()
 
-routes.add({pattern: '/folders/create', page: 'folders/form'}) 
-routes.add({pattern: '/folders/:id', page: 'folders/show'}) 
-routes.add({pattern: '/folders/:id/edit', page: 'folders/form'}) 
+routes.add({ pattern: '/files/create', page: 'files/form' })
+routes.add({ pattern: '/files/:id/edit', page: 'files/form' })
+routes.add({ pattern: '/files/:id', page: 'files/show' })
 
 
 

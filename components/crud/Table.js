@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TableLoader from "./TableLoader";
 import { get } from "../../lib/http";
+import Link from 'next/link'
 // import Pagination from "react-js-pagination";
 import Pagination from "./Pagination";
 
@@ -31,7 +32,7 @@ export default class Table extends Component {
 
     render() {
 
-        const { uri, schema } = this.props;
+        const { uri, schema, route } = this.props;
         const { data, loading } = this.state;
 
         if (loading) return <TableLoader />
@@ -46,6 +47,7 @@ export default class Table extends Component {
                             {Object.keys(schema).map((key) => {
                                 return <th scope="col" key={key}>{schema[key].label}</th>
                             })}
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,6 +59,23 @@ export default class Table extends Component {
                                         {schema[schemaKey].hasOwnProperty('render') ? schema[schemaKey].render(item[schemaKey]) : item[schemaKey]}
                                     </th>
                                 })}
+                                <th>
+                                    <div className="d-flex controle-buttons">
+
+                                        <Link prefetch href={route + '/' + item.id + '/edit'}>
+                                            <a href="#"><i className="far fa-edit fa-fw"></i></a>
+                                        </Link>
+                                        &nbsp;
+                                        <Link prefetch href={route + '/' + item.id + '/show'}>
+                                            <a href="#"><i className="fas fa-eye fa-fw"></i> </a>
+                                        </Link>
+                                        {/* &nbsp;
+                                        <Link prefetch href='#'>
+                                            <a href="#"><i className="fas fa-id-card fa-fw"></i></a>
+                                        </Link> */}
+
+                                    </div>
+                                </th>
                             </tr>
                         })}
                     </tbody>

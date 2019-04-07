@@ -12,23 +12,43 @@ export default class Form extends Component {
         super(props)
 
         this.state = {
-            loading: false,
+            loading: true,
             submiting: false,
             data: {},
         }
     }
 
     async componentDidMount() {
+
+        this.fillDefaults();
         this.loadData();
+    }
+
+    fillDefaults = () => {
+        const { schema } = this.props;
+
+        let data = {};
+
+        Object.keys(schema).map(key => {
+            if (schema[key].hasOwnProperty('default')) {
+                data[key] = schema[key].default;
+            }
+        })
+
+        this.setState({ data });
     }
 
     async loadData() {
         const { resource, id } = this.props;
 
+
+
         if (id) {
-            // const data = await get(`${resource}/${id}/show`);
-            // this.setState({ data, loading: false });
+            const data = await get(`${resource}/${id}/show`);
+            this.setState({ data });
         }
+
+        this.setState({ loading: false });
     }
 
     handleChange = (e) => {
@@ -41,16 +61,19 @@ export default class Form extends Component {
         e.preventDefault();
         const { resource, id, route } = this.props;
         const { data } = this.state;
-        
+
         try {
 
-            if (id) {
-                await post(`${resource}/${id}/update`, data);
-            } else {
-                await post(`${resource}/create`, data);
-            }
 
-            Router.push("/" + route);
+            console.log(data)
+
+            // if (id) {
+            //     await post(`${resource}/${id}/update`, data);
+            // } else {
+            //     await post(`${resource}/create`, data);
+            // }
+
+            // Router.push("/" + route);
         } catch (err) {
             toast.error(err.message);
         }
@@ -68,7 +91,9 @@ export default class Form extends Component {
             <form onSubmit={this.handleSubmit}>
                 <div className="row">
                     {Object.keys(schema).map(key => {
-                        return <Field schema={schema[key]} name={key} key={key} handleChange={this.handleChange} value={data[key]} />
+                        if (schema[key].fillable) {
+                            return <Field schema={schema[key]} name={key} key={key} handleChange={this.handleChange} value={data.hasOwnProperty(key) ? data[key] : ''} />
+                        }
                     })}
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>

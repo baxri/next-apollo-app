@@ -21,7 +21,7 @@ export default class Field extends Component {
                     <React.Fragment>
                         <div className="col-12 col-md-6 form-group" key={name}>
                             <label htmlFor={name}>{schema.label}</label>
-                            <select className="form-control" id={name} onChange={handleChange} name={name}>
+                            <select className="form-control" id={name} onChange={handleChange} name={name} defaultValue={value}>
                                 {schema.options.map(option => {
                                     return <option key={option.value} value={option.value}>{option.label}</option>
                                 })}

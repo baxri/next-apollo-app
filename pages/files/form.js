@@ -5,6 +5,7 @@ import { checkAuth } from "../../lib/cookie";
 import App from '../../components/layouts/App'
 import Card from "../../components/Card";
 import Form from "../../components/crud/Form";
+import { schema } from './config';
 
 class FormPage extends Component {
     static async getInitialProps({ req, res, query }) {
@@ -21,31 +22,9 @@ class FormPage extends Component {
         }
     }
 
-
-
-
     render() {
 
         const { id } = this.props;
-
-        const schema = {
-            name: {
-                label: 'Name',
-                type: 'text',
-            },
-            status: {
-                label: 'Status',
-                type: 'select',
-                options: [
-                    { label: 'Published', value: 1 },
-                    { label: 'Unpublished', value: 0 },
-                ]
-            },
-            created_at: {
-                label: 'Ceated At',
-                type: 'date',
-            },
-        };
 
         return (
             <App title="Folder Information">

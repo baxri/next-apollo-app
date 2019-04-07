@@ -3,6 +3,8 @@ import App from '../../components/layouts/App'
 import Card from "../../components/Card";
 import { checkAuth } from "../../lib/cookie";
 
+import Table from "../../components/crud/Table";
+
 export default class Files extends Component {
 
     static async getInitialProps({ req, res }) {
@@ -11,10 +13,27 @@ export default class Files extends Component {
     }
 
     render() {
+
+        const schema = {
+            name: {
+                label: 'Name',
+
+            },
+            status: {
+                label: 'Status',
+                render: (status) => {
+                    return status == 1 ? 'Published' : 'Unbublished'
+                }
+            },
+            created_at: {
+                label: 'Created At',
+            }
+        };
+
         return (
-            <App title="Files">
+            <App title="Files" >
                 <Card title="Files block">
-                    <p>Some files informations!!!</p>
+                    <Table uri="/filemanager/folders/index" schema={schema} />
                 </Card>
             </App>
         )

@@ -4,16 +4,13 @@ import Link from 'next/link'
 
 export default class HeaderDropDownMenu extends Component {
     render() {
-
         const userid = 1;
-
         return (
             <div>
                 <div className="btn-group">
                     <button className="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         @ <span className="d-none d-md-inline">Enhacements</span>
                     </button>
-
                     <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                         <Link prefetch href='#'>
                             <a className="dropdown-item" href="#">Printing Services</a>

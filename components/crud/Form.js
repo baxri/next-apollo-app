@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 
-import { get } from "../../lib/http";
+import Router from 'next/router'
+import { get, post } from "../../lib/http";
 import TableLoader from "./TableLoader";
 import Field from "./Field";
-
+import { toast } from 'react-toastify';
 
 export default class Form extends Component {
 
@@ -11,7 +12,7 @@ export default class Form extends Component {
         super(props)
 
         this.state = {
-            loading: true,
+            loading: false,
             submiting: false,
             data: {},
         }
@@ -22,9 +23,12 @@ export default class Form extends Component {
     }
 
     async loadData() {
-        const { uri, id } = this.props;
-        const data = await get(`${uri}/${id}/show`);
-        this.setState({ data, loading: false });
+        const { resource, id } = this.props;
+
+        if (id) {
+            const data = await get(`${resource}/${id}/show`);
+            this.setState({ data, loading: false });
+        }
     }
 
     handleChange = (e) => {
@@ -33,12 +37,23 @@ export default class Form extends Component {
         this.setState({ data });
     }
 
-    handleSubmit = (e) => {
-
+    handleSubmit = async (e) => {
         e.preventDefault();
+        const { resource, id, route } = this.props;
         const { data } = this.state;
+        
+        try {
 
-        console.log(data)
+            if (id) {
+                await post(`${resource}/${id}/update`, data);
+            } else {
+                await post(`${resource}/create`, data);
+            }
+
+            Router.push("/" + route);
+        } catch (err) {
+            toast.error(err.message);
+        }
     }
 
 

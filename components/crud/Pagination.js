@@ -182,8 +182,8 @@ class Pagination extends Component {
                 .page-item.active .page-link {
                     z-index: 1;
                     color: #fff;
-                    background-color: #2280bd;
-                    border-color: #2280bd;
+                    /* background-color: #2280bd; */
+                    /* border-color: #2280bd; */
                 }
              
                 `}</style>

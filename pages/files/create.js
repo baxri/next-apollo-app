@@ -6,7 +6,7 @@ import App from '../../components/layouts/App'
 import Card from "../../components/Card";
 import Form from "../../components/crud/Form";
 
-class FormPage extends Component {
+class CreatePage extends Component {
     static async getInitialProps({ req, res, query }) {
         checkAuth(req, res);
         return { id: query.id };
@@ -20,9 +20,6 @@ class FormPage extends Component {
             data: [],
         }
     }
-
-
-
 
     render() {
 
@@ -54,7 +51,7 @@ class FormPage extends Component {
                         resource="/filemanager/folders"
                         route="files"
                         schema={schema}
-                        id={id}
+                        id={null}
                     />
                 </Card>
             </App>
@@ -62,5 +59,5 @@ class FormPage extends Component {
     }
 }
 
-export default FormPage;
+export default CreatePage;
 

@@ -33,7 +33,7 @@ export default class Files extends Component {
             <App title="Files" >
                 <Card title="Files block">
                     <Table
-                        uri="/filemanager/folders/index"
+                        resource="/filemanager/folders"
                         schema={schema}
                         route="files"
                     />

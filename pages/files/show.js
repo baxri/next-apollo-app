@@ -1,28 +1,15 @@
 import React, { Component } from 'react'
-
-import { checkAuth } from "../../lib/cookie";
-
 import App from '../../components/layouts/App'
+import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
-import Form from "../../components/crud/Form";
 
-class FormPage extends Component {
+import Show from "../../components/crud/Show";
+
+class ShowPage extends Component {
     static async getInitialProps({ req, res, query }) {
         checkAuth(req, res);
         return { id: query.id };
     }
-
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            loading: true,
-            data: [],
-        }
-    }
-
-
-
 
     render() {
 
@@ -48,9 +35,9 @@ class FormPage extends Component {
         };
 
         return (
-            <App title="Folder Information">
-                <Card title="Profile settings">
-                    <Form
+            <App title="Show">
+                <Card title="Show">
+                    <Show
                         resource="/filemanager/folders"
                         route="files"
                         schema={schema}
@@ -62,5 +49,5 @@ class FormPage extends Component {
     }
 }
 
-export default FormPage;
 
+export default ShowPage;

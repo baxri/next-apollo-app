@@ -53,15 +53,23 @@ a:hover{
 }
 
 .btn, input{
-	border-radius: 0px !important;
+	/* border-radius: 0px !important; */
 	text-decoration: none !important;
 }
 
 label{
 	font-size: 9pt !important;
 }
-
+/* 
 input{
 	border-left: 2px solid #6ca9d0 !important;
 	font-size: 10pt !important;
 }
+
+select{
+	border-left: 2px solid #6ca9d0 !important;
+	font-size: 10pt !important;
+	border-radius: 0px !important;
+	outline: 1px inset lightgray !important; 
+	border: 0 !important;
+} */

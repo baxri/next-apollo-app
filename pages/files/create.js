@@ -6,6 +6,7 @@ import App from '../../components/layouts/App'
 import Card from "../../components/Card";
 import Form from "../../components/crud/Form";
 
+
 class CreatePage extends Component {
     static async getInitialProps({ req, res, query }) {
         checkAuth(req, res);

@@ -4,6 +4,7 @@ const routes = module.exports = nextRoutes()
 // routes.add({ name: 'file-create', pattern: '/files/create', page: 'files/form' })
 routes.add({ name: 'files-edit', pattern: '/files/:id/edit', page: 'files/form' })
 routes.add({ name: 'files-show', pattern: '/files/:id', page: 'files/show' })
+routes.add({ name: 'files-create', pattern: '/files/create', page: 'files/create' })
 
 
 

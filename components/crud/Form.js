@@ -26,8 +26,8 @@ export default class Form extends Component {
         const { resource, id } = this.props;
 
         if (id) {
-            const data = await get(`${resource}/${id}/show`);
-            this.setState({ data, loading: false });
+            // const data = await get(`${resource}/${id}/show`);
+            // this.setState({ data, loading: false });
         }
     }
 

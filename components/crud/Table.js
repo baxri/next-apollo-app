@@ -44,7 +44,7 @@ export default class Table extends Component {
                 <div className="row ">
                     <div className="col-12 justify-content-right text-right ">
                         <Link href={`${route}/create`}>
-                            <a href="#" class="btn btn-primary btn-sm text-align-right mb-2">Add new</a>
+                            <a href="#" className="btn btn-primary btn-sm text-align-right mb-2">Add new</a>
                         </Link>
                     </div>
                 </div>

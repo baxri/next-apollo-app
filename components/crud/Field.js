@@ -11,7 +11,7 @@ export default class Field extends Component {
                     <React.Fragment>
                         <div className="col-12 col-md-6 form-group" key={name}>
                             <label htmlFor={name}>{schema.label}</label>
-                            <input type="text" name={name} onChange={handleChange} value={value} className="form-control" id={name} aria-describedby="emailHelp" placeholder="Enter email" />
+                            <input type="text" name={name} onChange={handleChange} value={value} className="form-control" id={name} aria-describedby="emailHelp" placeholder={schema.placeholder} />
                             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                     </React.Fragment>
@@ -34,7 +34,7 @@ export default class Field extends Component {
                     <React.Fragment>
                         <div className="col-12 col-md-6 form-group" key={name}>
                             <label htmlFor={name}>{schema.label}</label>
-                            <input type="text" name={name} onChange={handleChange} value={value} className="form-control" id={name} aria-describedby="emailHelp" placeholder="Enter email" />
+                            <input type="text" name={name} onChange={handleChange} value={value} className="form-control" id={name} aria-describedby="emailHelp" placeholder={schema.placeholder} />
                             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                     </React.Fragment>

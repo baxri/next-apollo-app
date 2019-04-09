@@ -19,7 +19,7 @@ const range = (from, to, step = 1) => {
 class Pagination extends Component {
     constructor(props) {
         super(props);
-        const { totalRecords = null, pageLimit = 30, pageNeighbours = 0 } = props;
+        const { totalPages, totalRecords = null, pageLimit = 30, pageNeighbours = 0 } = props;
 
         this.pageLimit = typeof pageLimit === "number" ? pageLimit : 30;
         this.totalRecords = typeof totalRecords === "number" ? totalRecords : 0;
@@ -29,13 +29,17 @@ class Pagination extends Component {
                 ? Math.max(0, Math.min(pageNeighbours, 2))
                 : 0;
 
-        this.totalPages = Math.ceil(this.totalRecords / this.pageLimit);
-
+        // this.totalPages = Math.ceil(this.totalRecords / this.pageLimit);
+        this.totalPages = totalPages;
         this.state = { currentPage: 1 };
     }
 
     componentDidMount() {
         this.gotoPage(1);
+    }
+
+    componentWillReceiveProps() {
+
     }
 
     gotoPage = page => {
@@ -72,6 +76,7 @@ class Pagination extends Component {
         const totalPages = this.totalPages;
         const currentPage = this.state.currentPage;
         const pageNeighbours = this.pageNeighbours;
+
 
         const totalNumbers = this.pageNeighbours * 2 + 3;
         const totalBlocks = totalNumbers + 2;

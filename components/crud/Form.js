@@ -5,6 +5,9 @@ import { get, post } from "../../lib/http";
 import TableLoader from "./TableLoader";
 import Field from "./Field";
 import { toast } from 'react-toastify';
+import Link from "next/link";
+
+import NProgress from "nprogress";
 
 export default class Form extends Component {
 
@@ -15,7 +18,10 @@ export default class Form extends Component {
             loading: true,
             submiting: false,
             data: {},
+            errors: [],
         }
+
+        NProgress.configure({ showSpinner: false });
     }
 
     async componentDidMount() {
@@ -58,7 +64,14 @@ export default class Form extends Component {
     handleSubmit = async (e) => {
         e.preventDefault();
         const { resource, id, route } = this.props;
-        const { data } = this.state;
+        const { data, submiting } = this.state;
+
+        if (submiting) {
+            return false;
+        }
+
+        NProgress.start();
+        this.setState({ submiting: true });
 
         try {
 
@@ -70,28 +83,45 @@ export default class Form extends Component {
 
             Router.push("/" + route);
         } catch (err) {
-            toast.error(err.message);
+
+            if (err.response.data.errors) {
+                this.setState({ errors: err.response.data.errors });
+            }
+
+            NProgress.done();
+            this.setState({ submiting: false });
+
+            toast.error(err.response.data.message);
         }
     }
 
 
     render() {
 
-        const { loading, data } = this.state;
-        const { schema } = this.props;
+        const { loading, data, errors, submiting } = this.state;
+        const { schema, route } = this.props;
 
         if (loading) return <TableLoader />
 
+        const disabled = submiting ? 'disabled' : '';
+
         return (
             <form onSubmit={this.handleSubmit}>
+                <div className="row ">
+                    <div className="col-12 justify-content-right text-right ">
+                        <Link href={`/${route}`}>
+                            <a href="#" className="btn btn-outline-dark btn-sm text-align-right mb-2">Back to list</a>
+                        </Link>
+                    </div>
+                </div>
                 <div className="row">
                     {Object.keys(schema).map(key => {
                         if (schema[key].fillable) {
-                            return <Field schema={schema[key]} name={key} key={key} handleChange={this.handleChange} value={data.hasOwnProperty(key) ? data[key] : ''} />
+                            return <Field errors={errors} schema={schema[key]} name={key} key={key} handleChange={this.handleChange} value={data.hasOwnProperty(key) ? data[key] : ''} />
                         }
                     })}
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className={`btn btn-primary ${disabled}`}>Submit</button>
             </form >
         )
     }

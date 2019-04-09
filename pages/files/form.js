@@ -5,6 +5,7 @@ import { checkAuth } from "../../lib/cookie";
 import App from '../../components/layouts/App'
 import Card from "../../components/Card";
 import Form from "../../components/crud/Form";
+
 import { schema, resource, route, entity } from './config';
 
 class FormPage extends Component {

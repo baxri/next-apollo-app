@@ -11,7 +11,7 @@ export const schema = {
         placeholder: 'Enter name',
         type: 'text',
         fillable: true,
-        default: 'BIBI'
+        default: ''
     },
     status: {
         label: 'Status',
@@ -22,6 +22,9 @@ export const schema = {
         ],
         fillable: true,
         default: 1,
+        render: (status) => {
+            return status == 1 ? 'Published' : 'Unbublished'
+        }
     },
     created_at: {
         label: 'Ceated At',

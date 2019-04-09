@@ -5,6 +5,8 @@ import { checkAuth } from "../../lib/cookie";
 
 import Table from "../../components/crud/Table";
 
+import { schema, entityPlurar, resource, route } from "./config";
+
 export default class Files extends Component {
 
     static async getInitialProps({ req, res }) {
@@ -13,29 +15,13 @@ export default class Files extends Component {
     }
 
     render() {
-
-        const schema = {
-            name: {
-                label: 'Name',
-            },
-            status: {
-                label: 'Status',
-                render: (status) => {
-                    return status == 1 ? 'Published' : 'Unbublished'
-                }
-            },
-            created_at: {
-                label: 'Created At',
-            }
-        };
-
         return (
-            <App title="Files" >
-                <Card title="Files block">
+            <App>
+                <Card title={`${entityPlurar} list`}>
                     <Table
-                        resource="/filemanager/folders"
+                        resource={resource}
                         schema={schema}
-                        route="files"
+                        route={route}
                     />
                 </Card>
             </App>

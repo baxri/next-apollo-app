@@ -5,7 +5,7 @@ import { checkAuth } from "../../lib/cookie";
 import App from '../../components/layouts/App'
 import Card from "../../components/Card";
 import Form from "../../components/crud/Form";
-import { schema } from './config';
+import { schema, resource, route, entity } from './config';
 
 class FormPage extends Component {
     static async getInitialProps({ req, res, query }) {
@@ -27,11 +27,11 @@ class FormPage extends Component {
         const { id } = this.props;
 
         return (
-            <App title="Folder Information">
-                <Card title="Profile settings">
+            <App>
+                <Card title={`${entity} edit`}>
                     <Form
-                        resource="/filemanager/folders"
-                        route="files"
+                        resource={resource}
+                        route={route}
                         schema={schema}
                         id={id}
                     />

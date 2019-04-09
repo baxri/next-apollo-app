@@ -1,4 +1,10 @@
 
+export const entity = 'File';
+export const entityPlurar = 'Files';
+
+export const resource = '/filemanager/folders';
+export const route = 'files';
+
 export const schema = {
     name: {
         label: 'Name',

@@ -41,8 +41,6 @@ export default class Form extends Component {
     async loadData() {
         const { resource, id } = this.props;
 
-
-
         if (id) {
             const data = await get(`${resource}/${id}/show`);
             this.setState({ data });
@@ -64,16 +62,13 @@ export default class Form extends Component {
 
         try {
 
+            if (id) {
+                await post(`${resource}/${id}/update`, data);
+            } else {
+                await post(`${resource}/create`, data);
+            }
 
-            console.log(data)
-
-            // if (id) {
-            //     await post(`${resource}/${id}/update`, data);
-            // } else {
-            //     await post(`${resource}/create`, data);
-            // }
-
-            // Router.push("/" + route);
+            Router.push("/" + route);
         } catch (err) {
             toast.error(err.message);
         }

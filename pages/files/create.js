@@ -6,7 +6,7 @@ import App from '../../components/layouts/App'
 import Card from "../../components/Card";
 import Form from "../../components/crud/Form";
 
-import { schema } from "./config";
+import { schema, resource, route, entity } from "./config";
 
 class Create extends Component {
     static async getInitialProps({ req, res, query }) {
@@ -25,11 +25,11 @@ class Create extends Component {
 
     render() {
         return (
-            <App title="Folder Information">
-                <Card title="Profile settings">
+            <App>
+                <Card title={`${entity} add`}>
                     <Form
-                        resource="/filemanager/folders"
-                        route="files"
+                        resource={resource}
+                        route={route}
                         schema={schema}
                         id={null}
                     />

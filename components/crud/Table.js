@@ -116,14 +116,14 @@ export default class Table extends Component {
                         })}
                     </tbody>
                 </table>
-                {/* <Pagination
+                <Pagination
                     totalPages={Math.ceil(data.total / data.per_page)}
                     totalRecords={data.total}
                     pageLimit={data.per_page}
                     // pageLimit={data.current_page}
                     onPageChanged={this.onPageChanged}
-                /> */}
-                <nav aria-label="Page navigation example">
+                />
+                {/* <nav aria-label="Page navigation example">
                     <PaginationNew
                         activePage={data.currentPage}
                         itemsCountPerPage={2}
@@ -131,7 +131,7 @@ export default class Table extends Component {
                         pageRangeDisplayed={5}
                         onChange={this.onPageChanged}
                     />
-                </nav>
+                </nav> */}
 
 
                 <DeleteModal deleteHandler={this.delete} id={this.state.deleteId} />

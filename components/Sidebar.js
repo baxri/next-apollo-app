@@ -62,8 +62,8 @@ class SideBar extends Component {
                     </li>
 
                     <li>
-                        <Link prefetch href='/files'>
-                            <a href="#" className={pathname === '/files' ? 'active' : ''}><i className="fas fa-folder-open fa-fw"></i> Files</a>
+                        <Link prefetch href='/folders'>
+                            <a href="#" className={pathname === '/folders' ? 'active' : ''}><i className="fas fa-folder-open fa-fw"></i>Folders</a>
                         </Link>
                     </li>
 

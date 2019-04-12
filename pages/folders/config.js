@@ -1,9 +1,9 @@
 
-export const entity = 'File';
-export const entityPlurar = 'Files';
+export const entity = 'Folder';
+export const entityPlurar = 'Folders';
 
 export const resource = '/filemanager/folders';
-export const route = 'files';
+export const route = 'folders';
 
 export const schema = {
     name: {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import App from '../../components/layouts/App'
 import { checkAuth } from "../../lib/cookie";
 import { withRouter } from "next/router";
-import SearchData from "../../components/query/SearchData";
+// import SearchData from "../../components/query/SearchData";
 import Card from "../../components/Card";
 
 class Search extends Component {
@@ -19,7 +19,7 @@ class Search extends Component {
         return (
             <App title="Search">
                 <Card title="Results for search:">
-                    <SearchData search={router.query.search} />
+                    {/* <SearchData search={router.query.search} /> */}
                 </Card>
             </App>
         )

@@ -1,4 +1,3 @@
-import { File } from '../../../components/crud/fields/fields';
 
 export default {
     "form": {

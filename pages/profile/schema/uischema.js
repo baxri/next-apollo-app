@@ -1,4 +1,4 @@
-import { File } from '../../../components/crud/fields/fields';
+// import { File } from '../../../components/crud/fields/fields';
 
 export default {
     "row_1": {
@@ -43,12 +43,12 @@ export default {
             "label": false
         }
     },
-    "images": {
-        "profile_url": {
-            "ui:widget": File
-        },
-        "avatar": {
-            "ui:widget": File
-        }
-    }
+    // "images": {
+    //     "profile_url": {
+    //         "ui:widget": File
+    //     },
+    //     "avatar": {
+    //         "ui:widget": File
+    //     }
+    // }
 };

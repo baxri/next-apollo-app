@@ -6,8 +6,6 @@ import TableLoader from "./TableLoader";
 import Field from "./Field";
 import { toast } from 'react-toastify';
 import Link from "next/link";
-import { getUser } from "../../lib/http";
-
 import NProgress from "nprogress";
 
 export default class Form extends Component {
@@ -52,12 +50,13 @@ export default class Form extends Component {
 
         if (id == 'auth') {
             url = `${resource}`;
+            const data = await get(url);
+            this.setState({ data });
         } else if (id) {
             url = `${resource}/${id}/show`;
+            const data = await get(url);
+            this.setState({ data });
         }
-
-        const data = await get(url);
-        this.setState({ data });
 
         this.setState({ loading: false });
     }

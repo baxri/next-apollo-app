@@ -49,8 +49,6 @@ export const schema = {
         fillable: true,
         default: ''
     },
-
-
     birthday: {
         label: 'Birthday',
         placeholder: '',

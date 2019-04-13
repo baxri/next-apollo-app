@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Wysiwyg from "../crud/Wysiwyg";
+
 export default class Field extends Component {
     render() {
 
@@ -16,6 +18,15 @@ export default class Field extends Component {
                             <label htmlFor={name}>{schema.label}</label>
                             <input type="text" name={name} onChange={handleChange} value={value} className={`${isInvalid} form-control`} id={name} aria-describedby="emailHelp" placeholder={schema.placeholder} />
                             <small id="emailHelp" className="invalid-feedback">{errors[name]}</small>
+                        </div>
+                    </React.Fragment>
+                )
+            case 'editor':
+                return (
+                    <React.Fragment>
+                        <div className="col-12 form-group " key={name}>
+                            <label htmlFor={name}>{schema.label}</label>
+                            <Wysiwyg name={name} value={value} onChange={handleChange} />
                         </div>
                     </React.Fragment>
                 )

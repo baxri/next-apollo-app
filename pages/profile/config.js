@@ -52,7 +52,7 @@ export const schema = {
     birthday: {
         label: 'Birthday',
         placeholder: '',
-        type: 'text',
+        type: 'date',
         fillable: true,
         default: ''
     },

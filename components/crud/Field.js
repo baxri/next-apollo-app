@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Wysiwyg from "../crud/Wysiwyg";
+import DatePicker from "./DatePicker";
 
 export default class Field extends Component {
     render() {
@@ -48,7 +49,9 @@ export default class Field extends Component {
                     <React.Fragment>
                         <div className="col-12 col-md-4 form-group " key={name}>
                             <label htmlFor={name}>{schema.label}</label>
-                            <input type="text" name={name} onChange={handleChange} value={value} className={`${isInvalid} form-control`} id={name} aria-describedby="emailHelp" placeholder={schema.placeholder} />
+                            <DatePicker name={name} onChange={handleChange} value={value}>
+                                <input type="text" name={name} onChange={handleChange} value={value} className={`${isInvalid} form-control`} id={name} aria-describedby="emailHelp" placeholder={schema.placeholder} />
+                            </DatePicker>
                             <small id="emailHelp" className="invalid-feedback">{errors[name]}</small>
                         </div>
                     </React.Fragment>

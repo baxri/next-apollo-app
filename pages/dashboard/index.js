@@ -29,7 +29,8 @@ class Dashboard extends Component {
                     <ImportantAlerts />
                 </Card>
                 <Card>
-                    <h1>{`Wellcome ${user.first_name}`}</h1>
+                    <h2>{`Wellcome ${user.first_name}`}</h2>
+                    <br />
                     <Wysiwyg value="" />
                 </Card>
                 <Card title="User">

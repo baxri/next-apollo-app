@@ -5,6 +5,7 @@ const initialState = {
   token: '',
 };
 
+
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case actionTypes.SET_ACCESS_TOKEN:

@@ -3,6 +3,10 @@ import Router from 'next/router'
 import { setToken } from "../../lib/cookie";
 import { connect } from 'react-redux';
 import { setAccessToken } from '../../actions/index';
+import { toast } from 'react-toastify';
+import NProgress from "nprogress";
+
+import { auth } from "../../lib/http";
 
 class Login extends Component {
 
@@ -20,7 +24,7 @@ class Login extends Component {
         this.setState({ [event.target.name]: event.target.value });
     }
 
-    onSubmit = (e, action) => {
+    onSubmit = async (e, action) => {
         e.preventDefault();
 
         const form = event.target
@@ -32,26 +36,26 @@ class Login extends Component {
         const password = formData.get('password');
         const client_secret = "Vr3g0ejeLLRuFcGuC88l7zHHfoqMWzpWWL1ygLKZ";
 
+        NProgress.start();
         this.setState({ loading: true });
 
-        // Make fake authorisation
-        setTimeout(() => {
-            this.setState({ loading: false });
+        try {
 
-            setToken(`Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImNmODQ3YjM0MTNkMzQyMTI2NTIyZDM2M2M3OGJmZWM2Y2FhM2RlOWYxY2E0NWQ4ZDYzOTYxOGQ3NjJiZDRkYzdkZWY4MzU1ZDc5MGQyNzU4In0.eyJhdWQiOiIyIiwianRpIjoiY2Y4NDdiMzQxM2QzNDIxMjY1MjJkMzYzYzc4YmZlYzZjYWEzZGU5ZjFjYTQ1ZDhkNjM5NjE4ZDc2MmJkNGRjN2RlZjgzNTVkNzkwZDI3NTgiLCJpYXQiOjE1NTQ1NzcyNDEsIm5iZiI6MTU1NDU3NzI0MSwiZXhwIjoxNTg2MTk5NjQxLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.p1Yrujbz0K5pVRb18hRhrTNJDVn5OU-ZtGf6FGjHC7RgRPaWmhE3gEtPlSvc6q6ZyoNwmsz6vvxtNH2Lr68YFl8B4SisEnfnEh_3sDgcmocMEr1vwhERsMjnKheCWvvFAPcJEESnI0MixShrCXpncHGMQ1hDXt7hiQVf9QlJhLEgD9ZWgcXstn0bhwTklcNIY_xRA_86izRlce1C67HAuJ2utoWgGAS992saIUhnQZ4koYVMCkuV-k3Dew-5CIbU2PrMR883iehDi-x9j8uoXcpKoxW0pjtzA14kpuMmsbBiLCI2VcqNERR0VuEWxqi5JpIgiKZp3wihu9QdLJzaqK6tGX76dC1tFSZdLngyN5qxsYpKy2xjfisEiPv2b-JVHVMyU8q9DxG9pphpkjI-GHE0n1IHoW-rRpQN9Q9-lEpYHwDjoIo0s1WZop2Y82LQzzfmLFr0oUnhJad-epIzHwpIepn9fyehXXTcNcw2xXCMdnyf7ZroxfRYJgFipehiu6JI7xi06zz6uFtVeH_BhHvJAB_O6AqNFrz1Ccn9ky3dmN_vTnrTctsHFZkaDpvqKcQMJejENa1Mwm6QxTHdhKGaaTKUywvacOLIJ17jZrJXtZ2NPGW0fsk8d66Rxnu90dKAXT4pgWSOCFLYv_OtVJhuYlLRz1-_is7sfac-9jw`);
+            const { access_token } = await auth(`/oauth/token`, {
+                client_id,
+                grant_type,
+                username,
+                password,
+                client_secret
+            });
 
+            setToken(`Bearer ${access_token}`);
             Router.push('/dashboard');
-        }, 1000);
-
-        // setToken(`Bearer ${data.token.access_token}`);
-        // Router.push('/dashboard');
-
-        // action({ variables: { client_id, grant_type, username, password, client_secret } }).then(({ data }) => {
-        //     setToken(`Bearer ${data.token.access_token}`);
-        //     Router.push('/dashboard');
-        // }).catch(err => {
-        //     toast.error(err.graphQLErrors[0]['message']);
-        // })
+        } catch (err) {
+            NProgress.done();
+            this.setState({ loading: false });
+            toast.error(err.response.data.message);
+        }
     }
 
     render() {

@@ -1,13 +1,15 @@
 const { get, post, protected } = require('../axios');
 
 const typeDef = `
-    type Folder {
+    type Folder {ss
         id: Int  
         admin_id: Int
         name: String
         status: Boolean
         created_at: String
         updated_at: String
+
+        
     }
 
     extend type Query {

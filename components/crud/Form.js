@@ -6,6 +6,7 @@ import TableLoader from "./TableLoader";
 import Field from "./Field";
 import { toast } from 'react-toastify';
 import Link from "next/link";
+import { getUser } from "../../lib/http";
 
 import NProgress from "nprogress";
 
@@ -47,10 +48,16 @@ export default class Form extends Component {
     async loadData() {
         const { resource, id } = this.props;
 
-        if (id) {
-            const data = await get(`${resource}/${id}/show`);
-            this.setState({ data });
+        let url = '';
+
+        if (id == 'auth') {
+            url = `${resource}`;
+        } else if (id) {
+            url = `${resource}/${id}/show`;
         }
+
+        const data = await get(url);
+        this.setState({ data });
 
         this.setState({ loading: false });
     }
@@ -99,7 +106,7 @@ export default class Form extends Component {
     render() {
 
         const { loading, data, errors, submiting } = this.state;
-        const { schema, route } = this.props;
+        const { schema, route, hideBack } = this.props;
 
         if (loading) return <TableLoader />
 
@@ -107,13 +114,13 @@ export default class Form extends Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <div className="row ">
+                {!hideBack && <div className="row ">
                     <div className="col-12 justify-content-right text-right ">
                         <Link href={`/${route}`}>
                             <a href="#" className="btn btn-outline-dark btn-sm text-align-right mb-2">Back to list</a>
                         </Link>
                     </div>
-                </div>
+                </div>}
                 <div className="row">
                     {Object.keys(schema).map(key => {
                         if (schema[key].fillable) {

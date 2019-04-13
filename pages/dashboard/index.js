@@ -8,16 +8,13 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { setUser } from '../../actions/index';
 
-class Dashboard extends Component {
+import Wysiwyg from "../../components/crud/Wysiwyg";
 
-    // static async getInitialProps({ req, res }) {
-    //     checkAuth(req, res);
-    //     return {};
-    // }
+class Dashboard extends Component {
 
     static async getInitialProps({ store, isServer, req, res }) {
         checkAuth(req, res);
-        await store.dispatch(setUser());
+        await store.dispatch(setUser(req));
 
         return { isServer }
     }
@@ -31,11 +28,12 @@ class Dashboard extends Component {
                 <Card title="Important alerts">
                     <ImportantAlerts />
                 </Card>
+                <Card title={`Wellcome ${user.first_name}`}>
+                    <Wysiwyg />
+                </Card>
                 <Card title="User">
-                    User: {JSON.stringify(user)}
                 </Card>
                 <Card title="Token">
-                    Token: {token}
                 </Card>
             </App>
         )

@@ -24,61 +24,51 @@ class SideBar extends Component {
 
 
                 <ul className="list-unstyled components">
-
                     <li>
                         <Link prefetch href='/dashboard'>
                             <a href="#" className={pathname === '/dashboard' ? 'active' : ''}><i className="fas fa-tachometer-alt fa-fw"></i> Dashboard</a>
                         </Link>
                     </li>
-
                     <li>
                         <Link prefetch href='/reports'>
                             <a href="#" className={pathname === '/reports' ? 'active' : ''}><i className="fas fa-chart-line fa-fw"></i> Reports</a>
                         </Link>
                     </li>
-
                     <li>
                         <Link prefetch href='/tasks'>
                             <a href="#" className={pathname === '/tasks' ? 'active' : ''}><i className="far fa-check-square fa-fw"></i> Tasks</a>
                         </Link>
                     </li>
-
                     <li>
                         <Link prefetch href='/store'>
                             <a href="#" className={pathname === '/store' ? 'active' : ''}><i className="fas fa-cart-plus fa-fw"></i> Store</a>
                         </Link>
                     </li>
-
                     <li>
                         <Link prefetch href='/events'>
                             <a href="#" className={pathname === '/events' ? 'active' : ''}><i className="far fa-calendar-alt fa-fw"></i> Events</a>
                         </Link>
                     </li>
-
                     <li>
                         <Link prefetch href='/website'>
                             <a href="#" className={pathname === '/website' ? 'active' : ''}><i className="fas fa-laptop fa-fw"></i> Website</a>
                         </Link>
                     </li>
-
                     <li>
                         <Link prefetch href='/folders'>
                             <a href="#" className={pathname === '/folders' ? 'active' : ''}><i className="fas fa-folder-open fa-fw"></i>Folders</a>
                         </Link>
                     </li>
-
                     <li>
                         <Link prefetch href='/templates'>
                             <a href="#" className={pathname === '/templates' ? 'active' : ''}><i className="far fa-file-alt fa-fw"></i> Templates</a>
                         </Link>
                     </li>
-
                     <li>
                         <Link prefetch href='/workflows'>
                             <a href="#" className={pathname === '/workflows' ? 'active' : ''}><i className="fas fa-magic fa-fw"></i> Workflows</a>
                         </Link>
                     </li>
-
                     <li>
                         <Link prefetch href='/users'>
                             <a href="#" className={pathname === '/users' ? 'active' : ''}><i className="far fa-address-card fa-fw"></i> Users</a>

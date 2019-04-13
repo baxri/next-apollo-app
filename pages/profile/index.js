@@ -2,24 +2,26 @@ import React, { Component } from 'react'
 import App from '../../components/layouts/App'
 import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
-
-// import { USER as QUERY } from "../../gql/User";
-// import { UPDATE_USER as MUTATION } from "../../gql/User";
-// import LoadForm from '../../components/crud/LoadForm';
-// import schema from './schema/schema';
-// import uischema from './schema/uischema';
+import Form from "../../components/crud/Form";
+import { schema, resource, route, entity } from './config';
 
 class Profile extends Component {
     static async getInitialProps({ req, res }) {
         checkAuth(req, res);
         return {};
     }
-
     render() {
+        const { id } = this.props;
         return (
-            <App title="User Information">
-                <Card title="Profile settings">
-                    {/* <LoadForm query={QUERY} mutation={MUTATION} field="user" schema={schema} uischema={uischema} /> */}
+            <App>
+                <Card title={`${entity} edit`}>
+                    <Form
+                        resource={resource}
+                        route={route}
+                        schema={schema}
+                        id='auth'
+                        hideBack={true}
+                    />
                 </Card>
             </App>
         )

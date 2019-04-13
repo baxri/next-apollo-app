@@ -7,11 +7,12 @@ export default class Field extends Component {
 
         const isInvalid = errors[name] ? 'is-invalid' : '';
 
+
         switch (schema.type) {
             case 'text':
                 return (
                     <React.Fragment>
-                        <div className="col-12 col-md-6 form-group " key={name}>
+                        <div className="col-12 col-md-4 form-group " key={name}>
                             <label htmlFor={name}>{schema.label}</label>
                             <input type="text" name={name} onChange={handleChange} value={value} className={`${isInvalid} form-control`} id={name} aria-describedby="emailHelp" placeholder={schema.placeholder} />
                             <small id="emailHelp" className="invalid-feedback">{errors[name]}</small>
@@ -21,7 +22,7 @@ export default class Field extends Component {
             case 'select':
                 return (
                     <React.Fragment>
-                        <div className="col-12 col-md-6 form-group" key={name}>
+                        <div className="col-12 col-md-4 form-group" key={name}>
                             <label htmlFor={name}>{schema.label}</label>
                             <select className="form-control" id={name} onChange={handleChange} name={name} defaultValue={value}>
                                 {schema.options.map(option => {
@@ -34,10 +35,10 @@ export default class Field extends Component {
             case 'date':
                 return (
                     <React.Fragment>
-                        <div className="col-12 col-md-6 form-group" key={name}>
+                        <div className="col-12 col-md-4 form-group " key={name}>
                             <label htmlFor={name}>{schema.label}</label>
-                            <input type="text" name={name} onChange={handleChange} value={value} className="form-control" id={name} aria-describedby="emailHelp" placeholder={schema.placeholder} />
-                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <input type="text" name={name} onChange={handleChange} value={value} className={`${isInvalid} form-control`} id={name} aria-describedby="emailHelp" placeholder={schema.placeholder} />
+                            <small id="emailHelp" className="invalid-feedback">{errors[name]}</small>
                         </div>
                     </React.Fragment>
                 )

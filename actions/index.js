@@ -14,6 +14,7 @@ export const setAccessToken = (token) => {
 
 export function setUser(req) {
     return dispatch => getUser(req)
-        .then((data) => dispatch({ type: actionTypes.SET_USER, payload: data }));
+        .then((data) => dispatch({ type: actionTypes.SET_USER, payload: data }))
+        .catch(err => { console.log(err.message) });
 }
 

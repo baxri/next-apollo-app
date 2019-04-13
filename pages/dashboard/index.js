@@ -21,7 +21,7 @@ class Dashboard extends Component {
 
     render() {
 
-        const { token, user } = this.props
+        const { user } = this.props
 
         return (
             <App title="Dashboard">

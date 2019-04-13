@@ -1,8 +1,4 @@
 import * as actionTypes from './types';
-import axios from 'axios';
-
-import { getToken } from "../lib/cookie";
-
 import { getUser } from "../lib/http";
 
 export const setAccessToken = (token) => {

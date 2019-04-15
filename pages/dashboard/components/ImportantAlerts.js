@@ -4,6 +4,8 @@ export default class ImportantAlerts extends Component {
     render() {
         return (
             <div className="alerts">
+
+            
                 <div className="alert alert-warning" role="alert">
                     File Manager Added: We are happy to announce the ability to manage and upload files directory through your Webmation portal.
                 This is a warning alert—check it out!

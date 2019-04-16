@@ -82,7 +82,8 @@ export default class Form extends Component {
         try {
 
             if (id) {
-                await post(`${resource}/${id}/update`, data);
+                data['_method'] = 'PUT';
+                await post(`${resource}/${id}`, data);
             } else {
                 await post(`${resource}`, data);
             }

@@ -54,7 +54,10 @@ export default class Table extends Component {
 
         try {
             NProgress.start();
-            await post(`${resource}/${id}/delete`, {});
+
+            await post(`${resource}/${id}`, {
+                '_method': 'DELETE'
+            });
             await this.loadList(currentPage);
         } catch (err) {
             NProgress.done();
@@ -70,7 +73,7 @@ export default class Table extends Component {
         let filteredSchema = {};
 
         Object.keys(schema).map(key => {
-            if(schema[key].hideFromTable !== true){
+            if (schema[key].hideFromTable !== true) {
                 filteredSchema[key] = schema[key];
             }
         });

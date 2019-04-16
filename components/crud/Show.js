@@ -24,7 +24,7 @@ export default class Show extends Component {
 
     async loadData() {
         const { resource, id } = this.props;
-        const data = await get(`${resource}/${id}/show`);
+        const { data } = await get(`${resource}/${id}`);
         this.setState({ data, loading: false });
     }
 
@@ -37,15 +37,19 @@ export default class Show extends Component {
 
         return (
             <form onSubmit={this.handleSubmit}>
-                <div className="row">
-                    {Object.keys(schema).map(key => {
-                        return <div>
-                            <strong>{schema[key]['label']}</strong>
-                            <p>{data[key]}</p>
+                {/* <div className="row"> */}
+                {Object.keys(schema).map(key => {
+                    return <div key={key} className="row">
+                        <div className="col-12 mb-2">
+                            <h5>{schema[key]['label']}</h5>
+                            <div>
+                                {schema[key].hasOwnProperty('render') ? schema[key].render(data[key]) : data[key]}
+                            </div>
                         </div>
-                        // return <Field schema={schema[key]} name={key} key={key} handleChange={this.handleChange} value={data[key]} />
-                    })}
-                </div>
+                    </div>
+                    // return <Field schema={schema[key]} name={key} key={key} handleChange={this.handleChange} value={data[key]} />
+                })}
+                {/* </div> */}
             </form>
         )
     }

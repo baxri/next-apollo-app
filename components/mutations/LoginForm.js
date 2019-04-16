@@ -30,11 +30,12 @@ class Login extends Component {
         const form = event.target
         const formData = new window.FormData(form)
 
-        const client_id = 2;
+        const client_id = 3;
         const grant_type = "password";
         const username = formData.get('email');
         const password = formData.get('password');
-        const client_secret = "Vr3g0ejeLLRuFcGuC88l7zHHfoqMWzpWWL1ygLKZ";
+        // const client_secret = "Vr3g0ejeLLRuFcGuC88l7zHHfoqMWzpWWL1ygLKZ";
+        const client_secret = "SL478kXxgXzFbJwME4oiFLskjKM3zLkfcokxeN3p";
 
         NProgress.start();
         this.setState({ loading: true });

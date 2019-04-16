@@ -4,7 +4,7 @@ import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
 
 import Show from "../../components/crud/Show";
-import { schema } from "./config";
+import { schema, resource, route } from "./config";
 
 class ShowPage extends Component {
     static async getInitialProps({ req, res, query }) {
@@ -20,8 +20,8 @@ class ShowPage extends Component {
             <App title="Show">
                 <Card title="Show">
                     <Show
-                        resource="/filemanager/folders"
-                        route="files"
+                        resource={resource}
+                        route={route}
                         schema={schema}
                         id={id}
                     />

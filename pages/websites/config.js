@@ -63,7 +63,7 @@ export const schema = {
         hideFromTable: true,
     },
 
-    
+
     favicon_url: {
         label: 'Favicon url',
         placeholder: 'Enter facicon url',
@@ -71,6 +71,9 @@ export const schema = {
         fillable: true,
         default: '',
         hideFromTable: true,
+        render: (value) => {
+            return <img src={value} height="50" className="rounded" />
+        }
     },
     footer_logo_url: {
         label: 'Footer logo',
@@ -79,6 +82,9 @@ export const schema = {
         fillable: true,
         default: '',
         hideFromTable: true,
+        render: (value) => {
+            return <img src={value} height="50" className="rounded" />
+        }
     },
     // status: {
     //     label: 'Status',

@@ -53,8 +53,8 @@ export default class Form extends Component {
             const data = await get(url);
             this.setState({ data });
         } else if (id) {
-            url = `${resource}/${id}/show`;
-            const data = await get(url);
+            url = `${resource}/${id}`;
+            const { data } = await get(url);
             this.setState({ data });
         }
 
@@ -84,7 +84,7 @@ export default class Form extends Component {
             if (id) {
                 await post(`${resource}/${id}/update`, data);
             } else {
-                await post(`${resource}/create`, data);
+                await post(`${resource}`, data);
             }
 
             Router.push("/" + route);

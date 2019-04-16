@@ -41,9 +41,9 @@ export default class Table extends Component {
         NProgress.start();
 
         const { resource, schema } = this.props;
-        const data = await get(`${resource}/index?page=${page}`);
+        // const data = await get(`${resource}/index?page=${page}`);
+        const data = await get(`${resource}/?page=${page}`);
         this.setState({ data, loading: false });
-
         NProgress.done();
     }
 
@@ -67,6 +67,14 @@ export default class Table extends Component {
         const { schema, route } = this.props;
         const { data, loading } = this.state;
 
+        let filteredSchema = {};
+
+        Object.keys(schema).map(key => {
+            if(schema[key].hideFromTable !== true){
+                filteredSchema[key] = schema[key];
+            }
+        });
+
         if (loading) return <TableLoader />
 
         return (
@@ -80,12 +88,12 @@ export default class Table extends Component {
                     </div>
                 </div>
 
-                <table className="table ">
+                <table className="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            {Object.keys(schema).map((key) => {
-                                return <th scope="col" key={key}>{schema[key].label}</th>
+                            {Object.keys(filteredSchema).map((key) => {
+                                return <th scope="col" key={key}>{filteredSchema[key].label}</th>
                             })}
                             <th>Actions</th>
                         </tr>
@@ -94,9 +102,9 @@ export default class Table extends Component {
                         {data.data.map((item, key) => {
                             return <tr key={key}>
                                 <th scope="row">{++key}</th>
-                                {Object.keys(schema).map((schemaKey) => {
-                                    return <th scope="col" key={schemaKey}>
-                                        {schema[schemaKey].hasOwnProperty('render') ? schema[schemaKey].render(item[schemaKey]) : item[schemaKey]}
+                                {Object.keys(filteredSchema).map((schemaKey) => {
+                                    return <th scope="col" key={schemaKey} className="" align="center">
+                                        {filteredSchema[schemaKey].hasOwnProperty('render') ? filteredSchema[schemaKey].render(item[schemaKey]) : item[schemaKey]}
                                     </th>
                                 })}
                                 <th>

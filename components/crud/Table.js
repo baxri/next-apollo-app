@@ -124,13 +124,13 @@ export default class Table extends Component {
                         })}
                     </tbody>
                 </table>
-                <Pagination
+                {/* <Pagination
                     totalPages={Math.ceil(data.total / data.per_page)}
                     totalRecords={data.total}
                     pageLimit={data.per_page}
                     // pageLimit={data.current_page}
                     onPageChanged={this.onPageChanged}
-                />
+                /> */}
                 {/* <nav aria-label="Page navigation example">
                     <PaginationNew
                         activePage={data.currentPage}

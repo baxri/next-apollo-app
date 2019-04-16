@@ -6,6 +6,7 @@ export default ({ url }) => {
             <img src="https://www.freeiconspng.com/uploads/no-image-icon-6.png" height="50" className="rounded" />
         )
     }
+    
 
     return (
         <img src={url} height="50" className="rounded" />

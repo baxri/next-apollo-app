@@ -1,8 +1,12 @@
+
+import Image from "../../components/Image";
+
 export const entity = 'Website';
 export const entityPlurar = 'Websites';
 
 export const resource = '/websites';
 export const route = 'websites';
+
 
 export const schema = {
     logo_url: {
@@ -12,7 +16,8 @@ export const schema = {
         fillable: true,
         default: '',
         render: (value) => {
-            return <img src={value} height="50" className="rounded" />
+            // return <img src={value} height="50" className="rounded" />
+            return <Image url={value} />
         }
     },
     domain_name: {

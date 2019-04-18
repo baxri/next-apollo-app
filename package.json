@@ -28,7 +28,7 @@
     "npm": "^6.9.0",
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
-    "react": "^16.6.3",
+    "react": "^16.8.6",
     "react-bootstrap-daterangepicker": "^4.1.0",
     "react-bootstrap-table-next": "^2.0.1",
     "react-content-loader": "^4.0.0",

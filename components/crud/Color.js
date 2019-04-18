@@ -59,7 +59,7 @@ class Color extends Component {
 
             <React.Fragment>
                 {/* <button onClick={this.handleClick}>Pick Color</button> */}
-                <input type="text" placeholder="Choose color" readonly name={this.state.name} style={{borderBottomColor: this.state.background, borderBottomWidth: 3}} onFocus={this.handleClick} onBlur={this.handleClose} value={this.state.background} className="form-control" aria-describedby="emailHelp" />
+                <input type="text" placeholder="Choose color" readOnly name={this.state.name} style={{borderBottomColor: this.state.background, borderBottomWidth: 3}} onFocus={this.handleClick} onBlur={this.handleClose} value={this.state.background} className="form-control" aria-describedby="emailHelp" />
                 {this.state.displayColorPicker ? <div style={popover}>
                     <div style={cover} onClick={this.handleClose} />
                     <ChromePicker

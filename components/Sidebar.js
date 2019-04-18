@@ -50,8 +50,8 @@ class SideBar extends Component {
                         </Link>
                     </li>
                     <li>
-                        <Link prefetch href='/website'>
-                            <a href="#" className={pathname === '/website' ? 'active' : ''}><i className="fas fa-laptop fa-fw"></i> Website</a>
+                        <Link prefetch href='/websites'>
+                            <a href="#" className={pathname === '/websites' ? 'active' : ''}><i className="fas fa-laptop fa-fw"></i> Websites</a>
                         </Link>
                     </li>
                     <li>

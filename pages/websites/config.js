@@ -9,17 +9,7 @@ export const route = 'websites';
 
 
 export const schema = {
-    logo_url: {
-        label: 'Logo',
-        placeholder: 'Enter logo url',
-        type: 'text',
-        fillable: true,
-        default: '',
-        render: (value) => {
-            // return <img src={value} height="50" className="rounded" />
-            return <Image url={value} />
-        }
-    },
+
     domain_name: {
         label: 'Domain Name',
         placeholder: 'Enter domain name',
@@ -38,7 +28,7 @@ export const schema = {
     color_primary: {
         label: 'Primary color',
         placeholder: 'Enter primary color',
-        type: 'text',
+        type: 'color',
         fillable: true,
         default: '',
         hideFromTable: true,
@@ -46,7 +36,7 @@ export const schema = {
     color_secondary: {
         label: 'Secondary color',
         placeholder: 'Enter secondary color',
-        type: 'text',
+        type: 'color',
         fillable: true,
         default: '',
         hideFromTable: true,
@@ -54,7 +44,7 @@ export const schema = {
     color_alert: {
         label: 'Color Alert',
         placeholder: 'Enter alert color',
-        type: 'text',
+        type: 'color',
         fillable: true,
         default: '',
         hideFromTable: true,
@@ -62,12 +52,23 @@ export const schema = {
     color_success: {
         label: 'Success color',
         placeholder: 'Enter success color',
-        type: 'text',
+        type: 'color',
         fillable: true,
         default: '',
         hideFromTable: true,
     },
 
+    logo_url: {
+        label: 'Logo',
+        placeholder: 'Enter logo url',
+        type: 'image',
+        fillable: true,
+        default: '',
+        render: (value) => {
+            // return <img src={value} height="50" className="rounded" />
+            return <Image url={value} />
+        }
+    },
 
     favicon_url: {
         label: 'Favicon url',

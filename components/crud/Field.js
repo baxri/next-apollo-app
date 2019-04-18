@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import Wysiwyg from "../crud/Wysiwyg";
 import DatePicker from "./DatePicker";
+import Color from "./Color";
+import Image from "./Image";
 
 export default class Field extends Component {
     render() {
@@ -53,6 +55,24 @@ export default class Field extends Component {
                                 <input type="text" name={name} onChange={handleChange} value={value} className={`${isInvalid} form-control`} id={name} aria-describedby="emailHelp" placeholder={schema.placeholder} />
                             </DatePicker>
                             <small id="emailHelp" className="invalid-feedback">{errors[name]}</small>
+                        </div>
+                    </React.Fragment>
+                )
+            case 'color':
+                return (
+                    <React.Fragment>
+                        <div className="col-12 col-md-4 form-group " key={name}>
+                            <label htmlFor={name}>{schema.label}</label>
+                            <Color name={name} value={value} onChange={handleChange} />
+                        </div>
+                    </React.Fragment>
+                )
+            case 'image':
+                return (
+                    <React.Fragment>
+                        <div className="col-12 col-md-12 form-group " key={name}>
+                            <label htmlFor={name}>{schema.label}</label>
+                            <Image name={name} value={value} onChange={handleChange} />
                         </div>
                     </React.Fragment>
                 )

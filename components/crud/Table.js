@@ -86,7 +86,7 @@ export default class Table extends Component {
                 <div className="row ">
                     <div className="col-12 justify-content-right text-right ">
                         <Link href={`${route}/create`}>
-                            <a href="#" className="btn btn-primary btn-sm text-align-right mb-2">Add new</a>
+                            <a href={`${route}/create`} className="btn btn-primary btn-sm text-align-right mb-2">Add new</a>
                         </Link>
                     </div>
                 </div>
@@ -115,6 +115,13 @@ export default class Table extends Component {
                                         <NextLink route={`${route}-edit`} params={{ id: item.id }} >
                                             <a href="#"><i className="far fa-edit fa-fw"></i></a>
                                         </NextLink>
+                                        {/* <Link href={`websites/${item.id}/edit`}>
+                                            <a href={`websites/${item.id}/edit`}><i className="far fa-edit fa-fw"></i></a>
+                                        </Link>
+                                        &nbsp;
+                                        <Link href={`websites/${item.id}/show`}>
+                                            <a href={`websites/${item.id}/show`}><i className="fas fa-eye fa-fw"></i> </a>
+                                        </Link> */}
                                         &nbsp;
                                         <NextLink route={`${route}-show`} params={{ id: item.id }} >
                                             <a href="#"><i className="fas fa-eye fa-fw"></i> </a>

@@ -5,6 +5,9 @@ import withRedux from 'next-redux-wrapper'
 import { Provider } from 'react-redux'
 // import initStore from '../store/index'
 import initStore from '../store'
+import Router from 'next/router';
+
+import css from "../static/css/empty.css";
 
 export default withRedux(initStore)(class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {

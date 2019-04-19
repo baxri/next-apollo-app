@@ -52,6 +52,7 @@ class Login extends Component {
 
             setToken(`Bearer ${access_token}`);
             Router.push('/dashboard');
+            // window.location.href = `/dashboard`
         } catch (err) {
             NProgress.done();
             this.setState({ loading: false });

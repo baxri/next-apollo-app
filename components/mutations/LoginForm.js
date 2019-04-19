@@ -14,7 +14,7 @@ class Login extends Component {
         super(props)
 
         this.state = {
-            email: 'hersh.sandhoo@webmation.co',
+            email: 'hersh.sandhoo@webmation.com',
             password: 'Hunter20!',
             loading: false,
         }
@@ -52,6 +52,7 @@ class Login extends Component {
 
             setToken(`Bearer ${access_token}`);
             Router.push('/dashboard');
+            // window.location.href = `/dashboard`
         } catch (err) {
             NProgress.done();
             this.setState({ loading: false });

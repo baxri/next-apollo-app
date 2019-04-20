@@ -37,6 +37,7 @@ class Login extends Component {
         // const client_secret = "Vr3g0ejeLLRuFcGuC88l7zHHfoqMWzpWWL1ygLKZ";
         const client_secret = "SL478kXxgXzFbJwME4oiFLskjKM3zLkfcokxeN3p";
 
+        
         NProgress.start();
         this.setState({ loading: true });
 

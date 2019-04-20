@@ -55,6 +55,10 @@ export default class Form extends Component {
         } else if (id) {
             url = `${resource}/${id}`;
             const { data } = await get(url);
+
+            console.log(data)
+
+
             this.setState({ data });
         }
 
@@ -76,19 +80,24 @@ export default class Form extends Component {
             return false;
         }
 
-        NProgress.start();
-        this.setState({ submiting: true });
+        // NProgress.start();
+        // this.setState({ submiting: true });
 
         try {
 
+            const formData = new FormData()
+            Object.keys(data).map(key => {
+                formData.append(key, data[key]);
+            });
+
             if (id) {
-                data['_method'] = 'PUT';
-                await post(`${resource}/${id}`, data);
+                formData.append('_method', 'PUT');
+                await post(`${resource}/${id}`, formData);
             } else {
-                await post(`${resource}`, data);
+                await post(`${resource}`, formData);
             }
 
-            Router.push("/" + route);
+            // Router.push("/" + route);
         } catch (err) {
 
             if (err.response.data.errors) {

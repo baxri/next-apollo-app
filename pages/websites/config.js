@@ -73,7 +73,7 @@ export const schema = {
     favicon_url: {
         label: 'Favicon url',
         placeholder: 'Enter facicon url',
-        type: 'text',
+        type: 'image',
         fillable: true,
         default: '',
         hideFromTable: true,
@@ -84,7 +84,7 @@ export const schema = {
     footer_logo_url: {
         label: 'Footer logo',
         placeholder: 'Enter footer logo url',
-        type: 'text',
+        type: 'image',
         fillable: true,
         default: '',
         hideFromTable: true,

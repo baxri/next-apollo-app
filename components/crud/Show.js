@@ -25,6 +25,8 @@ export default class Show extends Component {
     async loadData() {
         const { resource, id } = this.props;
         const { data } = await get(`${resource}/${id}`);
+
+
         this.setState({ data, loading: false });
     }
 

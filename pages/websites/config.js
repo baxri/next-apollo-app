@@ -70,26 +70,26 @@ export const schema = {
         }
     },
 
-    favicon_url: {
-        label: 'Favicon url',
-        placeholder: 'Enter facicon url',
-        type: 'image',
-        fillable: true,
-        default: '',
-        hideFromTable: true,
-        render: (value) => {
-            return <img src={value} height="50" className="rounded" />
-        }
-    },
     footer_logo_url: {
         label: 'Footer logo',
         placeholder: 'Enter footer logo url',
         type: 'image',
         fillable: true,
         default: '',
-        hideFromTable: true,
         render: (value) => {
-            return <img src={value} height="50" className="rounded" />
+            return <Image url={value} />
+        }
+    },
+    favicon_url: {
+        label: 'Favicon url',
+        placeholder: 'Enter facicon url',
+        type: 'image',
+        fillable: true,
+        default: '',
+        // hideFromTable: true,
+        size: 30,
+        render: (value) => {
+            return <Image url={value} />
         }
     },
     // status: {

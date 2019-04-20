@@ -72,7 +72,7 @@ export default class Field extends Component {
                     <React.Fragment>
                         <div className="col-12 col-md-12 form-group " key={name}>
                             <label htmlFor={name}>{schema.label}</label>
-                            <Image name={name} value={value} onChange={handleChange} />
+                            <Image schema={schema} name={name} value={value} onChange={handleChange} />
                         </div>
                     </React.Fragment>
                 )

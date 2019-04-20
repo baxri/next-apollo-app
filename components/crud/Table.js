@@ -78,7 +78,7 @@ export default class Table extends Component {
             }
         });
 
-        if (loading) return <TableLoader />
+
 
         return (
             <div>
@@ -91,7 +91,10 @@ export default class Table extends Component {
                     </div>
                 </div>
 
-                <table className="table table-striped">
+                {loading && <TableLoader />}
+
+
+                {!loading && <table className="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -133,7 +136,8 @@ export default class Table extends Component {
                             </tr>
                         })}
                     </tbody>
-                </table>
+                </table>}
+
                 {/* <Pagination
                     totalPages={Math.ceil(data.total / data.per_page)}
                     totalRecords={data.total}

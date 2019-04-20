@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Router from 'next/router'
 import { get, post } from "../../lib/http";
-import TableLoader from "./TableLoader";
+import TableLoader from "./ContentLoader";
 import Field from "./Field";
 import { toast } from 'react-toastify';
 

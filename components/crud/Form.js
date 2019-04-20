@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Router from 'next/router'
 import { get, post } from "../../lib/http";
-import TableLoader from "./TableLoader";
+import TableLoader from "./ContentLoader";
 import Field from "./Field";
 import { toast } from 'react-toastify';
 import Link from "next/link";
@@ -80,8 +80,8 @@ export default class Form extends Component {
             return false;
         }
 
-        // NProgress.start();
-        // this.setState({ submiting: true });
+        NProgress.start();
+        this.setState({ submiting: true });
 
         try {
 
@@ -97,7 +97,12 @@ export default class Form extends Component {
                 await post(`${resource}`, formData);
             }
 
-            // Router.push("/" + route);
+            toast.success('Item successfully saved!');
+
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+                Router.push("/" + route);
+            }, 1000)
         } catch (err) {
 
             if (err.response.data.errors) {

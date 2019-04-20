@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import Image from "../Image";
 
-export default class Image extends Component {
+export default class ImageUpload extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,7 +20,7 @@ export default class Image extends Component {
         this.setState({
             name: name,
             value: value,
-            imagePreviewUrl: value.length == 0 ? 'https://www.freeiconspng.com/uploads/no-image-icon-6.png': value,
+            imagePreviewUrl: value,
         });
     }
 
@@ -27,7 +28,7 @@ export default class Image extends Component {
 
         const { onChange } = this.props;
 
-        this.setState({ file: e.target.value });
+        this.setState({ file: e.target.value, imagePreviewUrl: e.target.value });
 
         const event = {
             target: {
@@ -71,16 +72,20 @@ export default class Image extends Component {
     }
 
     render() {
+
+        const { schema } = this.props;
+
         let { imagePreviewUrl } = this.state;
         let $imagePreview = null;
         if (imagePreviewUrl) {
-            $imagePreview = (<img src={imagePreviewUrl} height="100" />);
+            $imagePreview = (<Image url={imagePreviewUrl} height="100" />);
+            // $imagePreview = (<img className="prev-image" src={imagePreviewUrl} height="100" />);
         } else {
             $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
         }
 
         return (
-            <div className="row">
+            <div className="row image-uploader">
                 <div className="col-12 col-md-6">
 
                     <div className="btn-group-sm" role="group" aria-label="Basic example">
@@ -90,9 +95,9 @@ export default class Image extends Component {
 
                     <br />
 
-                    {this.state.type === 0 && <div class="custom-file form-group">
-                        <input type="file" class="custom-file-input" id="validatedCustomFile" onChange={(e) => this._handleImageChange(e)} />
-                        <label class="custom-file-label">Choose file...</label>
+                    {this.state.type === 0 && <div className="custom-file form-group">
+                        <input type="file" className="custom-file-input" id="validatedCustomFile" onChange={(e) => this._handleImageChange(e)} />
+                        <label className="custom-file-label">Choose file...</label>
                     </div>}
 
                     {this.state.type === 1 && <div className="form-group ">
@@ -100,14 +105,33 @@ export default class Image extends Component {
                         <input type="text" className="form-control" name="url" onChange={this._handleImageUrl} />
                     </div>}
 
-
-
                 </div>
 
-                <div className="col-12 col-md-6">
-                    {$imagePreview}
+                <div className="col-12 col-md-6 align-items-center d-flex align-items-center">
+                    {/* {$imagePreview} */}
+                    {/* <img className="prev-image" src={this.state.imagePreviewUrl} height={schema.size ? schema.size : 100} /> */}
+                    <Image url={this.state.imagePreviewUrl} height={schema.size ? schema.size : 100} />
                 </div>
+
+                <style jsx>{`
+
+
+                .image-uploader{
+                    border-bottom: 1px solid #ececec;
+                    border-top: 1px solid #ececec;
+                    padding-bottom: 20px;
+                    padding-top: 20px;
+                }
+
+                .prev-image{
+                    border-radius: 5px;
+                    border: 1px solid lightgray;
+                }
+
+                `}</style>
             </div >
+
+
         )
     }
 }

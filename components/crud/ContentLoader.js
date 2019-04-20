@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import ContentLoader, { List } from 'react-content-loader'
+import { Facebook } from 'react-content-loader'
 
-export default class TableLoader extends Component {
+export default class ContentLoader extends Component {
     render() {
 
         return (
             <div className="animated fadeIn">
-                <List />
+               <Facebook />
             </div>
         )
     }

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Router from 'next/router'
 import { setToken } from "../../lib/cookie";
 import { connect } from 'react-redux';
-import { setAccessToken } from '../../actions/index';
 import { toast } from 'react-toastify';
 import NProgress from "nprogress";
 
@@ -36,7 +35,7 @@ class Login extends Component {
         const password = formData.get('password');
         // const client_secret = "Vr3g0ejeLLRuFcGuC88l7zHHfoqMWzpWWL1ygLKZ";
         const client_secret = "SL478kXxgXzFbJwME4oiFLskjKM3zLkfcokxeN3p";
-        
+
         NProgress.start();
         this.setState({ loading: true });
 
@@ -107,4 +106,4 @@ const mapStateToProps = ({ auth }) => ({
     token: auth.token
 })
 
-export default connect(mapStateToProps, { setAccessToken })(Login);
+export default connect(mapStateToProps, {})(Login);

@@ -10,6 +10,8 @@ import { bindActionCreators } from 'redux'
 import { setWebsite } from '../../actions/websites';
 
 import Image from "../../components/Image";
+import Favicon from 'react-favicon';
+import Head from 'next/head';
 
 class PreviewPage extends Component {
 
@@ -27,6 +29,13 @@ class PreviewPage extends Component {
 
         return (
             <React.Fragment>
+
+                <Favicon url={website.favicon_url} />
+
+                <Head>
+                    <title>{website.domain_name}</title>
+                </Head>
+
                 <Default>
                     <header>
                         <nav className="navbar navbar-expand-lg navbar-light">
@@ -67,7 +76,7 @@ class PreviewPage extends Component {
                     </header>
 
                     <main role="main" className="container">
-                        <h1 className="mt-5">Sticky footer with fixed navbar</h1>
+                        <h1 className="mt-5">{website.domain_name}.{website.domain}</h1>
                         <p className="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>
                         <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
                     </main>

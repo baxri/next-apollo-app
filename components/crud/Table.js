@@ -110,7 +110,7 @@ export default class Table extends Component {
                                 <th scope="row">{++key}</th>
                                 {Object.keys(filteredSchema).map((schemaKey) => {
                                     return <th scope="col" key={schemaKey} className="" align="center">
-                                        {filteredSchema[schemaKey].hasOwnProperty('render') ? filteredSchema[schemaKey].render(item[schemaKey]) : item[schemaKey]}
+                                        {filteredSchema[schemaKey].hasOwnProperty('render') ? filteredSchema[schemaKey].render(item[schemaKey], item) : item[schemaKey]}
                                     </th>
                                 })}
                                 <th>
@@ -118,13 +118,6 @@ export default class Table extends Component {
                                         <NextLink route={`${route}-edit`} params={{ id: item.id }} >
                                             <a href="#"><i className="far fa-edit fa-fw"></i></a>
                                         </NextLink>
-                                        {/* <Link href={`websites/${item.id}/edit`}>
-                                            <a href={`websites/${item.id}/edit`}><i className="far fa-edit fa-fw"></i></a>
-                                        </Link>
-                                        &nbsp;
-                                        <Link href={`websites/${item.id}/show`}>
-                                            <a href={`websites/${item.id}/show`}><i className="fas fa-eye fa-fw"></i> </a>
-                                        </Link> */}
                                         &nbsp;
                                         <NextLink route={`${route}-show`} params={{ id: item.id }} >
                                             <a href="#"><i className="fas fa-eye fa-fw"></i> </a>

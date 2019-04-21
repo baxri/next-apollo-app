@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-import { checkAuth } from "../../lib/cookie";
-
+import withAuth from "../../components/HOC/withAuth";
 import App from '../../components/layouts/App'
 import Card from "../../components/Card";
 import Form from "../../components/crud/Form";
@@ -9,24 +8,8 @@ import Form from "../../components/crud/Form";
 import { schema, resource, route, entity } from './config';
 
 class FormPage extends Component {
-    static async getInitialProps({ req, res, query }) {
-        checkAuth(req, res);
-        return { id: query.id };
-    }
-
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            loading: true,
-            data: [],
-        }
-    }
-
     render() {
-
-        const { id } = this.props;
-
+        const { query } = this.props;
         return (
             <App>
                 <Card title={`${entity} edit`}>
@@ -34,7 +17,7 @@ class FormPage extends Component {
                         resource={resource}
                         route={route}
                         schema={schema}
-                        id={id}
+                        id={query.id}
                     />
                 </Card>
             </App>
@@ -42,5 +25,5 @@ class FormPage extends Component {
     }
 }
 
-export default FormPage;
+export default withAuth(FormPage);
 

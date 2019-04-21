@@ -1,19 +1,12 @@
 import React, { Component } from 'react'
 import App from '../../components/layouts/App'
 import Card from "../../components/Card";
-import { checkAuth } from "../../lib/cookie";
-
+import withAuth from "../../components/HOC/withAuth";
 import Table from "../../components/crud/Table";
 
 import { schema, entityPlurar, resource, route } from "./config";
 
-export default class Files extends Component {
-
-    static async getInitialProps({ req, res }) {
-        checkAuth(req, res);
-        return {};
-    }
-
+class Index extends Component {
     render() {
         return (
             <App>
@@ -28,3 +21,5 @@ export default class Files extends Component {
         )
     }
 }
+
+export default withAuth(Index);

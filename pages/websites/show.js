@@ -1,21 +1,13 @@
 import React, { Component } from 'react'
 import App from '../../components/layouts/App'
-import { checkAuth } from "../../lib/cookie";
 import Card from "../../components/Card";
-
+import withAuth from "../../components/HOC/withAuth";
 import Show from "../../components/crud/Show";
 import { schema, resource, route } from "./config";
 
 class ShowPage extends Component {
-    static async getInitialProps({ req, res, query }) {
-        checkAuth(req, res);
-        return { id: query.id };
-    }
-
     render() {
-
-        const { id } = this.props;
-
+        const { query } = this.props;
         return (
             <App title="Show">
                 <Card title="Show">
@@ -23,7 +15,7 @@ class ShowPage extends Component {
                         resource={resource}
                         route={route}
                         schema={schema}
-                        id={id}
+                        id={query.id}
                     />
                 </Card>
             </App>
@@ -32,4 +24,4 @@ class ShowPage extends Component {
 }
 
 
-export default ShowPage;
+export default withAuth(ShowPage);

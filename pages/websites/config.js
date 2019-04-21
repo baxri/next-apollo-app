@@ -65,7 +65,6 @@ export const schema = {
         fillable: true,
         default: '',
         render: (value) => {
-            // return <img src={value} height="50" className="rounded" />
             return <Image url={value} />
         }
     },
@@ -76,6 +75,7 @@ export const schema = {
         type: 'image',
         fillable: true,
         default: '',
+        hideFromTable: true,
         render: (value) => {
             return <Image url={value} />
         }
@@ -86,7 +86,7 @@ export const schema = {
         type: 'image',
         fillable: true,
         default: '',
-        // hideFromTable: true,
+        hideFromTable: true,
         size: 30,
         render: (value) => {
             return <Image url={value} />
@@ -109,5 +109,13 @@ export const schema = {
         label: 'Ceated At',
         type: 'date',
         fillable: false,
+    },
+    preview: {
+        label: 'Previev Website',
+        type: 'text',
+        fillable: false,
+        render: (value, item) => {
+            return <a href={`https://www.google.com/${item.id}`} target="_blank" className="btn btn-info">Preview</a>
+        }
     },
 };

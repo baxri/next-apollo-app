@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import auth from './auth';
-import website from './website';
+import websites from './websites';
 // ... other reducers
 
 export default combineReducers({
   auth,
-  website
+  websites
   // ... other reducers
 });

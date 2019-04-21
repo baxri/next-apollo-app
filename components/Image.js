@@ -7,6 +7,6 @@ export default ({ url, height }) => {
         )
     }
     return (
-        <img src={url} height="50" className="rounded" />
+        <img src={url} height={height ? height : 50} className="rounded" />
     )
 }

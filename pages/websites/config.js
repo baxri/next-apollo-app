@@ -42,7 +42,7 @@ export const schema = {
         hideFromTable: true,
     },
     color_alert: {
-        label: 'Footer',
+        label: 'Footer color',
         placeholder: 'Enter alert color',
         type: 'color',
         fillable: true,

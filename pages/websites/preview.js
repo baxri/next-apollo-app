@@ -7,7 +7,7 @@ import { schema, resource, route } from "./config";
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { setWebsite } from '../../actions/index';
+import { setWebsite } from '../../actions/websites';
 
 import Image from "../../components/Image";
 
@@ -66,7 +66,19 @@ class PreviewPage extends Component {
                         </nav>
                     </header>
 
+                    <main role="main" className="container">
+                        <h1 className="mt-5">Sticky footer with fixed navbar</h1>
+                        <p className="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>
+                        <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
+                    </main>
 
+                    <footer className="footer">
+                        <div className="container">
+                            <Image url={website.footer_logo_url} height="30" />
+                            &nbsp;&nbsp;&nbsp;
+                            <span className="text-muted">Place sticky footer content here.</span>
+                        </div>
+                    </footer>
 
                 </Default>
 
@@ -81,14 +93,23 @@ class PreviewPage extends Component {
                         background-color: ${website.color_secondary} !important;
                     }
 
+                    .footer {
+                        position: absolute;
+                        bottom: 0;
+                        width: 100%;
+                        height: 60px;
+                        line-height: 60px;
+                        background-color: ${website.color_alert} !important;
+                    }
+
                 `}</style>
             </React.Fragment>
         )
     }
 }
 
-const mapStateToProps = ({ website }) => ({
-    website: website.website,
+const mapStateToProps = ({ websites }) => ({
+    website: websites.website,
 })
 
 export default connect(mapStateToProps, { setWebsite })(PreviewPage);

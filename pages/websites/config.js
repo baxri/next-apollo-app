@@ -26,7 +26,7 @@ export const schema = {
     },
 
     color_primary: {
-        label: 'Primary color',
+        label: 'background color',
         placeholder: 'Enter primary color',
         type: 'color',
         fillable: true,
@@ -34,7 +34,7 @@ export const schema = {
         hideFromTable: true,
     },
     color_secondary: {
-        label: 'Secondary color',
+        label: 'Header color',
         placeholder: 'Enter secondary color',
         type: 'color',
         fillable: true,
@@ -42,7 +42,7 @@ export const schema = {
         hideFromTable: true,
     },
     color_alert: {
-        label: 'Color Alert',
+        label: 'Footer',
         placeholder: 'Enter alert color',
         type: 'color',
         fillable: true,
@@ -115,7 +115,7 @@ export const schema = {
         type: 'text',
         fillable: false,
         render: (value, item) => {
-            return <a href={`https://www.google.com/${item.id}`} target="_blank" className="btn btn-info">Preview</a>
+            return <a href={`/websites/${item.id}/preview`} target="_blank" className="btn btn-info btn-sm">Preview</a>
         }
     },
 };

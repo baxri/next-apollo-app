@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
 import Default from '../../components/themes/Default'
 
-import Card from "../../components/Card";
-import Show from "../../components/crud/Show";
-import { schema, resource, route } from "./config";
-
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { setWebsite } from '../../actions/websites';
 
 import Image from "../../components/Image";

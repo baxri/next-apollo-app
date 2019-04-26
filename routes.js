@@ -11,8 +11,6 @@ routes.add({ name: 'websites-preview', pattern: '/websites/:id/preview', page: '
 routes.add({ name: 'websites-edit', pattern: '/websites/:id/edit', page: 'websites/form' })
 routes.add({ name: 'websites-show', pattern: '/websites/:id/show', page: 'websites/show' })
 
-
-
 // about  about     /about
 // .add('blog', '/blog/:slug')                         // blog   blog      /blog/:slug
 // .add('user', '/user/:id', 'profile')                // user   profile   /user/:id

@@ -20,7 +20,7 @@ class Logout extends Component {
 
         const loading = false;
 
-        
+
         return (
             <span>
                 <a href="#" onClick={this.onClick}>
@@ -34,7 +34,6 @@ class Logout extends Component {
                     display: block;
                     transition: 0.3s;
                 }
-
                 a:hover {
                     color: #f1f1f1;
                 }

@@ -37,11 +37,9 @@ class Logout extends Component {
                 a:hover {
                     color: #f1f1f1;
                 }
-
                 i{
                     margin-right: 5px;
                 }
-
             `}</style>
             </span>
         )

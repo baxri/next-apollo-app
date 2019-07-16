@@ -25,7 +25,6 @@ class Logout extends Component {
                 <a href="#" onClick={this.onClick}>
                     <i className="fas fa-sign-out-alt"></i> {loading ? "Loading..." : "Logout"}
                 </a>
-
                 <style jsx>{`
                 a{
                     text-decoration: none;

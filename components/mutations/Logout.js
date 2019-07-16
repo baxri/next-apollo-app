@@ -20,7 +20,6 @@ class Logout extends Component {
 
         const loading = false;
 
-
         return (
             <span>
                 <a href="#" onClick={this.onClick}>

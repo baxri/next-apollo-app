@@ -18,7 +18,7 @@ class Logout extends Component {
 
     render() {
 
-        let loading = false;
+        const loading = false;
 
         return (
             <span>

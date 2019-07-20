@@ -7,7 +7,6 @@ class Logout extends Component {
     onClick = async (e) => {
         e.preventDefault();
 
-            
         // prevent default
         // action({ variables: { id: userid } }).then(({ data }) => {
         //     removeToken();

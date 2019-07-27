@@ -26,7 +26,7 @@ class Login extends Component {
     onSubmit = async (e, action) => {
         e.preventDefault();
 
-        
+
         const form = event.target
         const formData = new window.FormData(form)
 
@@ -35,7 +35,7 @@ class Login extends Component {
         const username = formData.get('email');
         const password = formData.get('password');
         // const client_secret = "Vr3g0ejeLLRuFcGuC88l7zHHfoqMWzpWWL1ygLKZ";
-        
+
         const client_secret = "SL478kXxgXzFbJwME4oiFLskjKM3zLkfcokxeN3p";
 
         NProgress.start();
@@ -57,7 +57,12 @@ class Login extends Component {
         } catch (err) {
             NProgress.done();
             this.setState({ loading: false });
-            toast.error(err.response.data.message);
+
+            if (err.response) {
+                toast.error(err.response.data.message);
+            } else {
+                toast.error(err.message);
+            }
         }
     }
 

@@ -15,7 +15,6 @@ class Logout extends Component {
         removeToken();
         Router.push('/')
     }
-
     
     render() {
         const loading = false;

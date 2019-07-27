@@ -3,7 +3,9 @@ import Router from 'next/router'
 import { removeToken } from "../../lib/cookie";
 
 class Logout extends Component {
+    
     onClick = async (e) => {
+
         e.preventDefault();
         // prevent default
         // action({ variables: { id: userid } }).then(({ data }) => {

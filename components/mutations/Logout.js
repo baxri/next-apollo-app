@@ -14,7 +14,6 @@ class Logout extends Component {
         // }).catch(err => { })
         removeToken();
         Router.push('/')
-        
     }
 
     render() {

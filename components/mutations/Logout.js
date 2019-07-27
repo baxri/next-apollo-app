@@ -3,7 +3,7 @@ import Router from 'next/router'
 import { removeToken } from "../../lib/cookie";
 
 class Logout extends Component {
-    
+
     onClick = async (e) => {
 
         e.preventDefault();
@@ -13,6 +13,7 @@ class Logout extends Component {
         //     Router.push('/')
         // }).catch(err => { })
         removeToken();
+        
         Router.push('/')
     }
 

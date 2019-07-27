@@ -16,6 +16,7 @@ class Logout extends Component {
         Router.push('/')
     }
 
+    
     render() {
         const loading = false;
         return (

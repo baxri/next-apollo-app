@@ -20,8 +20,6 @@ class PreviewPage extends Component {
     render() {
         const { website } = this.props;
 
-        console.log(website.color_primary)
-
         return (
             <React.Fragment>
 

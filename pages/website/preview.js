@@ -22,13 +22,10 @@ class PreviewPage extends Component {
 
         return (
             <React.Fragment>
-
                 <Favicon url={website.favicon_url} />
-
                 <Head>
                     <title>{website.domain_name}</title>
                 </Head>
-
                 <Default>
                     <header>
                         <nav className="navbar navbar-expand-lg navbar-light">

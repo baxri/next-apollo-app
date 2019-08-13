@@ -16,7 +16,6 @@ class PreviewPage extends Component {
 
     render() {
         const { website } = this.props;
-
         return (
             <React.Fragment>
                 <Favicon url={website.favicon_url} />

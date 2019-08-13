@@ -76,7 +76,6 @@ class PreviewPage extends Component {
 
                 </Default>
 
-
                 <style global jsx>{`
 
                     body{

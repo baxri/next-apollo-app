@@ -13,7 +13,6 @@ class PreviewPage extends Component {
         await store.dispatch(setWebsite(query.id, req));
         return { query };
     }
-
     render() {
         const { website } = this.props;
         return (

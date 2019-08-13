@@ -10,9 +10,7 @@ import Head from 'next/head';
 
 class PreviewPage extends Component {
     static async getInitialProps({ store, req, res, query }) {
-
         await store.dispatch(setWebsite(query.id, req));
-
         return { query };
     }
 

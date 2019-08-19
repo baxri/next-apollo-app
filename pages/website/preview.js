@@ -65,7 +65,6 @@ class PreviewPage extends Component {
                         <p className="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added with <code>padding-top: 60px;</code> on the <code>body &gt; .container</code>.</p>
                         <p>Back to <a href="../sticky-footer">the default sticky footer</a> minus the navbar.</p>
                     </main>
-
                     <footer className="footer">
                         <div className="container">
                             <Image url={website.footer_logo_url} height="30" />

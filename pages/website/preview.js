@@ -88,7 +88,6 @@ class PreviewPage extends Component {
                         line-height: 60px;
                         background-color: ${website.color_alert} !important;
                     }
-
                 `}</style>
             </React.Fragment>
         )

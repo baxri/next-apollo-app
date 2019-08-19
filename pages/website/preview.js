@@ -77,7 +77,6 @@ class PreviewPage extends Component {
                     body{
                         background-color: ${website.color_primary} !important;
                     }
-
                     nav{
                         background-color: ${website.color_secondary} !important;
                     }

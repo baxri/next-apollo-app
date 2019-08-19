@@ -80,7 +80,6 @@ class PreviewPage extends Component {
                     nav{
                         background-color: ${website.color_secondary} !important;
                     }
-
                     .footer {
                         position: absolute;
                         bottom: 0;

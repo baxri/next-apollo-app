@@ -73,7 +73,6 @@ class PreviewPage extends Component {
                             <span className="text-muted">Place sticky footer content here.</span>
                         </div>
                     </footer>
-
                 </Default>
                 <style global jsx>{`
 

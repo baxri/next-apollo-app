@@ -74,7 +74,6 @@ class PreviewPage extends Component {
                     </footer>
                 </Default>
                 <style global jsx>{`
-
                     body{
                         background-color: ${website.color_primary} !important;
                     }

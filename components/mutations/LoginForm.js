@@ -65,9 +65,7 @@ class Login extends Component {
     }
 
     render() {
-
         const { loading } = this.state;
-
         return (
             <form onSubmit={this.onSubmit}>
                 <input placeholder='Email' name='email' value={this.state.email} onChange={this.handleChange} type='email' required />

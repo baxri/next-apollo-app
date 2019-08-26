@@ -95,7 +95,6 @@ class Login extends Component {
                         border-radius: 0px;
                         background-color: #2280bd;
                     }
-
                     button:hover{
                         background-color: #206694;
                     }

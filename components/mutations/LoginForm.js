@@ -79,7 +79,6 @@ class Login extends Component {
                 <button type='submit' className="btn btn-primary">{loading ? "Loading..." : "Login"}</button>
 
                 <style jsx>{`
-
                     input{
                         width: 100%;
                         height: 40px;

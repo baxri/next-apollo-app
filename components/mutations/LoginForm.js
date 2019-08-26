@@ -34,10 +34,7 @@ class Login extends Component {
         const grant_type = "password";
         const username = formData.get('email');
         const password = formData.get('password');
-        // const client_secret = "Vr3g0ejeLLRuFcGuC88l7zHHfoqMWzpWWL1ygLKZ";
-
-        // const client_secret = "SL478kXxgXzFbJwME4oiFLskjKM3zLkfcokxeN3p";
-        const client_secret = "exEVFtAZHTchMCeYzqtIBHAlNKVCgWgyGoVJR02O";
+        const client_secret = "8nmguuD26hrXngiKE9maUqaetBNYoQrceYLjTgic";
 
         NProgress.start();
         this.setState({ loading: true });

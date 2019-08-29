@@ -48,7 +48,6 @@ class Login extends Component {
                 password,
                 client_secret
             });
-
             setToken(`Bearer ${access_token}`);
             Router.push('/dashboard');
         } catch (err) {

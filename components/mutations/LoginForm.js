@@ -40,7 +40,6 @@ class Login extends Component {
         this.setState({ loading: true });
 
         try {
-
             const { access_token } = await auth(`/oauth/token`, {
                 client_id,
                 grant_type,

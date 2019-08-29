@@ -63,7 +63,6 @@ class Login extends Component {
             }
         }
     }
-    
     render() {
         const { loading } = this.state;
         return (

@@ -35,7 +35,6 @@ class Login extends Component {
         const username = formData.get('email');
         const password = formData.get('password');
         const client_secret = "8nmguuD26hrXngiKE9maUqaetBNYoQrceYLjTgicc";
-
         NProgress.start();
         this.setState({ loading: true });
 

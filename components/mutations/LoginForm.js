@@ -51,7 +51,6 @@ class Login extends Component {
 
             setToken(`Bearer ${access_token}`);
             Router.push('/dashboard');
-            // window.location.href = `/dashboard`
         } catch (err) {
             NProgress.done();
             this.setState({ loading: false });
@@ -64,7 +63,7 @@ class Login extends Component {
         }
     }
     render() {
-        
+
         const { loading } = this.state;
         return (
             <form onSubmit={this.onSubmit}>

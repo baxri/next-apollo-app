@@ -93,5 +93,4 @@ class Login extends Component {
 const mapStateToProps = ({ auth }) => ({
     token: auth.token
 })
-
 export default connect(mapStateToProps, {})(Login);

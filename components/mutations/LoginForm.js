@@ -25,7 +25,6 @@ class Login extends Component {
 
     onSubmit = async (e, action) => {
         e.preventDefault();
-
         const form = event.target
         const formData = new window.FormData(form)
 

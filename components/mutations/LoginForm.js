@@ -27,7 +27,6 @@ class Login extends Component {
         e.preventDefault();
         const form = event.target
         const formData = new window.FormData(form)
-
         const client_id = 2;
         const grant_type = "password";
         const username = formData.get('email');

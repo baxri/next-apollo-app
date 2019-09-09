@@ -34,7 +34,6 @@ class Login extends Component {
         const client_secret = "8nmguuD26hrXngiKE9maUqaetBNYoQrceYLjTgicc";
         NProgress.start();
         this.setState({ loading: true });
-        
         try {
             const { access_token } = await auth(`/oauth/token`, {
                 client_id,

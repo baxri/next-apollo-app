@@ -38,7 +38,6 @@ class Login extends Component {
         NProgress.start();
         this.setState({ loading: true });
         
-        
         try {
             const { access_token } = await auth(`/oauth/token`, {
                 client_id,

@@ -21,7 +21,6 @@ class Login extends Component {
     handleChange = (event) => {
         this.setState({ [event.target.name]: event.target.value });
     }
-
     onSubmit = async (e, action) => {
         e.preventDefault();
         const form = event.target
